@@ -1,22 +1,22 @@
 ﻿{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "FileMoverWeb_Master": {
+    "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
-    
+      "applicationUrl": "http://localhost:5255",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "FileMoverWeb_Slave": {
+    "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
-   
+      "applicationUrl": "https://localhost:7188;http://localhost:5255",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Slave"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }
