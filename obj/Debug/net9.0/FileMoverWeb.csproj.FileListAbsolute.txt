@@ -76,8 +76,6 @@ C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\e8wjn4a7n0-1gbco
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\ylzrkuf0kt-5u7rh5ni0d.gz
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\1mh2ygiuf8-00vbx61czp.gz
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\s2ojdjha5j-pwbt22cbhk.gz
-C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\i202cako8i-xg3fjok3ap.gz
-C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\tqa2d7x3vf-3c4cyg0u80.gz
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\sgeigcfl66-1qvyndt0me.gz
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\staticwebassets.build.json.cache
@@ -90,3 +88,6 @@ C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\FileMoverWeb.pdb
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\FileMoverWeb.genruntimeconfig.cache
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\ref\FileMoverWeb.dll
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\4688xoxu7j-r0s6j5fofz.gz
+C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\i202cako8i-szuhg841yo.gz
+C:\Users\coco\projects\FileMoverWeb\bin\Debug\net9.0\appsettings.slave.json
+C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\tqa2d7x3vf-3cwr2chu7b.gz

@@ -1,5 +1,5 @@
 // nodes.js
-const API_SELF  = '/api/cluster/self';
+// const API_SELF  = '/api/cluster/self';
 const API_NODES = '/api/nodes';
 
 const MAX_OPTIONS = [1,2,3,4,5,6,7,8,9,10];
@@ -104,8 +104,23 @@ function renderNodesDiff(list) {
 
     setText(tr.querySelector('.c-running'), String(n.currentRunning ?? ''));
     setText(tr.querySelector('.c-hb'), normTime(n.lastHeartbeat));
+    // setText(tr.querySelector('.c-host'), n.hostName ?? '');
+    // setText(tr.querySelector('.c-ip'), n.ipAddress ?? '');
     setText(tr.querySelector('.c-host'), n.hostName ?? '');
-    setText(tr.querySelector('.c-ip'), n.ipAddress ?? '');
+
+    const ipCell  = tr.querySelector('.c-ip');
+    const fullUrl = n.ipAddress ?? '';
+    try {
+      const u = new URL(fullUrl);
+      // ✅ 甜化：只顯示 IP（192.168.30.218）
+      // setText(ipCell, u.hostname);
+      setText(ipCell, u.host);
+      ipCell.title = fullUrl; // hover 顯示完整 http://ip:port
+    } catch {
+      // fallback：不是合法 URL 就照原樣
+      setText(ipCell, fullUrl);
+      ipCell.title = '';
+    }
 
     // select：只有「使用者沒在操作這個 select」時才同步選取值
     const sel = tr.querySelector(`.sel-max[data-node="${n.nodeName}"]`);
@@ -154,11 +169,11 @@ export function initNodes(root, statusLine) {
   const $btn  = root.querySelector('#btnNodesReload');
   const $body = root.querySelector('#nodesBody');
 
-  async function loadSelf() {
-    const res = await fetch(API_SELF);
-    if (!res.ok) throw new Error('讀取節點角色失敗');
-    return await res.json(); // { nodeName, role, group, isMaster }
-  }
+  // async function loadSelf() {
+  //   const res = await fetch(API_SELF);
+  //   if (!res.ok) throw new Error('讀取節點角色失敗');
+  //   return await res.json(); // { nodeName, role, group, isMaster }
+  // }
 
   async function loadNodes({ silent = false } = {}) {
     if (!silent) statusLine.textContent = '載入節點狀態中...';
@@ -251,37 +266,38 @@ export function initNodes(root, statusLine) {
     }
   });
 
-  // ⭐ 入口：先確認自己是不是 Master
-  (async () => {
-    try {
-      const self = await loadSelf();
-      if (!self.isMaster) {
-        $info.textContent = `目前節點：${self.nodeName}（角色：${self.role}），不是 Master，無法使用節點管理。`;
-        statusLine.textContent = '此頁僅 Master 可使用。';
-        $btn.disabled = true;
-        $body.innerHTML = '';
-        stopAutoRefresh();
-        return;
-      }
+  // ⭐ 入口：不依賴 /api/cluster/self，改用 /api/nodes 的第一筆當 self
+(async () => {
+  try {
+    $btn.addEventListener('click', () => {
+      suppressRefresh(2000);
+      lastSignature = '';
+      loadNodes({ silent: false });
+    });
 
-      $info.textContent = `目前節點：${self.nodeName}（角色：${self.role}，樓層：${self.group}）`;
+    // 先載入一次 nodes
+    await loadNodes({ silent: false });
 
-      $btn.addEventListener('click', () => {
-        suppressRefresh(2000);
-        // 重新整理：強制刷一次（可把 lastSignature 清掉）
-        lastSignature = '';
-        loadNodes({ silent: false });
-      });
+    // 用目前畫面上的 lastMap 推出 self（以第一個 Online 或第一筆）
+    const list = [...lastMap.values()];
+    const self = list.find(x => x.status === 'Online') ?? list[0];
 
-      await loadNodes({ silent: false });
-      startAutoRefresh();
-
-    } catch (err) {
-      console.error(err);
-      $info.textContent = '無法取得節點角色資訊（/api/cluster/self）。';
-      statusLine.textContent = '節點管理初始化失敗。';
-      $btn.disabled = true;
-      stopAutoRefresh();
+    if (self) {
+      const role  = self.role  || '(unknown)';
+      const group = self.group || '(unknown)';
+      const host  = self.hostName || '-';
+      const ip    = self.ipAddress || '-';
+    } else {
+      $info.textContent = '找不到任何節點資料（/api/nodes 回空）。';
     }
-  })();
+
+    startAutoRefresh();
+  } catch (err) {
+    console.error(err);
+    $info.textContent = '節點管理初始化失敗（請確認 /api/nodes）。';
+    statusLine.textContent = '節點管理初始化失敗。';
+    $btn.disabled = true;
+    stopAutoRefresh();
+  }
+})();
 }

@@ -25,12 +25,15 @@ namespace FileMoverWeb.Models
         public string? FromType { get; set; }
         public string? ToType { get; set; }
 
+        public string? FromGroup { get; set; }
+        public string? ToGroup { get; set; }
         // 檔案細節 (由 PO 或 CM 決定)
         public string? UserBit { get; set; }
         public string? FileName { get; set; }
         public string? Extension { get; set; }
         public int? FileStatus { get; set; }
-
+        public long? FileSize4F { get; set; }
+        public long? FileSize7F { get; set; }
         // 唯讀邏輯屬性
         public string? FullFileName =>
             (string.IsNullOrWhiteSpace(UserBit) || string.IsNullOrWhiteSpace(Extension))

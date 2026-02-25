@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-
+using FileMoverWeb.Services;
 namespace FileMoverWeb.Controllers;
 
 [ApiController]
@@ -53,16 +53,16 @@ public sealed class JobReportController : ControllerBase
         using var conn = new SqlConnection(connStr);
 
         const string sql = @"
-DECLARE @now DATETIME = GETDATE();
+        DECLARE @now DATETIME = GETDATE();
 
-UPDATE dbo.FileData_History
-SET file_status   = @fileStatus,
-    assigned_node = @node,
-    note          = LEFT(COALESCE(@error, ''), 4000),
-    update_time   = @now
-WHERE id = @historyId
-  AND assigned_node = @node;
-";
+        UPDATE dbo.FileData_History
+        SET file_status   = @fileStatus,
+            assigned_node = @node,
+            note          = LEFT(COALESCE(@error, ''), 4000),
+            update_time   = @now
+        WHERE id = @historyId
+        AND assigned_node = @node;
+        ";
 
         await conn.ExecuteAsync(new CommandDefinition(sql, new
         {
@@ -75,19 +75,19 @@ WHERE id = @historyId
 
     private bool IsMaster()
         => string.Equals(_cfg["Cluster:Role"], "Master", StringComparison.OrdinalIgnoreCase);
-}
+    }
 
-public sealed class JobReportDto
-{
-    public int HistoryId { get; set; }
-    public string? Node { get; set; }
+    public sealed class JobReportDto
+    {
+        public int HistoryId { get; set; }
+        public string? Node { get; set; }
 
-    // ✅ 就用你 DB 的 file_status（11/12/91x/92x/24/27/999...）
-    public int FileStatus { get; set; }
+        // ✅ 就用你 DB 的 file_status（11/12/91x/92x/24/27/999...）
+        public int FileStatus { get; set; }
 
-    // 失敗原因/訊息（可空）
-    public string? Error { get; set; }
+        // 失敗原因/訊息（可空）
+        public string? Error { get; set; }
 
-    // ✅ 可選：如果 node 回報代表「我做完一個了」，master 這裡可以先把 freeSlots +1
-    public bool AssumeFreedSlot { get; set; } = true;
-}
+        // ✅ 可選：如果 node 回報代表「我做完一個了」，master 這裡可以先把 freeSlots +1
+        public bool AssumeFreedSlot { get; set; } = true;
+    }

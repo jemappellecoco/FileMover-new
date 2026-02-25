@@ -43,37 +43,37 @@ const inited = {
 const API_SELF = '/api/cluster/self';
 
 // ⭐ 決定「節點管理」這個 tab 要不要顯示（只有 Master 顯示）
-async function setupNodesTabVisibility() {
-  const nodesTabBtn      = document.querySelector('.tab-btn[data-tab="nodes"]');
-  const nodesPageSection = document.getElementById('page-nodes');
+// async function setupNodesTabVisibility() {
+//   const nodesTabBtn      = document.querySelector('.tab-btn[data-tab="nodes"]');
+//   const nodesPageSection = document.getElementById('page-nodes');
 
-  if (!nodesTabBtn || !nodesPageSection) return;
+//   if (!nodesTabBtn || !nodesPageSection) return;
 
-  try {
-    const res = await fetch(API_SELF);
-    if (!res.ok) throw new Error('fail to load self');
+//   try {
+//     const res = await fetch(API_SELF);
+//     if (!res.ok) throw new Error('fail to load self');
 
-    const self = await res.json(); // { nodeName, role, group, isMaster }
+//     const self = await res.json(); // { nodeName, role, group, isMaster }
 
-    console.log('cluster/self =', self);
+//     console.log('cluster/self =', self);
 
-    if (!self.isMaster) {
-      // ❌ 不是 Master：把 tab + 頁面藏起來
-      nodesTabBtn.style.display = 'none';
-      nodesPageSection.style.display = 'none';
-    } else {
-      // ✅ 是 Master：保留 tab
-      console.log('This node is Master, nodes tab enabled.');
-    }
-  } catch (err) {
-    console.error('setupNodesTabVisibility error', err);
-    // 如果連 /api/cluster/self 都掛了，就保守起見藏掉
-    const nodesTabBtn2      = document.querySelector('.tab-btn[data-tab="nodes"]');
-    const nodesPageSection2 = document.getElementById('page-nodes');
-    if (nodesTabBtn2)      nodesTabBtn2.style.display = 'none';
-    if (nodesPageSection2) nodesPageSection2.style.display = 'none';
-  }
-}
+//     if (!self.isMaster) {
+//       // ❌ 不是 Master：把 tab + 頁面藏起來
+//       nodesTabBtn.style.display = 'none';
+//       nodesPageSection.style.display = 'none';
+//     } else {
+//       // ✅ 是 Master：保留 tab
+//       console.log('This node is Master, nodes tab enabled.');
+//     }
+//   } catch (err) {
+//     console.error('setupNodesTabVisibility error', err);
+//     // 如果連 /api/cluster/self 都掛了，就保守起見藏掉
+//     const nodesTabBtn2      = document.querySelector('.tab-btn[data-tab="nodes"]');
+//     const nodesPageSection2 = document.getElementById('page-nodes');
+//     if (nodesTabBtn2)      nodesTabBtn2.style.display = 'none';
+//     if (nodesPageSection2) nodesPageSection2.style.display = 'none';
+//   }
+// }
 
 // === tab click handler ===
 tabButtons.forEach(btn => {
@@ -145,7 +145,7 @@ tabButtons.forEach(btn => {
   });
 });
   // === 啟動時先處理節點管理 tab，要不要顯示 ===
-setupNodesTabVisibility();
+// setupNodesTabVisibility();
 
 
 // === 預設載入 pending：模擬點一下 pending tab ===
