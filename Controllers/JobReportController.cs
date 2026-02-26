@@ -36,7 +36,12 @@ public sealed class JobReportController : ControllerBase
 
         _log.LogInformation("[JOB_REPORT] hid={hid} node={node} status={st} err={err}",
             dto.HistoryId, dto.Node, dto.FileStatus, dto.Error);
-
+        // ✅ 開始跑：-1
+        if (!dto.AssumeFreedSlot && dto.FileStatus == 1)
+        {
+            var ok = _registry.TryConsume(dto.Node.Trim(), 1);
+            _log.LogInformation("[SLOT] consume node={node} ok={ok}", dto.Node, ok);
+        }
         // ✅ 可選：回報後，若 node 宣告自己完成一個任務，你可以在 registry 先 +1 空位
         //（你之後 master push 派工時很好用）
         if (dto.AssumeFreedSlot)
@@ -46,7 +51,7 @@ public sealed class JobReportController : ControllerBase
 
         return Ok(new { ok = true });
     }
-
+    
     private async Task UpdateHistoryStatusAsync(JobReportDto dto, CancellationToken ct)
     {
         var connStr = _cfg.GetConnectionString("DefaultConnection")!;

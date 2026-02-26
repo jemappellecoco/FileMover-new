@@ -4,7 +4,7 @@ using System.Net.Http.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using FileMoverWeb.Models.Node;
 namespace FileMoverWeb.Services;
 
 public sealed class NodeHeartbeatService : BackgroundService
@@ -60,7 +60,7 @@ protected override async Task ExecuteAsync(CancellationToken stoppingToken)
             Group = _cfg["Cluster:Group"] ?? "Default",
             HostName = Environment.MachineName,
             MaxConcurrency = max,
-            FreeSlots = max
+            // FreeSlots = max
         };
 
         await client.PostAsJsonAsync($"{masterUrl}/api/nodes/heartbeat-free", dto, stoppingToken);

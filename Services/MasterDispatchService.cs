@@ -5,7 +5,8 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Http.Json;
-
+using FileMoverWeb.Models.Node;
+using FileMoverWeb.Models;
 namespace FileMoverWeb.Services
 {
     public class MasterDispatchService : BackgroundService
@@ -15,19 +16,22 @@ namespace FileMoverWeb.Services
         private readonly IConfiguration _cfg;
         private readonly ILogger<MasterDispatchService> _log;
         private readonly IHttpClientFactory _http;
+        private readonly TaskRoutingService _routing;
 
         public MasterDispatchService(
             TaskPoller poller,
             NodeRuntimeRegistry registry,
             IConfiguration cfg,
             ILogger<MasterDispatchService> log,
-            IHttpClientFactory http)
+            IHttpClientFactory http, 
+            TaskRoutingService routing)
         {
             _poller = poller;
             _registry = registry;
             _cfg = cfg;
             _log = log;
             _http = http;
+             _routing = routing; 
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -90,6 +94,10 @@ namespace FileMoverWeb.Services
                         {
                             try
                             {
+                                
+                                // ✅ dispatch 當下決定 effective 路徑（只改 payload）
+                                await _routing.ApplyEffectiveRoutingAsync(t, stoppingToken);
+                                // await ApplyEffectiveRestoreRoutingAsync(t, stoppingToken);
                                 // 保險：payload 帶 assigned_node
                                 t.AssignedNode = node.NodeName;
 

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using FileMoverWeb.Services;
-
+using FileMoverWeb.Models.Node;
 namespace FileMoverWeb.Controllers;
 
 [ApiController]
@@ -39,6 +39,28 @@ public sealed class NodesController : ControllerBase
         return Ok(new { ok = true });
     }
 
+    public sealed class UpdateConcurrencyDto
+    {
+        public int? MaxConcurrency { get; set; }
+    }
+
+    // PUT /api/nodes/{nodeName}/concurrency
+    [HttpPut("{nodeName}/concurrency")]
+    public IActionResult UpdateConcurrency(string nodeName, [FromBody] UpdateConcurrencyDto dto)
+    {
+        if (!IsMaster()) return Forbid();
+        if (string.IsNullOrWhiteSpace(nodeName)) return BadRequest(new { error = "nodeName is required" });
+
+        var v = dto?.MaxConcurrency;
+        if (v.HasValue && v.Value <= 0)
+            return BadRequest(new { error = "maxConcurrency must be > 0 (or null to clear override)" });
+
+        _registry.SetAdminMax(nodeName.Trim(), v);
+        return Ok(new { ok = true, node = nodeName, maxConcurrency = v });
+    }
+
     private bool IsMaster()
         => string.Equals(_cfg["Cluster:Role"], "Master", StringComparison.OrdinalIgnoreCase);
+
+
 }

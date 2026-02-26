@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileMoverWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a29b29df1bb55b68d1374d5a643fc770f813efb5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+966e27d6b6293bcfc6b94fc214a35e23227cbfe1")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileMoverWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileMoverWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

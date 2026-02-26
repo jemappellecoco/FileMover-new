@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-
+using FileMoverWeb.Models.Node;
 namespace FileMoverWeb.Services
 {
     public sealed class NodeRuntimeRegistry
     {
-        private sealed class NodeState
+       private sealed class NodeState
         {
             public string NodeName = "";
             public string Role = "";
@@ -14,10 +14,15 @@ namespace FileMoverWeb.Services
             public string? HostName;
             public string? IpAddress;
 
-            public int MaxConcurrency = 1;
+            public int? AdminMaxOverride = null; // 前端 override
+
+            public int ReportedMax = 1;      // ✅ node 回報 max
+            public bool Initialized = false; // ✅ 是否已初始化
             public int FreeSlots = 0;
 
             public DateTime LastSeenUtc = DateTime.UtcNow;
+
+            public int EffectiveMax => Math.Max(1, AdminMaxOverride ?? ReportedMax);
         }
 
         private readonly ConcurrentDictionary<string, NodeState> _map =
@@ -30,28 +35,78 @@ namespace FileMoverWeb.Services
         }
 
         // ✅ node 上線或定期回報：校正 max/free（也順便當 heartbeat）
-        public void UpsertFree(NodeFreeReportDto dto)
+       public void UpsertFree(NodeFreeReportDto dto)
         {
             if (dto == null) return;
             if (string.IsNullOrWhiteSpace(dto.Node)) return;
 
             var s = GetOrCreate(dto.Node);
+            lock (s)
+            {
+                // 1) 更新前（舊狀態 + 這次 dto）
+        // Console.WriteLine(
+        //     $"[UP:BEFORE] node={s.NodeName} dtoMax={dto.MaxConcurrency} dtoFree={dto.FreeSlots} " +
+        //     $"reported={s.ReportedMax} admin={s.AdminMaxOverride} eff={s.EffectiveMax} free={s.FreeSlots} init={s.Initialized}");
 
-            s.Role = dto.Role ?? s.Role;
-            s.Group = dto.Group ?? s.Group;
-            s.HostName = dto.HostName ?? s.HostName;
-            s.IpAddress = dto.IpAddress ?? s.IpAddress;
+                s.Role = dto.Role ?? s.Role;
+                s.Group = dto.Group ?? s.Group;
+                s.HostName = dto.HostName ?? s.HostName;
+                s.IpAddress = dto.IpAddress ?? s.IpAddress;
 
-            s.MaxConcurrency = Math.Max(1, dto.MaxConcurrency <= 0 ? s.MaxConcurrency : dto.MaxConcurrency);
+                // 只更新 ReportedMax
+                if (dto.MaxConcurrency > 0)
+                    s.ReportedMax = Math.Max(1, dto.MaxConcurrency);
 
-            var free = dto.FreeSlots;
-            if (free < 0) free = 0;
-            if (free > s.MaxConcurrency) free = s.MaxConcurrency;
-            s.FreeSlots = free;
+                // 第一次看到這個 node：初始化 FreeSlots = EffectiveMax
+                if (!s.Initialized)
+                {
+                    s.FreeSlots = s.EffectiveMax;
+                    s.Initialized = true;
+                }
+                else
+                {
+                    // max 變動時也順手 clamp
+                    var max = s.EffectiveMax;
+                    if (s.FreeSlots > max) s.FreeSlots = max;
+                    if (s.FreeSlots < 0) s.FreeSlots = 0;
+                }
 
-            s.LastSeenUtc = DateTime.UtcNow;
+                s.LastSeenUtc = DateTime.UtcNow;
+                // 2) 更新後（新狀態）
+        // Console.WriteLine(
+        //     $"[UP:AFTER ] node={s.NodeName} reported={s.ReportedMax} admin={s.AdminMaxOverride} " +
+        //     $"eff={s.EffectiveMax} free={s.FreeSlots} init={s.Initialized}");
+            }
         }
+        public void SetAdminMax(string node, int? maxOverride)
+        {
+            if (string.IsNullOrWhiteSpace(node)) return;
+            var s = GetOrCreate(node);
 
+            lock (s)
+            {
+                var oldMax = s.EffectiveMax;
+
+                s.AdminMaxOverride = maxOverride;
+
+                var newMax = s.EffectiveMax;
+
+                // ✅ max 變大：free 跟著補差額（維持 running 不變）
+                if (newMax > oldMax)
+                {
+                    var add = newMax - oldMax;
+                    s.FreeSlots = Math.Min(newMax, s.FreeSlots + add);
+                }
+
+                // clamp
+                if (s.FreeSlots > newMax) s.FreeSlots = newMax;
+                if (s.FreeSlots < 0) s.FreeSlots = 0;
+
+                s.LastSeenUtc = DateTime.UtcNow;
+
+                Console.WriteLine($"[ADMIN] node={s.NodeName} oldMax={oldMax} newMax={newMax} free={s.FreeSlots}");
+            }
+        }
         // ✅ 任務完成：free +1
         public void AddFree(string node, int delta)
         {
@@ -60,7 +115,7 @@ namespace FileMoverWeb.Services
 
             lock (s)
             {
-                var max = Math.Max(1, s.MaxConcurrency);
+                var max = s.EffectiveMax;
                 var next = s.FreeSlots + delta;
                 if (next < 0) next = 0;
                 if (next > max) next = max;
@@ -69,7 +124,6 @@ namespace FileMoverWeb.Services
             }
         }
 
-        // ✅ 派工時會用（你之後寫 push 用）
         public bool TryConsume(string node, int need = 1)
         {
             if (string.IsNullOrWhiteSpace(node)) return false;
@@ -94,13 +148,31 @@ namespace FileMoverWeb.Services
             foreach (var kv in _map)
             {
                 var s = kv.Value;
-                var online = (now - s.LastSeenUtc) <= timeout;
 
-                var max = Math.Max(1, s.MaxConcurrency);
-                var free = online
-                    ? Math.Clamp(s.FreeSlots, 0, max)
-                    : 0;
-                var running = Math.Max(0, max - free);
+                bool online;
+                int max;
+                int free;
+                int running;
+                DateTime last;
+
+                lock (s)
+                {
+                    last = s.LastSeenUtc;
+                    online = (now - last) <= timeout;
+
+                    max = s.EffectiveMax;
+
+                    if (online)
+                    {
+                        free = Math.Clamp(s.FreeSlots, 0, max);
+                        running = Math.Max(0, max - free);
+                    }
+                    else
+                    {
+                        free = 0;
+                        running = 0;
+                    }
+                }
 
                 list.Add(new NodeStatusDto
                 {
@@ -110,7 +182,7 @@ namespace FileMoverWeb.Services
                     Status = online ? "Online" : "Offline",
                     MaxConcurrency = max,
                     CurrentRunning = running,
-                    LastHeartbeat = s.LastSeenUtc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss"),
+                    LastHeartbeat = last.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss"),
                     HostName = s.HostName,
                     IpAddress = s.IpAddress
                 });
@@ -119,34 +191,9 @@ namespace FileMoverWeb.Services
             list.Sort((a, b) => string.Compare(a.NodeName, b.NodeName, StringComparison.OrdinalIgnoreCase));
             return list;
         }
-    }
 
-    // ✅ node「定期/上線」回報 free 的 DTO
-    public sealed class NodeFreeReportDto
-    {
-        public string? Node { get; set; }
-        public string? Role { get; set; }
-        public string? Group { get; set; }
-        public string? HostName { get; set; }
-        public string? IpAddress { get; set; }
 
-        public int MaxConcurrency { get; set; } = 1;
-        public int FreeSlots { get; set; } = 0;
-    }
 
-    // ✅ 前端 nodes.js 用的 DTO
-    public sealed class NodeStatusDto
-    {
-        public string NodeName { get; set; } = "";
-        public string Role { get; set; } = "";
-        public string Group { get; set; } = "";
-        public string Status { get; set; } = "Offline";
-
-        public int MaxConcurrency { get; set; } = 1;
-        public int CurrentRunning { get; set; } = 0;
-
-        public string? LastHeartbeat { get; set; }
-        public string? HostName { get; set; }
-        public string? IpAddress { get; set; }
-    }
+    
+}
 }

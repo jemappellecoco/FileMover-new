@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using FileMoverWeb.Models;
-
+using FileMoverWeb.Models.Execution;
 namespace FileMoverWeb.Services
 {
     public sealed class FileActionWorker
@@ -36,7 +36,23 @@ namespace FileMoverWeb.Services
                 // 2) route by action
                 if (act == "copy")
                 {
-                    await CopyAsync(task, ct).ConfigureAwait(false);
+                     await CopyAsync(task, ct).ConfigureAwait(false);
+                        // ✅ Phase1: 跨樓層（FromGroup != ToGroup）且不是 phase2(24/27)
+                if (TaskRoutingService.IsCrossFloor(task) && task.HistoryStatus is not (24 or 27))
+                {
+                    var to = (task.ToGroup ?? "").Trim();
+
+                    if (string.Equals(to, "4F", StringComparison.OrdinalIgnoreCase))
+                        return Ok(hid, Status.Phase1CopyDone_4F);
+
+                    if (string.Equals(to, "7F", StringComparison.OrdinalIgnoreCase))
+                        return Ok(hid, Status.Phase1CopyDone_7F);
+
+                     // ✅ 不認得 group：這是任務資料不合法，不要假裝成功
+                    _log.LogError("[COPY] hid={hid} cross-floor but unknown FromGroup={group}", hid, task.FromGroup);
+                    return Fail(hid, Err.Fatal, $"Unknown FromGroup: {task.FromGroup}");
+                }
+                           
                     return Ok(hid, Status.CopyDone);
                 }
 
@@ -259,13 +275,13 @@ namespace FileMoverWeb.Services
         };
     }
 
-    public sealed class FileActionResult
-    {
-        public int HistoryId { get; set; }
-        public bool Success { get; set; }
-        public int FileStatus { get; set; }     // ✅ 成功=你們的完成狀態；失敗=Err code
-        public string? Error { get; set; }
-    }
+    // public sealed class FileActionResult
+    // {
+    //     public int HistoryId { get; set; }
+    //     public bool Success { get; set; }
+    //     public int FileStatus { get; set; }     // ✅ 成功=你們的完成狀態；失敗=Err code
+    //     public string? Error { get; set; }
+    // }
 
     // ✅ 成功狀態集中（你之後要改一個地方就好）
     internal static class Status
@@ -273,6 +289,9 @@ namespace FileMoverWeb.Services
         public const int CopyDone   = 11;
         public const int MoveDone   = 13;
         public const int DeleteDone = 12;
+        // ✅ 跨樓層 Phase1 copy done（進 restore）
+        public const int Phase1CopyDone_4F = 14;
+        public const int Phase1CopyDone_7F = 17;
     }
 
     // ✅ 錯誤碼集中（跟你 MoveWorker 一樣）
@@ -296,7 +315,7 @@ namespace FileMoverWeb.Services
         }
     }
 
-    // ✅ Helper 抽出來（你剛剛說的重點）
+    // ✅ Helper 抽出來
     internal static class FileActionHelpers
     {
         public static string NormalizeDestPath(string destPath)
