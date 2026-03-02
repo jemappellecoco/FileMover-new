@@ -374,3 +374,397 @@ System.IO.IOException: Temp file busy after copy
 2026-03-02 14:25:38.970 [INF] (9) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
 2026-03-02 14:25:38.987 [INF] (9) [EXEC] done hid=1927 ok=true status=11
 2026-03-02 14:34:59.406 [INF] (26) Application is shutting down...
+2026-03-02 14:43:46.408 [INF] (8) Master dispatch loop started.
+2026-03-02 14:43:46.431 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-02 14:43:46.455 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-02 14:43:46.456 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-02 14:43:46.456 [INF] (2) Hosting environment: Development
+2026-03-02 14:43:46.457 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-02 14:43:47.184 [INF] (5) [PENDING] returned 9 rows
+2026-03-02 14:43:47.398 [INF] (8) [PENDING] returned 9 rows
+2026-03-02 14:43:53.962 [INF] (5) [PENDING] returned 9 rows
+2026-03-02 14:43:55.407 [INF] (5) [PENDING] returned 9 rows
+2026-03-02 14:43:56.537 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1921 node=7F-M1
+2026-03-02 14:43:56.555 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-02 14:43:56.556 [INF] (8) [EXEC] start hid=1921 action=copy from=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF to=\\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-02 14:43:56.592 [INF] (12) [JOB_REPORT] hid=1921 node=7F-M1 status=1 err=null
+2026-03-02 14:43:56.605 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:43:56.615 [INF] (5) [COPY] hid=1921 src=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF temp=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF
+2026-03-02 14:44:03.122 [INF] (12) [PENDING] returned 9 rows
+2026-03-02 14:44:04.096 [INF] (9) [PENDING] returned 9 rows
+2026-03-02 14:44:05.267 [INF] (9) [PENDING] returned 9 rows
+2026-03-02 14:44:05.783 [INF] (5) [1921] [VERIFY] path=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF, actual=460334712, size4F=460334712, size7F=61355063340, match4=true, match7=false, ok=true
+2026-03-02 14:44:05.788 [INF] (5) [COPY] hid=1921 finalize temp=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF -> dst=\\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-02 14:44:05.823 [INF] (5) [JOB_REPORT] hid=1921 node=7F-M1 status=14 err=null
+2026-03-02 14:44:05.828 [INF] (5) [EXEC] done hid=1921 ok=true status=14
+2026-03-02 14:44:06.603 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1922 node=7F-M1
+2026-03-02 14:44:06.604 [INF] (5) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:44:06.605 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-02 14:44:06.607 [INF] (5) [JOB_REPORT] hid=1922 node=7F-M1 status=1 err=null
+2026-03-02 14:44:06.609 [INF] (5) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:44:06.625 [INF] (8) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:44:11.312 [INF] (12) [PENDING] returned 8 rows
+2026-03-02 14:44:12.529 [INF] (5) [PENDING] returned 8 rows
+2026-03-02 14:44:16.556 [INF] (13) [1922] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:44:16.559 [INF] (13) [COPY] hid=1922 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:44:16.578 [INF] (13) [JOB_REPORT] hid=1922 node=7F-M1 status=11 err=null
+2026-03-02 14:44:16.580 [INF] (5) [EXEC] done hid=1922 ok=true status=11
+2026-03-02 14:44:16.621 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1923 node=7F-M1
+2026-03-02 14:44:16.623 [INF] (5) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:44:16.623 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-02 14:44:16.631 [INF] (13) [JOB_REPORT] hid=1923 node=7F-M1 status=1 err=null
+2026-03-02 14:44:16.642 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:44:16.661 [INF] (13) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:44:19.879 [INF] (9) [PENDING] returned 7 rows
+2026-03-02 14:44:20.858 [INF] (5) [PENDING] returned 7 rows
+2026-03-02 14:44:21.386 [INF] (5) [1923] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:44:21.388 [INF] (5) [COPY] hid=1923 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:44:21.405 [INF] (13) [JOB_REPORT] hid=1923 node=7F-M1 status=11 err=null
+2026-03-02 14:44:21.408 [INF] (5) [EXEC] done hid=1923 ok=true status=11
+2026-03-02 14:44:21.797 [INF] (12) [PENDING] returned 6 rows
+2026-03-02 14:44:22.475 [INF] (13) [PENDING] returned 6 rows
+2026-03-02 14:44:25.599 [INF] (15) Application is shutting down...
+2026-03-02 14:44:26.641 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1928 node=7F-M1
+2026-03-02 14:44:27.763 [ERR] (5) BackgroundService failed
+System.Net.Http.HttpRequestException: 無法連線，因為目標電腦拒絕連線。 (127.0.0.1:5089)
+ ---> System.Net.Sockets.SocketException (10061): 無法連線，因為目標電腦拒絕連線。
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at FileMoverWeb.Services.NodeHeartbeatService.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\coco\projects\FileMoverWeb\Services\NodeHeartbeatService.cs:line 66
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2026-03-02 14:44:27.797 [FTL] (5) The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.Net.Http.HttpRequestException: 無法連線，因為目標電腦拒絕連線。 (127.0.0.1:5089)
+ ---> System.Net.Sockets.SocketException (10061): 無法連線，因為目標電腦拒絕連線。
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at FileMoverWeb.Services.NodeHeartbeatService.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\coco\projects\FileMoverWeb\Services\NodeHeartbeatService.cs:line 66
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2026-03-02 14:44:28.690 [ERR] (12) [PUSH] failed hid=1928 node=7F-M1
+System.Net.Http.HttpRequestException: 無法連線，因為目標電腦拒絕連線。 (192.168.30.218:5089)
+ ---> System.Net.Sockets.SocketException (10061): 無法連線，因為目標電腦拒絕連線。
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at FileMoverWeb.Services.MasterDispatchService.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\coco\projects\FileMoverWeb\Services\MasterDispatchService.cs:line 108
+2026-03-02 14:49:21.886 [INF] (8) Master dispatch loop started.
+2026-03-02 14:49:21.908 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-02 14:49:21.929 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-02 14:49:21.932 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-02 14:49:21.935 [INF] (2) Hosting environment: Development
+2026-03-02 14:49:21.937 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-02 14:49:26.286 [INF] (5) [PENDING] returned 6 rows
+2026-03-02 14:49:27.527 [INF] (13) [PENDING] returned 6 rows
+2026-03-02 14:49:31.969 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1928 node=7F-M1
+2026-03-02 14:49:31.984 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-02 14:49:31.985 [INF] (9) [EXEC] start hid=1928 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-02 14:49:32.019 [INF] (12) [JOB_REPORT] hid=1928 node=7F-M1 status=1 err=null
+2026-03-02 14:49:32.022 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:49:32.048 [INF] (12) [COPY] hid=1928 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-02 14:49:41.246 [INF] (13) [1928] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:49:41.248 [INF] (13) [COPY] hid=1928 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-02 14:49:41.270 [INF] (5) [JOB_REPORT] hid=1928 node=7F-M1 status=11 err=null
+2026-03-02 14:49:41.272 [INF] (9) [EXEC] done hid=1928 ok=true status=11
+2026-03-02 14:49:42.020 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1929 node=7F-M1
+2026-03-02 14:49:42.021 [INF] (9) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:49:42.022 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-02 14:49:42.025 [INF] (13) [JOB_REPORT] hid=1929 node=7F-M1 status=1 err=null
+2026-03-02 14:49:42.026 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:49:42.037 [INF] (5) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:49:46.653 [INF] (9) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:49:46.655 [INF] (9) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:49:46.673 [INF] (9) [JOB_REPORT] hid=1929 node=7F-M1 status=11 err=null
+2026-03-02 14:49:46.675 [INF] (13) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:49:52.045 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1924 node=7F-M1
+2026-03-02 14:49:52.047 [INF] (9) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:49:52.047 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-02 14:49:52.051 [INF] (9) [JOB_REPORT] hid=1924 node=7F-M1 status=1 err=null
+2026-03-02 14:49:52.053 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:49:52.058 [INF] (5) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:49:53.960 [INF] (9) [PENDING] returned 4 rows
+2026-03-02 14:50:01.653 [INF] (5) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:50:01.657 [INF] (5) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:50:01.707 [INF] (5) [JOB_REPORT] hid=1924 node=7F-M1 status=11 err=null
+2026-03-02 14:50:01.709 [INF] (5) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:50:02.112 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1925 node=7F-M1
+2026-03-02 14:50:02.119 [INF] (9) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:50:02.120 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-02 14:50:02.190 [INF] (13) [JOB_REPORT] hid=1925 node=7F-M1 status=1 err=null
+2026-03-02 14:50:02.206 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:50:02.219 [INF] (12) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:50:05.721 [INF] (12) [PENDING] returned 3 rows
+2026-03-02 14:50:06.998 [INF] (12) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:50:07.000 [INF] (12) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:50:07.127 [INF] (14) [PENDING] returned 3 rows
+2026-03-02 14:50:07.135 [INF] (14) [JOB_REPORT] hid=1925 node=7F-M1 status=11 err=null
+2026-03-02 14:50:07.136 [INF] (14) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:50:09.989 [INF] (12) [PENDING] returned 2 rows
+2026-03-02 14:50:10.578 [INF] (13) [PENDING] returned 2 rows
+2026-03-02 14:50:11.098 [INF] (9) [PENDING] returned 2 rows
+2026-03-02 14:50:12.040 [INF] (9) [PENDING] returned 2 rows
+2026-03-02 14:50:12.171 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1926 node=7F-M1
+2026-03-02 14:50:12.173 [INF] (13) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:50:12.173 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-02 14:50:12.179 [INF] (12) [JOB_REPORT] hid=1926 node=7F-M1 status=1 err=null
+2026-03-02 14:50:12.180 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:50:12.188 [INF] (12) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:50:14.752 [INF] (14) [PENDING] returned 2 rows
+2026-03-02 14:50:21.454 [INF] (12) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:50:21.455 [INF] (12) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:50:21.487 [INF] (12) [JOB_REPORT] hid=1926 node=7F-M1 status=11 err=null
+2026-03-02 14:50:21.491 [INF] (12) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:50:22.240 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1927 node=7F-M1
+2026-03-02 14:50:22.241 [INF] (9) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:50:22.241 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-02 14:50:22.244 [INF] (12) [JOB_REPORT] hid=1927 node=7F-M1 status=1 err=null
+2026-03-02 14:50:22.245 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:50:22.256 [INF] (12) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:50:26.875 [INF] (9) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:50:26.877 [INF] (9) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:50:26.921 [INF] (9) [JOB_REPORT] hid=1927 node=7F-M1 status=11 err=null
+2026-03-02 14:50:26.923 [INF] (13) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:50:29.418 [INF] (12) [PENDING] returned 0 rows
+2026-03-02 14:55:31.662 [INF] (24) Application is shutting down...
+2026-03-02 14:55:34.154 [ERR] (27) BackgroundService failed
+System.Net.Http.HttpRequestException: 無法連線，因為目標電腦拒絕連線。 (127.0.0.1:5089)
+ ---> System.Net.Sockets.SocketException (10061): 無法連線，因為目標電腦拒絕連線。
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at FileMoverWeb.Services.NodeHeartbeatService.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\coco\projects\FileMoverWeb\Services\NodeHeartbeatService.cs:line 66
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2026-03-02 14:55:34.194 [FTL] (27) The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.Net.Http.HttpRequestException: 無法連線，因為目標電腦拒絕連線。 (127.0.0.1:5089)
+ ---> System.Net.Sockets.SocketException (10061): 無法連線，因為目標電腦拒絕連線。
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at FileMoverWeb.Services.NodeHeartbeatService.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\coco\projects\FileMoverWeb\Services\NodeHeartbeatService.cs:line 66
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2026-03-02 14:55:47.303 [INF] (8) Master dispatch loop started.
+2026-03-02 14:55:47.329 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-02 14:55:47.351 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-02 14:55:47.352 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-02 14:55:47.352 [INF] (2) Hosting environment: Development
+2026-03-02 14:55:47.353 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-02 14:55:53.111 [INF] (9) [PENDING] returned 0 rows
+2026-03-02 14:56:07.514 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1921 node=7F-M1
+2026-03-02 14:56:07.540 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-02 14:56:07.541 [INF] (8) [EXEC] start hid=1921 action=copy from=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF to=\\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-02 14:56:07.557 [INF] (8) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1922 node=7F-S1
+2026-03-02 14:56:07.579 [INF] (9) [JOB_REPORT] hid=1921 node=7F-M1 status=1 err=null
+2026-03-02 14:56:07.580 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:56:07.588 [INF] (12) [COPY] hid=1921 src=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF temp=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF
+2026-03-02 14:56:07.833 [INF] (12) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1923 node=7F-S1
+2026-03-02 14:56:07.838 [INF] (12) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1926 node=7F-S1
+2026-03-02 14:56:07.838 [INF] (8) [JOB_REPORT] hid=1922 node=7F-S1 status=1 err=null
+2026-03-02 14:56:07.841 [INF] (9) Pushed 3 tasks to 7F-S1
+2026-03-02 14:56:07.841 [INF] (8) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:56:07.843 [INF] (5) [JOB_REPORT] hid=1923 node=7F-S1 status=1 err=null
+2026-03-02 14:56:07.845 [INF] (5) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:56:07.849 [INF] (5) [JOB_REPORT] hid=1926 node=7F-S1 status=1 err=null
+2026-03-02 14:56:07.850 [INF] (5) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:56:08.175 [INF] (5) [PENDING] returned 9 rows
+2026-03-02 14:56:35.496 [INF] (16) [1921] [VERIFY] path=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF, actual=460334712, size4F=460334712, size7F=61355063340, match4=true, match7=false, ok=true
+2026-03-02 14:56:35.499 [INF] (16) [COPY] hid=1921 finalize temp=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF -> dst=\\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-02 14:56:35.561 [INF] (12) [JOB_REPORT] hid=1921 node=7F-M1 status=14 err=null
+2026-03-02 14:56:35.581 [INF] (12) [EXEC] done hid=1921 ok=true status=14
+2026-03-02 14:56:35.586 [INF] (16) [JOB_REPORT] hid=1923 node=7F-S1 status=11 err=null
+2026-03-02 14:56:35.624 [INF] (12) [JOB_REPORT] hid=1926 node=7F-S1 status=11 err=null
+2026-03-02 14:56:37.892 [INF] (16) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1928 node=7F-M1
+2026-03-02 14:56:37.893 [INF] (12) [EXEC] start hid=1928 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-02 14:56:37.893 [INF] (16) Pushed 1 tasks to 7F-M1
+2026-03-02 14:56:37.898 [INF] (9) [JOB_REPORT] hid=1928 node=7F-M1 status=1 err=null
+2026-03-02 14:56:37.900 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:56:37.933 [INF] (13) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1929 node=7F-S1
+2026-03-02 14:56:37.934 [INF] (9) [COPY] hid=1928 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-02 14:56:37.936 [INF] (13) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1924 node=7F-S1
+2026-03-02 14:56:37.938 [INF] (13) Pushed 2 tasks to 7F-S1
+2026-03-02 14:56:37.941 [INF] (12) [JOB_REPORT] hid=1929 node=7F-S1 status=1 err=null
+2026-03-02 14:56:37.943 [INF] (12) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:56:37.944 [INF] (13) [JOB_REPORT] hid=1924 node=7F-S1 status=1 err=null
+2026-03-02 14:56:37.945 [INF] (13) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:56:38.475 [INF] (9) [JOB_REPORT] hid=1922 node=7F-S1 status=91 err=Temp file busy after copy
+2026-03-02 14:56:44.657 [INF] (8) [PENDING] returned 5 rows
+2026-03-02 14:56:44.853 [INF] (13) [PENDING] returned 5 rows
+2026-03-02 14:56:48.020 [INF] (13) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1925 node=7F-S1
+2026-03-02 14:56:48.021 [INF] (13) Pushed 1 tasks to 7F-S1
+2026-03-02 14:56:48.035 [INF] (5) [JOB_REPORT] hid=1925 node=7F-S1 status=1 err=null
+2026-03-02 14:56:48.037 [INF] (5) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:56:50.632 [INF] (5) [JOB_REPORT] hid=1924 node=7F-S1 status=11 err=null
+2026-03-02 14:56:58.061 [INF] (16) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1927 node=7F-S1
+2026-03-02 14:56:58.063 [INF] (16) Pushed 1 tasks to 7F-S1
+2026-03-02 14:56:58.079 [INF] (16) [JOB_REPORT] hid=1927 node=7F-S1 status=1 err=null
+2026-03-02 14:56:58.083 [INF] (16) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:57:00.723 [INF] (5) [JOB_REPORT] hid=1925 node=7F-S1 status=11 err=null
+2026-03-02 14:57:01.903 [INF] (16) [1928] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:57:01.905 [INF] (16) [COPY] hid=1928 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-02 14:57:02.031 [INF] (8) [JOB_REPORT] hid=1929 node=7F-S1 status=11 err=null
+2026-03-02 14:57:02.032 [INF] (12) [JOB_REPORT] hid=1928 node=7F-M1 status=11 err=null
+2026-03-02 14:57:02.034 [INF] (12) [EXEC] done hid=1928 ok=true status=11
+2026-03-02 14:57:06.790 [INF] (12) [PENDING] returned 1 rows
+2026-03-02 14:57:06.957 [INF] (16) [PENDING] returned 1 rows
+2026-03-02 14:57:07.120 [INF] (16) [PENDING] returned 1 rows
+2026-03-02 14:57:07.293 [INF] (16) [PENDING] returned 1 rows
+2026-03-02 14:57:07.468 [INF] (13) [PENDING] returned 1 rows
+2026-03-02 14:57:07.701 [INF] (12) [PENDING] returned 1 rows
+2026-03-02 14:57:07.906 [INF] (5) [PENDING] returned 1 rows
+2026-03-02 14:57:08.071 [INF] (12) [PENDING] returned 1 rows
+2026-03-02 14:57:10.548 [INF] (13) [JOB_REPORT] hid=1927 node=7F-S1 status=11 err=null
+2026-03-02 14:57:20.304 [INF] (13) [PENDING] returned 9 rows
+2026-03-02 14:57:20.622 [INF] (13) [PENDING] returned 9 rows
+2026-03-02 14:57:20.811 [INF] (13) [PENDING] returned 9 rows
+2026-03-02 14:57:28.132 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1921 node=7F-M1
+2026-03-02 14:57:28.137 [INF] (12) [EXEC] start hid=1921 action=copy from=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF to=\\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-02 14:57:28.137 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-02 14:57:28.143 [INF] (13) [JOB_REPORT] hid=1921 node=7F-M1 status=1 err=null
+2026-03-02 14:57:28.146 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:57:28.176 [INF] (12) [COPY] hid=1921 src=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF temp=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF
+2026-03-02 14:57:28.177 [INF] (16) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1922 node=7F-S1
+2026-03-02 14:57:28.180 [INF] (16) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1923 node=7F-S1
+2026-03-02 14:57:28.182 [INF] (16) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1926 node=7F-S1
+2026-03-02 14:57:28.184 [INF] (5) Pushed 3 tasks to 7F-S1
+2026-03-02 14:57:28.185 [INF] (16) [JOB_REPORT] hid=1922 node=7F-S1 status=1 err=null
+2026-03-02 14:57:28.186 [INF] (16) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:57:28.187 [INF] (13) [JOB_REPORT] hid=1923 node=7F-S1 status=1 err=null
+2026-03-02 14:57:28.188 [INF] (13) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:57:28.189 [INF] (16) [JOB_REPORT] hid=1926 node=7F-S1 status=1 err=null
+2026-03-02 14:57:28.190 [INF] (16) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:57:56.750 [INF] (18) [1921] [VERIFY] path=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF, actual=460334712, size4F=460334712, size7F=61355063340, match4=true, match7=false, ok=true
+2026-03-02 14:57:56.753 [INF] (18) [COPY] hid=1921 finalize temp=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF -> dst=\\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-02 14:57:56.811 [INF] (18) [JOB_REPORT] hid=1921 node=7F-M1 status=14 err=null
+2026-03-02 14:57:56.812 [INF] (5) [JOB_REPORT] hid=1926 node=7F-S1 status=11 err=null
+2026-03-02 14:57:56.814 [INF] (16) [EXEC] done hid=1921 ok=true status=14
+2026-03-02 14:57:56.819 [INF] (16) [JOB_REPORT] hid=1922 node=7F-S1 status=11 err=null
+2026-03-02 14:57:58.243 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1928 node=7F-M1
+2026-03-02 14:57:58.254 [INF] (16) [EXEC] start hid=1928 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-02 14:57:58.255 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-02 14:57:58.261 [INF] (5) [JOB_REPORT] hid=1928 node=7F-M1 status=1 err=null
+2026-03-02 14:57:58.263 [INF] (5) [SLOT] consume node=7F-M1 ok=true
+2026-03-02 14:57:58.283 [INF] (5) [COPY] hid=1928 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-02 14:57:58.284 [INF] (15) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1929 node=7F-S1
+2026-03-02 14:57:58.293 [INF] (18) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1924 node=7F-S1
+2026-03-02 14:57:58.296 [INF] (15) Pushed 2 tasks to 7F-S1
+2026-03-02 14:57:58.301 [INF] (15) [JOB_REPORT] hid=1929 node=7F-S1 status=1 err=null
+2026-03-02 14:57:58.303 [INF] (15) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:57:58.303 [INF] (16) [JOB_REPORT] hid=1924 node=7F-S1 status=1 err=null
+2026-03-02 14:57:58.305 [INF] (16) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:57:59.808 [INF] (15) [JOB_REPORT] hid=1923 node=7F-S1 status=91 err=Temp file busy after copy
+2026-03-02 14:58:08.329 [INF] (12) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1925 node=7F-S1
+2026-03-02 14:58:08.331 [INF] (12) Pushed 1 tasks to 7F-S1
+2026-03-02 14:58:08.335 [INF] (12) [JOB_REPORT] hid=1925 node=7F-S1 status=1 err=null
+2026-03-02 14:58:08.336 [INF] (12) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:58:10.875 [INF] (12) [JOB_REPORT] hid=1924 node=7F-S1 status=11 err=null
+2026-03-02 14:58:18.366 [INF] (5) [PUSH] POST http://192.168.30.218:5090/api/executor/receive hid=1927 node=7F-S1
+2026-03-02 14:58:18.368 [INF] (5) Pushed 1 tasks to 7F-S1
+2026-03-02 14:58:18.372 [INF] (15) [JOB_REPORT] hid=1927 node=7F-S1 status=1 err=null
+2026-03-02 14:58:18.373 [INF] (15) [SLOT] consume node=7F-S1 ok=true
+2026-03-02 14:58:21.578 [INF] (12) [JOB_REPORT] hid=1925 node=7F-S1 status=11 err=null
+2026-03-02 14:58:22.641 [INF] (5) [1928] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:58:22.643 [INF] (5) [COPY] hid=1928 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-02 14:58:22.720 [INF] (12) [JOB_REPORT] hid=1929 node=7F-S1 status=11 err=null
+2026-03-02 14:58:22.774 [INF] (5) [JOB_REPORT] hid=1928 node=7F-M1 status=11 err=null
+2026-03-02 14:58:22.778 [INF] (5) [EXEC] done hid=1928 ok=true status=11
+2026-03-02 14:58:30.937 [INF] (15) [JOB_REPORT] hid=1927 node=7F-S1 status=11 err=null
+2026-03-02 15:00:05.388 [INF] (3) Application is shutting down...
+2026-03-02 15:00:08.192 [ERR] (8) BackgroundService failed
+System.Net.Http.HttpRequestException: 無法連線，因為目標電腦拒絕連線。 (127.0.0.1:5089)
+ ---> System.Net.Sockets.SocketException (10061): 無法連線，因為目標電腦拒絕連線。
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at FileMoverWeb.Services.NodeHeartbeatService.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\coco\projects\FileMoverWeb\Services\NodeHeartbeatService.cs:line 66
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+2026-03-02 15:00:08.216 [FTL] (8) The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+System.Net.Http.HttpRequestException: 無法連線，因為目標電腦拒絕連線。 (127.0.0.1:5089)
+ ---> System.Net.Sockets.SocketException (10061): 無法連線，因為目標電腦拒絕連線。
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.InjectNewHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|4_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at FileMoverWeb.Services.NodeHeartbeatService.ExecuteAsync(CancellationToken stoppingToken) in C:\Users\coco\projects\FileMoverWeb\Services\NodeHeartbeatService.cs:line 66
+   at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)

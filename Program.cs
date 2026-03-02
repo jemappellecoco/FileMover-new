@@ -61,7 +61,7 @@ builder.Services.AddSingleton<FileActionWorker>();
 builder.Services.AddSingleton<RestoreLookup>();
 builder.Services.AddSingleton<TaskRoutingService>();
 builder.Services.AddSingleton<RestoreTaskPoller>();
-
+builder.Services.AddSingleton<HistoryPoller>();
 builder.Services.AddSingleton<ProgressHub>();
 var role = builder.Configuration["Cluster:Role"];
 

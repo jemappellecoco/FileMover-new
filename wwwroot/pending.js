@@ -119,8 +119,17 @@ export function initPending(root, statusLine) {
         </table>
       </div>
     </div>`;
+   
+    // === 全域狀態 ===
+    let allRows = []; 
+    const rowMap = new Map();
+    const progressState = new Map(); 
+    const rateState = new Map(); 
+    const selectedIds = new Set();
+    let isSelectBusy = false;
+    let pendingLastRenderSignature = '';
     function startProgressSse() {
-  const es = new EventSource(`${API_EVENTS}?ts=${Date.now()}`);
+    const es = new EventSource(`${API_EVENTS}?ts=${Date.now()}`);
 
   // 若後端用 event: progress
   es.addEventListener('progress', (e) => {
@@ -136,8 +145,22 @@ export function initPending(root, statusLine) {
     const bytesTotal = ev.bytesTotal != null ? Number(ev.bytesTotal) : (prev.bytesTotal ?? 0);
 
     // ✅ percent 沒給也能算
-    const percent = bytesTotal > 0 ? Math.floor((bytesDone / bytesTotal) * 100) : Number(ev.percent ?? prev.percent ?? 0);
+  //  const percent = bytesTotal > 0 ? Math.floor((bytesDone / bytesTotal) * 100) : Number(ev.percent ?? prev.percent ?? 0);
+let percent;
+if (bytesTotal > 0) {
+  const remain = bytesTotal - bytesDone;
+  percent = Math.floor((bytesDone / bytesTotal) * 100);
 
+  // ✅ 完成判斷（兩個條件擇一）
+  if (bytesDone >= bytesTotal) percent = 100;
+
+  // ✅ 容忍：差 1MB 內也當完成（你可調 64KB / 10MB）
+  if (remain >= 0 && remain <= 1024 * 1024) percent = 100;
+
+  percent = Math.max(0, Math.min(100, percent));
+} else {
+  percent = Number(ev.percent ?? prev.percent ?? 0);
+}
     // ✅ 自己算 speedBps
     const now = Date.now();
     const last = rateState.get(key);
@@ -213,9 +236,13 @@ startProgressSse();
           const sp = fmtSpeed(st.speedBps);
           speedEl.textContent = sp || '';
         }
-
-      const fileEl = wrap.querySelector('.progress-file');
-      if (fileEl && st.fileName) fileEl.textContent = st.fileName;
+      if (percent >= 100) {
+      const tr = wrap.closest('tr');
+      if (tr && !tr.dataset.isFinishing) {
+        tr.dataset.isFinishing = "true";
+        setTimeout(() => loadPending(true), 2000);
+      }
+   }
     }
     // === 選取元素 ===
     const $tableBody = root.querySelector('#pendingTable tbody');
@@ -224,16 +251,7 @@ startProgressSse();
     const $chkAll = root.querySelector('#chkPendingAll');
     const $count = root.querySelector('#pendingCount');
 
-    // === 全域狀態 ===
-    let allRows = []; 
-    const rowMap = new Map();
-    const progressState = new Map(); 
-// key => { percent, speedBps, bytesDone, bytesTotal, fileName }
-const rateState = new Map(); 
-// key => { lastBytesDone, lastTs, speedBps }
-    const selectedIds = new Set();
-    let isSelectBusy = false;
-    let pendingLastRenderSignature = '';
+  
 
     // === 核心渲染函數 ===
     function renderOrUpdateRow(r, seq) {
@@ -242,12 +260,15 @@ const rateState = new Map();
         const existing = rowMap.get(id);
 
         // 狀態邏輯
-        const percent = progressState.get(key) ?? 0;
+        // const percent = progressState.get(key) ?? 0;
+        // const isActive = percent > 0 && percent < 100;
+        const pst = progressState.get(key);
+        const percent = Number(pst?.percent ?? 0);
         const isActive = percent > 0 && percent < 100;
         let statusText = isActive ? '執行中' : '排隊中';
         
         // 取消邏輯 (歸檔與回遷開始後不可取消)
-        const started = (r.status === 1 ) || (percent > 0);
+        const started = (r.status === 1) || (percent > 0);
         const cannotCancel = (r.action === 'move' || r.status === 24 || r.status === 27) && started;
 
         let tr = existing || document.createElement('tr');
