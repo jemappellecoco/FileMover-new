@@ -40,7 +40,7 @@ namespace FileMoverWeb.Controllers
         [HttpGet("pending")]
         public async Task<IActionResult> Pending(CancellationToken ct = default)
         {
-            var rows = await _poller.GetPendingTasksAsync(ct);
+            var rows = await _poller.GetPendingUIAsync(ct);
             _log.LogInformation("[PENDING] returned {count} rows", rows.Count);
             return Ok(rows);
         }

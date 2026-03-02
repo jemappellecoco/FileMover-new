@@ -6,15 +6,22 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using FileMoverWeb.Models;
 using FileMoverWeb.Models.Execution;
+using FileMoverWeb.Models.Progress;
+
+using Microsoft.Extensions.Configuration;
 namespace FileMoverWeb.Services
 {
     public sealed class FileActionWorker
     {
         private readonly ILogger<FileActionWorker> _log;
-
-        public FileActionWorker(ILogger<FileActionWorker> log)
+        // private readonly ProgressHub _progress;
+        private readonly IProgressReporter _progress;
+        private readonly string _nodeName;
+        public FileActionWorker(ILogger<FileActionWorker> log, IProgressReporter progress, IConfiguration cfg)
         {
             _log = log;
+             _progress = progress;
+            _nodeName = (cfg["Cluster:NodeName"] ?? "UNKNOWN").Trim();
         }
 
         public async Task<FileActionResult> RunOneAsync(HistoryTask task, CancellationToken ct = default)
@@ -36,7 +43,7 @@ namespace FileMoverWeb.Services
                 // 2) route by action
                 if (act == "copy")
                 {
-                     await CopyAsync(task, ct).ConfigureAwait(false);
+                await CopyAsync(task, ct).ConfigureAwait(false);
                         // ✅ Phase1: 跨樓層（FromGroup != ToGroup）且不是 phase2(24/27)
                 if (TaskRoutingService.IsCrossFloor(task) && task.HistoryStatus is not (24 or 27))
                 {
@@ -175,9 +182,43 @@ namespace FileMoverWeb.Services
 
                 Directory.CreateDirectory(Path.GetDirectoryName(temp)!);
 
+                var total = new FileInfo(src).Length;
+                var fileName = Path.GetFileName(src);
                 _log.LogInformation("[COPY] hid={hid} src={src} temp={temp}", hid, src, temp);
 
-                await FileActionHelpers.CopyFileAsync(src, temp, ct).ConfigureAwait(false);
+                // await FileActionHelpers.CopyFileAsync(src, temp, ct).ConfigureAwait(false);
+                    // ✅ start report
+                _progress.Publish(new ProgressReportDto
+                {
+                    HistoryId = hid,
+                    Node = _nodeName,
+                    Action = "copy",
+                    BytesDone = 0,
+                    BytesTotal = total,
+                    FileName = fileName,
+                    Message = "start"
+                });
+
+                // ✅ copy with progress callback
+                await FileActionHelpers.CopyFileAsync(
+                    src, temp, ct,
+                    onProgress: (done) =>
+                    {
+                        _progress.Publish(new ProgressReportDto
+                        {
+                            HistoryId = hid,
+                            Node = _nodeName,
+                            Action = "copy",
+                            BytesDone = done,
+                            BytesTotal = total,
+                            FileName = fileName
+                        });
+                        return Task.CompletedTask;
+                    },
+                    reportEveryMs: 300
+                ).ConfigureAwait(false);
+
+                
 
                 // ✅ 等待 temp 完全釋放
                 if (!await FileActionHelpers.WaitFileFreeAsync(temp, 3000, ct).ConfigureAwait(false))
@@ -382,13 +423,19 @@ namespace FileMoverWeb.Services
         }
 
         // ✅ 單純 copy（先不含 progress；要 progress 再加一層 wrapper）
-        public static async Task CopyFileAsync(string srcPath, string dstPath, CancellationToken ct)
+        public static async Task CopyFileAsync(
+            string srcPath,
+            string dstPath, 
+            CancellationToken ct,
+             Func<long, Task>? onProgress = null,
+    int reportEveryMs = 300)
+            
         {
             bool success = false;
 
             try
             {
-                using var inFs = new FileStream(
+                 using var inFs = new FileStream(
                     srcPath, FileMode.Open, FileAccess.Read, FileShare.Read,
                     bufferSize: 1024 * 1024, useAsync: true);
 
@@ -398,11 +445,24 @@ namespace FileMoverWeb.Services
 
                 var buffer = new byte[1024 * 1024];
                 int read;
+                long done = 0;
+                var last = DateTimeOffset.UtcNow;
 
-                while ((read = await inFs.ReadAsync(buffer.AsMemory(0, buffer.Length), ct).ConfigureAwait(false)) > 0)
+        while ((read = await inFs.ReadAsync(buffer.AsMemory(0, buffer.Length), ct).ConfigureAwait(false)) > 0)
+        {
+            await outFs.WriteAsync(buffer.AsMemory(0, read), ct).ConfigureAwait(false);
+            done += read;
+
+            if (onProgress is not null)
+            {
+                var now = DateTimeOffset.UtcNow;
+                if ((now - last).TotalMilliseconds >= reportEveryMs)
                 {
-                    await outFs.WriteAsync(buffer.AsMemory(0, read), ct).ConfigureAwait(false);
+                    last = now;
+                    await onProgress(done).ConfigureAwait(false);
                 }
+            }
+        }
 
                 await outFs.FlushAsync(ct).ConfigureAwait(false);
                 success = true;

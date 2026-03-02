@@ -119,7 +119,104 @@ export function initPending(root, statusLine) {
         </table>
       </div>
     </div>`;
+    function startProgressSse() {
+  const es = new EventSource(`${API_EVENTS}?ts=${Date.now()}`);
 
+  // 若後端用 event: progress
+  es.addEventListener('progress', (e) => {
+    let ev;
+    try { ev = JSON.parse(e.data); } catch { return; }
+
+    const key = ev.key || `TO-${ev.historyId}`;
+    if (!key) return;
+
+    const prev = progressState.get(key) || {};
+
+    const bytesDone = ev.bytesDone != null ? Number(ev.bytesDone) : (prev.bytesDone ?? 0);
+    const bytesTotal = ev.bytesTotal != null ? Number(ev.bytesTotal) : (prev.bytesTotal ?? 0);
+
+    // ✅ percent 沒給也能算
+    const percent = bytesTotal > 0 ? Math.floor((bytesDone / bytesTotal) * 100) : Number(ev.percent ?? prev.percent ?? 0);
+
+    // ✅ 自己算 speedBps
+    const now = Date.now();
+    const last = rateState.get(key);
+    let speedBps = prev.speedBps;
+
+    if (last) {
+      const dBytes = bytesDone - last.lastBytesDone;
+      const dSec = (now - last.lastTs) / 1000;
+      if (dSec > 0 && dBytes >= 0) speedBps = dBytes / dSec;
+    }
+
+    rateState.set(key, { lastBytesDone: bytesDone, lastTs: now });
+
+    progressState.set(key, {
+      ...prev,
+      percent,
+      speedBps,
+      bytesDone,
+      bytesTotal,
+      fileName: ev.fileName ?? prev.fileName,
+    });
+
+  updateProgressDom(key);
+    });
+
+  // 如果你後端沒有 event name，只用 onmessage：
+  es.onmessage = (e) => {
+    // optional: 你可刪掉，或拿來兼容後端沒寫 event:progress 的情況
+  };
+
+  es.onerror = () => {
+    // EventSource 會自動重連；這裡可以留空
+  };
+
+  return es;
+}
+
+// 啟動 SSE
+startProgressSse();
+    function fmtBytes(n) {
+      const v = Number(n);
+      if (!isFinite(v) || v <= 0) return '0 B';
+      const units = ['B','KB','MB','GB','TB'];
+      let i = 0, x = v;
+      while (x >= 1024 && i < units.length - 1) { x /= 1024; i++; }
+      return `${x.toFixed(i === 0 ? 0 : 1)} ${units[i]}`;
+    }
+    function fmtSpeed(bps) {
+      const v = Number(bps);
+      if (!isFinite(v) || v <= 0) return '';
+      return `${(v/(1024*1024)).toFixed(1)} MB/s`;
+    }
+
+    function updateProgressDom(key) {
+      const wrap = root.querySelector(`.progress-wrap[data-progress-key="${CSS.escape(key)}"]`);
+      if (!wrap) return;
+
+      const st = progressState.get(key);
+      if (!st) return;
+
+      const percent = Math.max(0, Math.min(100, Number(st.percent ?? 0)));
+
+      const bar = wrap.querySelector('.progress > div');
+      if (bar) bar.style.width = `${percent}%`;
+
+      const pct = wrap.querySelector('.progress-text');
+      if (pct) pct.textContent = `${percent}%`;
+
+      // 你目前 HTML 沒有 speed 行，如果你要顯示速度：
+      // 請把 renderOrUpdateRow 的 progress-wrap 改成你之前那版（含 .progress-speed / .progress-file）
+     const speedEl = wrap.querySelector('.progress-speed');
+        if (speedEl) {
+          const sp = fmtSpeed(st.speedBps);
+          speedEl.textContent = sp || '';
+        }
+
+      const fileEl = wrap.querySelector('.progress-file');
+      if (fileEl && st.fileName) fileEl.textContent = st.fileName;
+    }
     // === 選取元素 ===
     const $tableBody = root.querySelector('#pendingTable tbody');
     const $histTbody = root.querySelector('#pendHistTable tbody');
@@ -130,7 +227,10 @@ export function initPending(root, statusLine) {
     // === 全域狀態 ===
     let allRows = []; 
     const rowMap = new Map();
-    const progressState = new Map();
+    const progressState = new Map(); 
+// key => { percent, speedBps, bytesDone, bytesTotal, fileName }
+const rateState = new Map(); 
+// key => { lastBytesDone, lastTs, speedBps }
     const selectedIds = new Set();
     let isSelectBusy = false;
     let pendingLastRenderSignature = '';
@@ -171,11 +271,19 @@ export function initPending(root, statusLine) {
             <td>${escapeHtml(r.assignedNode)}</td>
             <td>${statusText} ${r.retryCount > 0 ? `<div class="retry-info">重試中(${r.retryCount})</div>` : ''}</td>
             <td>${r.action === 'delete' ? '刪除' : '搬移'}</td>
-            <td>
-                <div class="progress-wrap" data-progress-key="${key}">
-                    <div class="progress"><div style="width:${percent}%"></div></div>
-                    <span class="progress-text">${percent}%</span>
+           <td>
+              <div class="progress-wrap" data-progress-key="${key}"   style="width:300px;display:flex;flex-direction:column;gap:4px;">
+                <div class="progress-container" style="display: flex; align-items: center; gap: 8px;">
+                  <div class="progress" style="flex: 1; ">
+                    <div style="width: ${percent}%; "></div>
+                  </div>
+                  <span class="progress-text" style="min-width: 35px; font-size: 12px; font-weight: bold;">${percent}%</span>
                 </div>
+                
+                <div style="display: flex; ">
+                  <span class="progress-speed"></span>
+                </div>
+              </div>
             </td>
             <td>
                 <button class="btn-cancel" data-id="${id}" style="background:${cannotCancel ? '#666' : '#b42318'}" ${cannotCancel ? 'disabled' : ''}>
@@ -185,7 +293,7 @@ export function initPending(root, statusLine) {
     }
 
     // === 資料載入 ===
-    async function loadPending(isAuto = false) {
+    async function loadPending(isAuto = true) {
         if (isAuto && isSelectBusy) return;
         try {
             const resp = await fetch(`${API_PENDING}?ts=${Date.now()}`);

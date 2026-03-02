@@ -1,0 +1,376 @@
+2026-03-02 13:58:17.736 [INF] (2) Now listening on: http://0.0.0.0:5090
+2026-03-02 13:58:17.767 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-02 13:58:17.768 [INF] (2) Hosting environment: Slave
+2026-03-02 13:58:17.769 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-02 13:58:22.906 [INF] (8) [EXEC] start hid=1921 action=copy from=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF to=\\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-02 13:58:22.919 [INF] (6) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 13:58:22.922 [INF] (6) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 13:58:34.841 [INF] (8) [COPY] hid=1921 src=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF temp=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF
+2026-03-02 13:58:34.842 [INF] (13) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 13:58:34.844 [INF] (9) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 13:58:59.399 [INF] (12) [1922] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 13:58:59.402 [INF] (12) [COPY] hid=1922 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 13:58:59.449 [INF] (12) [EXEC] done hid=1922 ok=true status=11
+2026-03-02 13:59:02.426 [ERR] (12) [FileAction] fatal hid=1921
+System.IO.IOException: Temp file busy after copy
+   at FileMoverWeb.Services.FileActionWorker.CopyAsync(HistoryTask t, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 225
+   at FileMoverWeb.Services.FileActionWorker.RunOneAsync(HistoryTask task, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 46
+2026-03-02 13:59:02.461 [INF] (12) [EXEC] done hid=1921 ok=false status=91
+2026-03-02 13:59:02.504 [ERR] (12) [FileAction] fatal hid=1923
+System.IO.IOException: Temp file busy after copy
+   at FileMoverWeb.Services.FileActionWorker.CopyAsync(HistoryTask t, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 225
+   at FileMoverWeb.Services.FileActionWorker.RunOneAsync(HistoryTask task, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 46
+2026-03-02 13:59:02.516 [INF] (12) [EXEC] done hid=1923 ok=false status=91
+2026-03-02 13:59:03.028 [INF] (9) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 13:59:03.055 [INF] (9) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 13:59:03.057 [INF] (13) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 13:59:03.077 [INF] (9) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 13:59:03.088 [INF] (12) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 13:59:03.097 [INF] (13) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 13:59:18.531 [INF] (13) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 13:59:18.534 [INF] (13) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 13:59:18.540 [INF] (12) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 13:59:18.542 [INF] (12) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 13:59:18.762 [INF] (13) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 13:59:18.763 [INF] (8) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 13:59:23.100 [INF] (12) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 13:59:23.102 [INF] (8) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 13:59:23.196 [INF] (8) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 13:59:23.196 [INF] (12) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 13:59:29.042 [INF] (8) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 13:59:29.045 [INF] (8) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 13:59:29.269 [INF] (6) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 13:59:41.740 [INF] (12) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 13:59:41.740 [INF] (15) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 13:59:41.743 [INF] (12) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 13:59:41.745 [INF] (15) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 13:59:41.778 [INF] (15) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 13:59:41.779 [INF] (12) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:06:54.188 [INF] (26) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:06:54.191 [INF] (29) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:06:54.194 [INF] (26) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:06:54.246 [INF] (28) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:06:54.247 [INF] (29) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:06:54.247 [INF] (26) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:07:20.420 [INF] (28) [1922] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:07:20.423 [INF] (28) [COPY] hid=1922 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:07:20.428 [INF] (31) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:07:20.431 [INF] (31) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:07:20.479 [INF] (31) [EXEC] done hid=1922 ok=true status=11
+2026-03-02 14:07:20.484 [INF] (31) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:07:23.422 [ERR] (31) [FileAction] fatal hid=1923
+System.IO.IOException: Temp file busy after copy
+   at FileMoverWeb.Services.FileActionWorker.CopyAsync(HistoryTask t, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 225
+   at FileMoverWeb.Services.FileActionWorker.RunOneAsync(HistoryTask task, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 46
+2026-03-02 14:07:23.441 [INF] (31) [EXEC] done hid=1923 ok=false status=91
+2026-03-02 14:07:24.292 [INF] (31) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:07:24.304 [INF] (30) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:07:24.327 [INF] (28) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:07:24.341 [INF] (31) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:07:24.386 [INF] (28) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:07:24.428 [INF] (30) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:07:39.243 [INF] (30) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:07:39.247 [INF] (30) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:07:39.266 [INF] (31) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:07:39.270 [INF] (31) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:07:39.716 [INF] (29) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:07:39.754 [INF] (30) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:07:44.378 [INF] (30) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:07:44.489 [INF] (31) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:07:49.100 [INF] (30) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:07:49.105 [INF] (30) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:07:49.293 [INF] (30) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:07:56.979 [INF] (24) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:07:56.981 [INF] (24) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:07:56.999 [INF] (24) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:08:54.570 [INF] (25) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:08:54.579 [INF] (24) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:08:54.583 [INF] (25) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:08:54.646 [INF] (24) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:08:54.646 [INF] (25) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:08:54.647 [INF] (23) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:09:20.942 [INF] (21) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:09:20.944 [INF] (21) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:09:21.085 [INF] (21) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:09:21.091 [INF] (23) [1922] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:09:21.093 [INF] (23) [COPY] hid=1922 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:09:21.181 [INF] (23) [EXEC] done hid=1922 ok=true status=11
+2026-03-02 14:09:24.071 [ERR] (23) [FileAction] fatal hid=1923
+System.IO.IOException: Temp file busy after copy
+   at FileMoverWeb.Services.FileActionWorker.CopyAsync(HistoryTask t, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 225
+   at FileMoverWeb.Services.FileActionWorker.RunOneAsync(HistoryTask task, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 46
+2026-03-02 14:09:24.083 [INF] (23) [EXEC] done hid=1923 ok=false status=91
+2026-03-02 14:09:24.652 [INF] (23) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:09:24.656 [INF] (21) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:09:24.679 [INF] (25) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:09:24.713 [INF] (25) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:09:24.743 [INF] (21) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:09:24.770 [INF] (23) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:09:40.316 [INF] (23) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:09:40.317 [INF] (21) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:09:40.319 [INF] (23) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:09:40.321 [INF] (21) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:09:40.479 [INF] (25) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:09:40.567 [INF] (21) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:09:44.774 [INF] (21) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:09:44.862 [INF] (21) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:09:49.658 [INF] (21) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:09:49.662 [INF] (21) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:09:49.810 [INF] (21) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:09:57.659 [INF] (21) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:09:57.662 [INF] (21) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:09:57.679 [INF] (21) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:11:05.004 [INF] (21) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:11:05.006 [INF] (27) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:11:05.009 [INF] (29) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:11:05.090 [INF] (28) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:11:05.090 [INF] (29) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:11:05.090 [INF] (27) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:11:31.896 [INF] (27) [1923] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:11:31.896 [INF] (19) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:11:31.899 [INF] (27) [COPY] hid=1923 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:11:31.901 [INF] (19) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:11:31.962 [INF] (27) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:11:31.965 [INF] (27) [EXEC] done hid=1923 ok=true status=11
+2026-03-02 14:11:34.899 [ERR] (27) [FileAction] fatal hid=1922
+System.IO.IOException: Temp file busy after copy
+   at FileMoverWeb.Services.FileActionWorker.CopyAsync(HistoryTask t, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 225
+   at FileMoverWeb.Services.FileActionWorker.RunOneAsync(HistoryTask task, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 46
+2026-03-02 14:11:34.910 [INF] (27) [EXEC] done hid=1922 ok=false status=91
+2026-03-02 14:11:35.102 [INF] (27) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:11:35.104 [INF] (28) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:11:35.106 [INF] (27) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:11:35.139 [INF] (27) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:11:35.148 [INF] (19) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:11:35.157 [INF] (28) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:11:50.006 [INF] (29) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:11:50.008 [INF] (19) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:11:50.009 [INF] (29) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:11:50.012 [INF] (19) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:11:50.172 [INF] (26) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:11:50.448 [INF] (19) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:11:55.184 [INF] (19) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:11:55.256 [INF] (19) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:11:59.489 [INF] (29) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:11:59.492 [INF] (29) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:11:59.605 [INF] (29) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:12:07.454 [INF] (19) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:12:07.458 [INF] (19) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:12:07.477 [INF] (19) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:12:45.373 [INF] (21) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:12:45.379 [INF] (25) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:12:45.388 [INF] (24) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:12:45.442 [INF] (24) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:12:45.445 [INF] (25) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:12:45.453 [INF] (21) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:13:11.871 [INF] (25) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:13:11.874 [INF] (25) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:13:11.912 [INF] (19) [1922] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:13:11.914 [INF] (19) [COPY] hid=1922 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:13:11.956 [INF] (21) [1923] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:13:11.958 [INF] (21) [COPY] hid=1923 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:13:12.008 [INF] (21) [EXEC] done hid=1922 ok=true status=11
+2026-03-02 14:13:12.009 [INF] (19) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:13:12.010 [INF] (21) [EXEC] done hid=1923 ok=true status=11
+2026-03-02 14:13:15.473 [INF] (19) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:13:15.477 [INF] (25) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:13:15.479 [INF] (19) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:13:15.500 [INF] (21) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:13:15.519 [INF] (19) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:13:15.546 [INF] (24) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:13:29.862 [INF] (25) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:13:29.865 [INF] (25) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:13:29.872 [INF] (26) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:13:29.874 [INF] (26) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:13:30.097 [INF] (24) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:13:30.196 [INF] (25) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:13:35.525 [INF] (24) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:13:35.574 [INF] (24) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:13:38.625 [INF] (25) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:13:38.681 [INF] (25) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:13:38.838 [INF] (26) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:13:47.513 [INF] (24) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:13:47.517 [INF] (24) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:13:47.537 [INF] (24) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:15:05.792 [INF] (27) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:15:05.797 [INF] (17) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:15:05.807 [INF] (20) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:15:05.844 [INF] (17) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:15:05.860 [INF] (27) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:15:05.863 [INF] (20) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:15:33.355 [INF] (17) [1923] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:15:33.359 [INF] (17) [COPY] hid=1923 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:15:33.396 [INF] (15) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:15:33.399 [INF] (15) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:15:33.438 [INF] (17) [EXEC] done hid=1923 ok=true status=11
+2026-03-02 14:15:33.479 [INF] (15) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:15:35.865 [INF] (27) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:15:35.867 [INF] (15) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:15:35.904 [INF] (18) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:15:35.954 [INF] (15) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:15:36.275 [ERR] (27) [FileAction] fatal hid=1922
+System.IO.IOException: Temp file busy after copy
+   at FileMoverWeb.Services.FileActionWorker.CopyAsync(HistoryTask t, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 225
+   at FileMoverWeb.Services.FileActionWorker.RunOneAsync(HistoryTask task, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 46
+2026-03-02 14:15:36.292 [INF] (27) [EXEC] done hid=1922 ok=false status=91
+2026-03-02 14:15:45.913 [INF] (27) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:15:46.082 [INF] (15) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:15:48.212 [INF] (16) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:15:48.217 [INF] (16) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:15:48.475 [INF] (17) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:15:55.942 [INF] (18) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:15:56.143 [INF] (18) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:15:59.004 [INF] (18) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:15:59.009 [INF] (18) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:15:59.356 [INF] (17) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:16:00.401 [INF] (18) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:16:00.404 [INF] (18) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:16:00.533 [INF] (18) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:16:08.517 [INF] (15) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:16:08.519 [INF] (15) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:16:08.548 [INF] (15) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:17:16.158 [INF] (16) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:17:16.160 [INF] (22) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:17:16.166 [INF] (22) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:17:16.222 [INF] (16) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:17:16.223 [INF] (22) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:17:16.230 [INF] (20) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:17:43.298 [INF] (24) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:17:43.299 [INF] (20) [1922] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:17:43.305 [INF] (24) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:17:43.310 [INF] (20) [COPY] hid=1922 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:17:43.372 [INF] (26) [1923] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:17:43.378 [INF] (24) [EXEC] done hid=1922 ok=false status=912
+2026-03-02 14:17:43.383 [INF] (20) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:17:43.387 [INF] (26) [COPY] hid=1923 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:17:43.401 [INF] (26) [EXEC] done hid=1923 ok=true status=11
+2026-03-02 14:17:46.223 [INF] (3) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:17:46.224 [INF] (20) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:17:46.226 [INF] (3) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:17:46.264 [INF] (20) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:17:46.265 [INF] (3) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:17:46.275 [INF] (26) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:18:00.980 [INF] (26) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:18:00.980 [INF] (16) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:18:00.983 [INF] (26) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:18:00.986 [INF] (16) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:18:01.220 [INF] (16) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:18:01.276 [INF] (26) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:18:06.287 [INF] (26) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:18:06.360 [INF] (26) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:18:11.047 [INF] (26) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:18:11.051 [INF] (26) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:18:11.159 [INF] (3) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:18:18.760 [INF] (26) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:18:18.763 [INF] (26) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:18:18.784 [INF] (26) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:19:56.574 [INF] (23) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:19:56.583 [INF] (21) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:19:56.587 [INF] (23) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:19:56.681 [INF] (13) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:19:56.690 [INF] (23) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:19:56.691 [INF] (21) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:20:23.580 [INF] (17) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:20:23.580 [INF] (19) [1922] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:20:23.583 [INF] (17) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:20:23.586 [INF] (19) [COPY] hid=1922 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:20:23.633 [INF] (19) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:20:23.634 [INF] (17) [EXEC] done hid=1922 ok=true status=11
+2026-03-02 14:20:26.632 [ERR] (17) [FileAction] fatal hid=1923
+System.IO.IOException: Temp file busy after copy
+   at FileMoverWeb.Services.FileActionWorker.CopyAsync(HistoryTask t, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 225
+   at FileMoverWeb.Services.FileActionWorker.RunOneAsync(HistoryTask task, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 46
+2026-03-02 14:20:26.664 [INF] (17) [EXEC] done hid=1923 ok=false status=91
+2026-03-02 14:20:26.670 [INF] (19) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:20:26.683 [INF] (19) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:20:26.741 [INF] (23) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:20:26.751 [INF] (19) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:20:36.743 [INF] (19) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:20:36.844 [INF] (19) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:20:39.680 [INF] (21) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:20:39.683 [INF] (21) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:20:39.934 [INF] (21) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:20:46.802 [INF] (23) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:20:46.833 [INF] (23) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:20:49.823 [INF] (18) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:20:49.826 [INF] (18) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:20:50.257 [INF] (17) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:20:51.448 [INF] (17) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:20:51.452 [INF] (17) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:20:51.610 [INF] (17) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:21:00.046 [INF] (18) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:21:00.049 [INF] (18) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:21:00.090 [INF] (18) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:22:27.081 [INF] (12) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:22:27.084 [INF] (13) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:22:27.087 [INF] (12) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:22:27.140 [INF] (12) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:22:27.152 [INF] (22) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:22:27.153 [INF] (13) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:22:54.241 [INF] (20) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:22:54.243 [INF] (20) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:22:54.250 [INF] (13) [1923] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:22:54.253 [INF] (13) [COPY] hid=1923 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:22:54.320 [INF] (3) [1922] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:22:54.326 [INF] (3) [COPY] hid=1922 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:22:54.342 [INF] (20) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:22:54.345 [INF] (13) [EXEC] done hid=1923 ok=false status=912
+2026-03-02 14:22:54.361 [INF] (3) [EXEC] done hid=1922 ok=true status=11
+2026-03-02 14:22:57.216 [INF] (3) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:22:57.219 [INF] (20) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:22:57.221 [INF] (3) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:22:57.257 [INF] (3) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:22:57.264 [INF] (20) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:22:57.268 [INF] (13) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:23:12.245 [INF] (12) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:23:12.245 [INF] (20) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:23:12.252 [INF] (12) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:23:12.258 [INF] (20) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:23:12.468 [INF] (20) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:23:12.523 [INF] (12) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:23:17.271 [INF] (20) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:23:17.353 [INF] (20) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:23:20.959 [INF] (20) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:23:20.962 [INF] (20) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:23:21.118 [INF] (20) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:23:30.110 [INF] (20) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:23:30.113 [INF] (20) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:23:30.132 [INF] (20) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:24:37.467 [INF] (15) [EXEC] start hid=1922 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:24:37.469 [INF] (20) [EXEC] start hid=1923 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:24:37.471 [INF] (19) [EXEC] start hid=1926 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:24:37.517 [INF] (17) [COPY] hid=1926 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-02 14:24:37.517 [INF] (19) [COPY] hid=1923 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:24:37.519 [INF] (15) [COPY] hid=1922 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:25:04.687 [INF] (15) [1926] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:25:04.690 [INF] (15) [COPY] hid=1926 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-02 14:25:04.815 [INF] (17) [1923] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:25:04.818 [INF] (17) [COPY] hid=1923 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:25:04.834 [INF] (15) [EXEC] done hid=1926 ok=true status=11
+2026-03-02 14:25:04.896 [INF] (17) [EXEC] done hid=1923 ok=true status=11
+2026-03-02 14:25:07.569 [INF] (15) [EXEC] start hid=1929 action=copy from=\\192.168.30.110\nasa\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:25:07.570 [INF] (17) [EXEC] start hid=1924 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:25:07.603 [INF] (17) [COPY] hid=1929 src=\\192.168.30.110\nasa\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-02 14:25:07.627 [INF] (15) [COPY] hid=1924 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-02 14:25:07.860 [ERR] (17) [FileAction] fatal hid=1922
+System.IO.IOException: Temp file busy after copy
+   at FileMoverWeb.Services.FileActionWorker.CopyAsync(HistoryTask t, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 225
+   at FileMoverWeb.Services.FileActionWorker.RunOneAsync(HistoryTask task, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\FileActionService.cs:line 46
+2026-03-02 14:25:07.888 [INF] (17) [EXEC] done hid=1922 ok=false status=91
+2026-03-02 14:25:17.600 [INF] (9) [EXEC] start hid=1925 action=copy from=\\192.168.30.110\nasb\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:25:17.684 [INF] (9) [COPY] hid=1925 src=\\192.168.30.110\nasb\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-02 14:25:18.757 [INF] (9) [1924] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:25:18.760 [INF] (9) [COPY] hid=1924 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-02 14:25:19.000 [INF] (9) [EXEC] done hid=1924 ok=true status=11
+2026-03-02 14:25:27.646 [INF] (15) [EXEC] start hid=1927 action=copy from=\\192.168.30.110\nasa\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:25:28.182 [INF] (15) [COPY] hid=1927 src=\\192.168.30.110\nasa\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-02 14:25:30.011 [INF] (23) [1925] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-02 14:25:30.014 [INF] (23) [COPY] hid=1925 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-02 14:25:30.257 [INF] (23) [EXEC] done hid=1925 ok=true status=11
+2026-03-02 14:25:30.457 [INF] (23) [1929] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:25:30.460 [INF] (23) [COPY] hid=1929 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-02 14:25:30.605 [INF] (23) [EXEC] done hid=1929 ok=true status=11
+2026-03-02 14:25:38.966 [INF] (9) [1927] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-02 14:25:38.970 [INF] (9) [COPY] hid=1927 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-02 14:25:38.987 [INF] (9) [EXEC] done hid=1927 ok=true status=11
+2026-03-02 14:34:59.406 [INF] (26) Application is shutting down...

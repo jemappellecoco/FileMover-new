@@ -58,13 +58,10 @@ public sealed class JobReportController : ControllerBase
         using var conn = new SqlConnection(connStr);
 
         const string sql = @"
-        DECLARE @now DATETIME = GETDATE();
-
         UPDATE dbo.FileData_History
-        SET file_status   = @fileStatus,
-            assigned_node = @node,
-            note          = LEFT(COALESCE(@error, ''), 4000),
-            update_time   = @now
+        SET file_status = @fileStatus,
+            note        = LEFT(COALESCE(@error, ''), 4000),
+            update_time = GETDATE()
         WHERE id = @historyId
         AND assigned_node = @node;
         ";

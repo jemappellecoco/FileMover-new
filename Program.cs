@@ -61,6 +61,20 @@ builder.Services.AddSingleton<FileActionWorker>();
 builder.Services.AddSingleton<RestoreLookup>();
 builder.Services.AddSingleton<TaskRoutingService>();
 builder.Services.AddSingleton<RestoreTaskPoller>();
+
+builder.Services.AddSingleton<ProgressHub>();
+var role = builder.Configuration["Cluster:Role"];
+
+if (string.Equals(role, "Master", StringComparison.OrdinalIgnoreCase))
+{
+    builder.Services.AddSingleton<ProgressHub>();
+    builder.Services.AddSingleton<IProgressReporter, HubProgressReporter>();
+}
+else
+{
+    builder.Services.AddHttpClient<IProgressReporter, HttpProgressReporter>();
+}
+
 var app = builder.Build();
 
 app.UseDefaultFiles();
