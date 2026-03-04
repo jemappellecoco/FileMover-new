@@ -66,9 +66,10 @@ namespace FileMoverWeb.Services
                         var free = node.MaxConcurrency - node.CurrentRunning;
                         if (free <= 0)
                             continue;
+                        var myGroup = _cfg.GetValue<string>("Cluster:Group") ?? "";
 
                         // 1) Reserve 一批（注意：這裡必須是 reserve，不要先把 status 改 1）
-                        var reserved = await _poller.DispatchFullAsync(node.NodeName, free, stoppingToken);
+                        var reserved = await _poller.DispatchFullAsync(node.NodeName,myGroup, free, stoppingToken);
                         if (reserved == null || reserved.Count == 0)
                             continue;
 

@@ -26,56 +26,72 @@ namespace FileMoverWeb.Services
 
         public async Task<FileActionResult> RunOneAsync(HistoryTask task, CancellationToken ct = default)
         {
-            var hid = task.HistoryId;
-            var act = (task.Action ?? "").Trim().ToLowerInvariant();
+             var hid = task.HistoryId;
+        var act = (task.Action ?? "").Trim().ToLowerInvariant();
 
-            try
+        // ✅ Worker 端決定實際要做的動作（不改 DB action）
+        var effectiveAct = act;
+
+        // ✅ Phase2：24/27 一律用 move（不管 DB action 是什麼）
+        if (task.HistoryStatus is 24 or 27)
+        {
+            effectiveAct = "move";
+            _log.LogInformation(
+                "[ACT_OVERRIDE] hid={hid} hs={hs} action({act})->move (phase2)",
+                hid, task.HistoryStatus, act);
+        }
+
+
+        try
+        {
+            ct.ThrowIfCancellationRequested();
+
+            if (hid <= 0) return Fail(hid, Err.InvalidTask, "HistoryId invalid");
+            if (string.IsNullOrWhiteSpace(act)) return Fail(hid, Err.InvalidTask, "Action empty");
+
+            // 2) route by effective action
+            if (effectiveAct == "copy")
             {
-                ct.ThrowIfCancellationRequested();
-
-                // 1) validate (共通)
-                if (hid <= 0)
-                    return Fail(hid, Err.InvalidTask, "HistoryId invalid");
-
-                if (string.IsNullOrWhiteSpace(act))
-                    return Fail(hid, Err.InvalidTask, "Action empty");
-
-                // 2) route by action
-                if (act == "copy")
-                {
                 await CopyAsync(task, ct).ConfigureAwait(false);
-                        // ✅ Phase1: 跨樓層（FromGroup != ToGroup）且不是 phase2(24/27)
+
                 if (TaskRoutingService.IsCrossFloor(task) && task.HistoryStatus is not (24 or 27))
                 {
                     var to = (task.ToGroup ?? "").Trim();
+                    if (string.Equals(to, "4F", StringComparison.OrdinalIgnoreCase)) return Ok(hid, Status.Phase1CopyDone_4F);
+                    if (string.Equals(to, "7F", StringComparison.OrdinalIgnoreCase)) return Ok(hid, Status.Phase1CopyDone_7F);
 
-                    if (string.Equals(to, "4F", StringComparison.OrdinalIgnoreCase))
-                        return Ok(hid, Status.Phase1CopyDone_4F);
-
-                    if (string.Equals(to, "7F", StringComparison.OrdinalIgnoreCase))
-                        return Ok(hid, Status.Phase1CopyDone_7F);
-
-                     // ✅ 不認得 group：這是任務資料不合法，不要假裝成功
                     _log.LogError("[COPY] hid={hid} cross-floor but unknown FromGroup={group}", hid, task.FromGroup);
                     return Fail(hid, Err.Fatal, $"Unknown FromGroup: {task.FromGroup}");
                 }
-                           
-                    return Ok(hid, Status.CopyDone);
-                }
 
-                if (act == "move")
-                {
-                    await MoveAsync(task, ct).ConfigureAwait(false);
-                    return Ok(hid, Status.MoveDone);
-                }
+                return Ok(hid, Status.CopyDone);
+            }
 
-                if (act == "delete")
-                {
-                    await DeleteAsync(task, ct).ConfigureAwait(false);
-                    return Ok(hid, Status.DeleteDone);
-                }
+            if (effectiveAct == "move")
+            {
+                await MoveAsync(task, ct).ConfigureAwait(false);
 
-                return Fail(hid, Err.InvalidTask, $"Unknown action: {act}");
+                // ✅ 只有 ToType=TAPE 才 13，其它 11
+                var toType = (task.ToType ?? "").Trim();
+                var st = string.Equals(toType, "TAPE", StringComparison.OrdinalIgnoreCase)
+                    ? Status.MoveDone  // 13
+                    : Status.CopyDone; // 11
+
+                _log.LogInformation("[MOVE] hid={hid} toType={toType} -> status={st}", hid, toType, st);
+                return Ok(hid, st);
+            }
+
+            if (effectiveAct == "delete")
+            {
+                await DeleteAsync(task, ct).ConfigureAwait(false);
+                return Ok(hid, Status.DeleteDone);
+            }
+
+                return Fail(hid, Err.InvalidTask, $"Unknown action: {effectiveAct}");
+            }
+            catch (FileNotFoundException ex)
+            {
+                return Fail(hid, Err.SourceNotFound, ex.Message);
             }
             catch (FileSizeMismatchException ex)
             {
@@ -96,6 +112,10 @@ namespace FileMoverWeb.Services
             catch (UnauthorizedAccessException ex)
             {
                 return Fail(hid, Err.Unauthorized, ex.Message);
+            }
+            catch (WaitFileFreeTimeoutException ex)
+            {
+                return Fail(hid, Err.WaitFileFreeTimeout, ex.Message); // ✅ 922
             }
             catch (Exception ex)
             {
@@ -154,10 +174,7 @@ namespace FileMoverWeb.Services
 
                     return match4 || match7;
                 }
-        internal sealed class FileSizeMismatchException : Exception
-        {
-            public FileSizeMismatchException(string msg) : base(msg) { }
-        }
+        
         // -------------------------
         // Actions
         // -------------------------
@@ -221,8 +238,8 @@ namespace FileMoverWeb.Services
                 
 
                 // ✅ 等待 temp 完全釋放
-                if (!await FileActionHelpers.WaitFileFreeAsync(temp, 3000, ct).ConfigureAwait(false))
-                    throw new IOException("Temp file busy after copy");
+                if (!await FileHelper.WaitFileFreeAsync(temp, 3000, ct).ConfigureAwait(false))
+                    throw new WaitFileFreeTimeoutException($"Temp busy after copy: {temp}");
 
                 // ✅ SIZE VERIFY
                 if (!VerifyTempSize(temp, t.FileSize4F, t.FileSize7F, hid))
@@ -260,7 +277,7 @@ namespace FileMoverWeb.Services
 
                 _log.LogInformation("[MOVE] hid={hid} src={src} temp={temp}", hid, src, temp);
 
-                if (!await FileActionHelpers.WaitFileFreeAsync(src, 3000, ct).ConfigureAwait(false))
+                if (!await FileHelper.WaitFileFreeAsync(src, 3000, ct).ConfigureAwait(false))
                     throw new IOException($"Source busy: {src}");
 
                 if (File.Exists(temp)) File.Delete(temp);
@@ -288,7 +305,8 @@ namespace FileMoverWeb.Services
             _log.LogInformation("[DELETE] hid={hid} src={src}", hid, src);
 
             if (!File.Exists(src))
-                return Task.CompletedTask;
+                throw new FileNotFoundException($"Source not found: {src}", src);
+
 
             // 你要保守就 wait free
             // 這裡不 await 也行，但風格一致我們用 await
@@ -323,7 +341,14 @@ namespace FileMoverWeb.Services
     //     public int FileStatus { get; set; }     // ✅ 成功=你們的完成狀態；失敗=Err code
     //     public string? Error { get; set; }
     // }
-
+    internal sealed class FileSizeMismatchException : Exception
+        {
+            public FileSizeMismatchException(string msg) : base(msg) { }
+        }
+        internal sealed class WaitFileFreeTimeoutException : Exception
+        {
+            public WaitFileFreeTimeoutException(string msg) : base(msg) { }
+        }
     // ✅ 成功狀態集中（你之後要改一個地方就好）
     internal static class Status
     {
@@ -338,7 +363,8 @@ namespace FileMoverWeb.Services
     // ✅ 錯誤碼集中（跟你 MoveWorker 一樣）
     internal static class Err
     {
-       public const int SizeMismatch = 915;
+         public const int WaitFileFreeTimeout = 922;      
+          public const int SizeMismatch = 915;
        public const int Fatal           = 91;
         public const int Canceled        = 999;
 
@@ -387,37 +413,37 @@ namespace FileMoverWeb.Services
             File.Move(src, dst);
         }
 
-        public static async Task<bool> WaitFileFreeAsync(string path, int timeoutMs, CancellationToken ct)
-        {
-            var until = DateTime.UtcNow.AddMilliseconds(Math.Max(100, timeoutMs));
+        // public static async Task<bool> WaitFileFreeAsync(string path, int timeoutMs, CancellationToken ct)
+        // {
+        //     var until = DateTime.UtcNow.AddMilliseconds(Math.Max(100, timeoutMs));
 
-            while (DateTime.UtcNow < until)
-            {
-                ct.ThrowIfCancellationRequested();
+        //     while (DateTime.UtcNow < until)
+        //     {
+        //         ct.ThrowIfCancellationRequested();
 
-                try
-                {
-                    using var fs = new FileStream(
-                        path, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
-                    return true;
-                }
-                catch (IOException)
-                {
-                    await Task.Delay(150, ct).ConfigureAwait(false);
-                }
-                catch (UnauthorizedAccessException)
-                {
-                    await Task.Delay(150, ct).ConfigureAwait(false);
-                }
-            }
+        //         try
+        //         {
+        //             using var fs = new FileStream(
+        //                 path, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+        //             return true;
+        //         }
+        //         catch (IOException)
+        //         {
+        //             await Task.Delay(150, ct).ConfigureAwait(false);
+        //         }
+        //         catch (UnauthorizedAccessException)
+        //         {
+        //             await Task.Delay(150, ct).ConfigureAwait(false);
+        //         }
+        //     }
 
-            return false;
-        }
+        //     return false;
+        // }
 
         public static async Task DeleteFileSafeAsync(string path, CancellationToken ct)
         {
-            if (!await WaitFileFreeAsync(path, 3000, ct).ConfigureAwait(false))
-                throw new IOException($"File is busy, cannot delete: {path}");
+            if (!await FileHelper.WaitFileFreeAsync(path, 3000, ct).ConfigureAwait(false))
+                 throw new WaitFileFreeTimeoutException($"WaitFileFree timeout, cannot delete: {path}");
 
             File.Delete(path);
         }

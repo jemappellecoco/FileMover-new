@@ -40,7 +40,8 @@ namespace FileMoverWeb.Controllers
         [HttpGet("pending")]
         public async Task<IActionResult> Pending(CancellationToken ct = default)
         {
-            var rows = await _poller.GetPendingUIAsync(ct);
+            var group = (_cfg["Cluster:Group"] ?? "").Trim();
+            var rows = await _poller.GetPendingUIAsync(group,ct);
             _log.LogInformation("[PENDING] returned {count} rows", rows.Count);
             return Ok(rows);
         }

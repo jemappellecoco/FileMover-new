@@ -18,12 +18,21 @@ namespace FileMoverWeb.Controllers
         private readonly IConfiguration _cfg;
         private readonly ILogger<JobReportController> _log;
         private readonly NodeRuntimeRegistry _registry;
+        private readonly DeleteVerifier _deleteVerifier;
+        private readonly CopyVerifier _copyVerifier;
 
-        public JobReportController(IConfiguration cfg, ILogger<JobReportController> log, NodeRuntimeRegistry registry)
+        public JobReportController
+        (IConfiguration cfg, 
+        ILogger<JobReportController> log, 
+        NodeRuntimeRegistry registry, 
+        DeleteVerifier deleteVerifier,
+        CopyVerifier copyVerifier)
         {
             _cfg = cfg;
             _log = log;
             _registry = registry;
+             _deleteVerifier = deleteVerifier;
+              _copyVerifier = copyVerifier;
         }
 
         // ✅ 只允許更新這些欄位（白名單）
@@ -36,45 +45,74 @@ namespace FileMoverWeb.Controllers
         };
 
         // POST /api/jobs/report
-        [HttpPost("report")]
-        public async Task<IActionResult> Report([FromBody] JobReportDto dto, CancellationToken ct)
+       [HttpPost("report")]
+    public async Task<IActionResult> Report([FromBody] JobReportDto dto, CancellationToken ct)
+    {
+        if (!IsMaster()) return Forbid();
+
+        if (dto is null || dto.HistoryId <= 0)
+            return BadRequest(new { ok = false, error = "historyId is required" });
+
+        if (string.IsNullOrWhiteSpace(dto.Node))
+            return BadRequest(new { ok = false, error = "node is required" });
+
+        if (!dto.FileStatus.HasValue)
+            return BadRequest(new { ok = false, error = "fileStatus is required" });
+        // ✅ 特例：CopyDone(11) → Master 先驗證（FileData_Storage ensure），再「只寫一次」最終狀態
+        if (dto.FileStatus.Value == 11)
         {
-            if (!IsMaster()) return Forbid();
+            var (okVerify, msg) = await _copyVerifier.VerifyCopyAsync(dto.HistoryId, ct);
 
-            if (dto is null || dto.HistoryId <= 0)
-                return BadRequest(new { ok = false, error = "historyId is required" });
-
-            if (string.IsNullOrWhiteSpace(dto.Node))
-                return BadRequest(new { ok = false, error = "node is required" });
-
-            var updated = await UpdateHistoryStatusAsync(dto, ct);
-
-            _log.LogInformation("[JOB_REPORT] hid={hid} node={node} fileStatus={st} err={err} updated={updated}",
-                dto.HistoryId, dto.Node, dto.FileStatus, dto.Error, updated);
-
-            // ✅ 沒更新到：通常是 assigned_node != node（或 id 不存在）
-            // 仍回 200 但帶訊息，方便你前端/worker debug
-            if (updated == 0)
-                return Ok(new { ok = true, updated = 0, message = "no rows updated (node mismatch or no patch fields)" });
-
-            // ---- SLOT LOGIC（只在有給 fileStatus 時才做，避免誤觸）----
-
-            // Consume：當 worker 回報「開始跑」(file_status==1) 且 assumeFreedSlot==false
-            if (dto.FileStatus == 1 && dto.AssumeFreedSlot == false)
+            if (!okVerify)
             {
-                var ok = _registry.TryConsume(dto.Node.Trim(), 1);
-                _log.LogInformation("[SLOT] consume node={node} ok={ok}", dto.Node, ok);
+                dto.FileStatus = 904;   // 你自訂：copy verify failed
+                dto.Error = msg ?? "copy verify failed";
             }
-
-            // Release：只有明確傳 true 才釋放（null=不動）
-            if (dto.AssumeFreedSlot == true)
-            {
-                _registry.AddFree(dto.Node.Trim(), 1);
-                _log.LogInformation("[SLOT] release(+1) node={node}", dto.Node);
-            }
-
-            return Ok(new { ok = true, updated });
         }
+       // DeleteDone(12) → 正常 verify
+        if (dto.FileStatus.Value == 12)
+        {
+            var (okVerify, msg) = await _deleteVerifier.VerifyDeleteAsync(dto.HistoryId, ct);
+
+            if (!okVerify)
+            {
+                await _deleteVerifier.FileOnFailAsync(dto.HistoryId, ct);
+                dto.FileStatus = 904;
+                dto.Error = msg ?? "delete verify failed";
+            }
+        }
+        else
+        {
+            // ✅ 不是 12 → 如果是 delete 任務，就 restore
+            await _deleteVerifier.FileOnFailAsync(dto.HistoryId, ct);
+        }
+
+        // ✅ 寫回 DB（只更新你有給的欄位；且必須 assigned_node == node）
+        var updated = await UpdateHistoryStatusAsync(dto, ct);
+
+        _log.LogInformation("[JOB_REPORT] hid={hid} node={node} status={st} err={err} updated={updated}",
+            dto.HistoryId, dto.Node, dto.FileStatus, dto.Error, updated);
+
+        if (updated == 0)
+            return Ok(new { ok = true, updated = 0, message = "no rows updated (node mismatch or no patch fields)" });
+
+        // ---- SLOT LOGIC ----
+        // Consume：當 worker 回報「開始跑」(file_status==1) 且 assumeFreedSlot==false
+        if (dto.FileStatus == 1 && dto.AssumeFreedSlot == false)
+        {
+            var ok = _registry.TryConsume(dto.Node.Trim(), 1);
+            _log.LogInformation("[SLOT] consume node={node} ok={ok}", dto.Node, ok);
+        }
+
+        // Release：只有明確傳 true 才釋放（null=不動）
+        if (dto.AssumeFreedSlot == true)
+        {
+            _registry.AddFree(dto.Node.Trim(), 1);
+            _log.LogInformation("[SLOT] release(+1) node={node}", dto.Node);
+        }
+
+        return Ok(new { ok = true, updated });
+    }
 
         private async Task<int> UpdateHistoryStatusAsync(JobReportDto dto, CancellationToken ct)
         {
@@ -106,7 +144,7 @@ namespace FileMoverWeb.Controllers
                 return 0;
 
             // ✅ 保留原本語意：必須 assigned_node = node 才能改
-            return await baseModel.PatchAsync(
+            return await baseModel.UpdateAsync(
                 table: "dbo.FileData_History",
                 pkName: "id",
                 id: dto.HistoryId,

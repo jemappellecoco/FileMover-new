@@ -57,7 +57,7 @@ public async Task<IActionResult> RemoveById([FromRoute] int id, CancellationToke
         ["update_time"] = DateTime.Now
     };
 
-    var updated = await baseModel.PatchAsync(
+    var updated = await baseModel.UpdateAsync(
         table: "dbo.FileData_History",
         pkName: "id",
         id: id,

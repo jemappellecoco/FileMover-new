@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace FileMoverWeb.Models.History
+namespace FileMoverWeb.Models.Common
 {
     public sealed class PagedResult<T>
     {

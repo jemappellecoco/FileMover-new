@@ -63,6 +63,9 @@ builder.Services.AddSingleton<TaskRoutingService>();
 builder.Services.AddSingleton<RestoreTaskPoller>();
 builder.Services.AddSingleton<HistoryPoller>();
 builder.Services.AddSingleton<ProgressHub>();
+builder.Services.AddSingleton<DeleteVerifier>();
+builder.Services.AddSingleton<CopyVerifier>();
+builder.Services.AddSingleton<ArchivePoller>();
 var role = builder.Configuration["Cluster:Role"];
 
 if (string.Equals(role, "Master", StringComparison.OrdinalIgnoreCase))

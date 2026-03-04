@@ -30,7 +30,7 @@ namespace FileMoverWeb.Services
         /// <remarks>
         /// 這個方法會回傳所有待處理的任務，包括 FileData 和 CMData
         /// </remarks>
-        public async Task<List<HistoryTask>> GetPendingTasksAsync( CancellationToken ct)
+        public async Task<List<HistoryTask>> GetPendingTasksAsync( string group,CancellationToken ct)
         {
             const string sql = @"
         SELECT 
@@ -83,12 +83,16 @@ namespace FileMoverWeb.Services
         LEFT JOIN dbo.Storage sFrom ON sFrom.id = h.from_storage_id
         LEFT JOIN dbo.Storage sTo ON sTo.id = h.to_storage_id
         WHERE h.file_status IN (0, -1, 24, 27)
+        AND (
+                (h.file_status IN (0, -1) AND sFrom.set_group = @group)
+            OR (h.file_status IN (24, 27) AND sTo.set_group = @group)
+            )
         ORDER BY h.priority DESC, h.create_time ASC;";
 
             using var conn = new SqlConnection(_connStr);
 
             var rawData = await conn.QueryAsync<dynamic>(
-                new CommandDefinition(sql, cancellationToken: ct));
+                new CommandDefinition(sql, new { group }, cancellationToken: ct));
 
             return rawData.Select(row =>
             {
@@ -137,8 +141,9 @@ namespace FileMoverWeb.Services
                 return task;
             }).ToList();
         }
-         public async Task<List<HistoryTask>> GetPendingUIAsync( CancellationToken ct)
+         public async Task<List<HistoryTask>> GetPendingUIAsync(string group, CancellationToken ct)
         {
+             group = (group ?? "").Trim();
             const string sql = @"
         SELECT 
             h.id                 AS HistoryId,
@@ -190,6 +195,12 @@ namespace FileMoverWeb.Services
         LEFT JOIN dbo.Storage sFrom ON sFrom.id = h.from_storage_id
         LEFT JOIN dbo.Storage sTo ON sTo.id = h.to_storage_id
         WHERE h.file_status IN (0, -1, 1, 24, 27)
+        AND (
+        -- Phase1 / 一般 pending / running(1)：看 FromGroup
+        (h.file_status IN (0, -1, 1) AND sFrom.set_group = @group)
+        OR -- Phase2：看 ToGroup
+            (h.file_status IN (24, 27) AND sTo.set_group = @group)
+            )
         ORDER BY  
         CASE WHEN h.file_status = 1 THEN 0 ELSE 1 END,
             h.priority DESC,
@@ -198,7 +209,7 @@ namespace FileMoverWeb.Services
             using var conn = new SqlConnection(_connStr);
 
             var rawData = await conn.QueryAsync<dynamic>(
-                new CommandDefinition(sql, cancellationToken: ct));
+                new CommandDefinition(sql, new { group }, cancellationToken: ct));
 
             return rawData.Select(row =>
             {
@@ -285,11 +296,12 @@ namespace FileMoverWeb.Services
 
         public async Task<List<HistoryTask>> DispatchFullAsync(
         string nodeName,
+        string group,
         int take,
         CancellationToken ct)
     {
         // 1️⃣ 先撈 pending（完整資料）
-        var pending = await GetPendingTasksAsync( ct);
+        var pending = await GetPendingTasksAsync( group,ct);
 
         var result = new List<HistoryTask>();
 

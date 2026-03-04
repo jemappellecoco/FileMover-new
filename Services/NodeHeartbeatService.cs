@@ -49,22 +49,49 @@ protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     max = Math.Max(1, max);
 
     var client = _httpClientFactory.CreateClient();
-
     while (!stoppingToken.IsCancellationRequested)
     {
-        var dto = new NodeFreeReportDto
+        try
         {
-            Node = nodeName,
-            IpAddress = endpoint,   // ✅ 回報完整網址
-            Role = role,
-            Group = _cfg["Cluster:Group"] ?? "Default",
-            HostName = Environment.MachineName,
-            MaxConcurrency = max,
-            // FreeSlots = max
-        };
+            var dto = new NodeFreeReportDto
+            {
+                Node = nodeName,
+                IpAddress = endpoint,
+                Role = role,
+                Group = _cfg["Cluster:Group"] ?? "Default",
+                HostName = Environment.MachineName,
+                MaxConcurrency = max,
+            };
 
-        await client.PostAsJsonAsync($"{masterUrl}/api/nodes/heartbeat-free", dto, stoppingToken);
-        await Task.Delay(TimeSpan.FromSeconds(3), stoppingToken);
+            await client.PostAsJsonAsync(
+                $"{masterUrl}/api/nodes/heartbeat-free",
+                dto,
+                stoppingToken);
+        }
+        catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
+        {
+            // ✅ Ctrl+C / StopAsync 進來的正常取消：安靜退出
+            break;
+        }
+        catch (HttpRequestException ex) when (stoppingToken.IsCancellationRequested)
+        {
+            // ✅ 關機途中 master 先停很常見：不要噴錯
+            break;
+        }
+        catch (Exception ex)
+        {
+            // ✅ 平常連不到：不要把 Host 弄死，只警告
+            _log.LogInformation("[HB] master offline: {MasterUrl}", masterUrl);
+        }
+
+        try
+        {
+            await Task.Delay(TimeSpan.FromSeconds(3), stoppingToken);
+        }
+        catch (OperationCanceledException)
+        {
+            break;
+        }
     }
 }
 
