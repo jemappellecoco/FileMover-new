@@ -162,7 +162,7 @@ AND (
 
         public async Task FileOnFailAsync(int historyId, CancellationToken ct)
             {
-                _log.LogWarning("[DELETE_FAIL_FIX] start hid={hid}", historyId);
+                _log.LogWarning("[] start hid={hid}", historyId);
 
                 var connStr = _cfg.GetConnectionString("DefaultConnection")!;
                 await using var conn = new SqlConnection(connStr);

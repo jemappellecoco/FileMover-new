@@ -66,6 +66,7 @@ builder.Services.AddSingleton<ProgressHub>();
 builder.Services.AddSingleton<DeleteVerifier>();
 builder.Services.AddSingleton<CopyVerifier>();
 builder.Services.AddSingleton<ArchivePoller>();
+builder.Services.AddSingleton<FtpSetting>();
 var role = builder.Configuration["Cluster:Role"];
 
 if (string.Equals(role, "Master", StringComparison.OrdinalIgnoreCase))

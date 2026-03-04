@@ -43425,3 +43425,1995 @@ System.Net.Http.HttpRequestException: 無法連線，因為目標電腦拒絕連
 2026-03-04 09:30:22.722 [INF] (8) [HB] master offline: http://127.0.0.1:5089
 2026-03-04 09:30:27.783 [INF] (8) [HB] master offline: http://127.0.0.1:5089
 2026-03-04 09:30:32.838 [INF] (8) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:06:04.495 [INF] (8) Master dispatch loop started.
+2026-03-04 10:06:04.514 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 10:06:04.537 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 10:06:04.550 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 10:06:04.554 [INF] (2) Hosting environment: Development
+2026-03-04 10:06:04.555 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 10:06:08.594 [INF] (6) [PENDING] returned 0 rows
+2026-03-04 10:06:14.645 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1952 node=7F-M1
+2026-03-04 10:06:14.684 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 10:06:14.689 [INF] (6) [EXEC] start hid=1952 action=move from=\\192.168.30.110\nasb\tape\2101ECB3.MXF to=\\192.168.30.110\nasa\2101ECB3.MXF
+2026-03-04 10:06:14.736 [WRN] (8) [DELETE_FAIL_FIX] start hid=1952
+2026-03-04 10:06:14.786 [INF] (6) [JOB_REPORT] hid=1952 node=7F-M1 status=1 err=null updated=1
+2026-03-04 10:06:14.788 [INF] (6) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 10:06:14.810 [WRN] (9) [DELETE_FAIL_FIX] start hid=1952
+2026-03-04 10:06:14.819 [INF] (6) [JOB_REPORT] hid=1952 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101ECB3.MXF updated=1
+2026-03-04 10:06:14.840 [INF] (6) [SLOT] release(+1) node=7F-M1
+2026-03-04 10:06:14.842 [INF] (6) [EXEC] done hid=1952 ok=false status=911
+2026-03-04 10:06:34.739 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1939 node=7F-M1
+2026-03-04 10:06:34.741 [INF] (6) [EXEC] start hid=1939 action=delete from=\\192.168.30.110\nasa\2101F50C.MXF to=null
+2026-03-04 10:06:34.741 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 10:06:34.743 [WRN] (12) [DELETE_FAIL_FIX] start hid=1939
+2026-03-04 10:06:34.761 [WRN] (9) [DELETE_FAIL_FIX] restored dbo.FileData.is_file_7F='Y' fid=24935 hid=1939 affected=1
+2026-03-04 10:06:34.782 [INF] (9) [JOB_REPORT] hid=1939 node=7F-M1 status=1 err=null updated=1
+2026-03-04 10:06:34.784 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 10:06:34.786 [INF] (12) [DELETE] hid=1939 src=\\192.168.30.110\nasa\2101F50C.MXF
+2026-03-04 10:06:34.886 [INF] (12) [DELETE_VERIFY] Start historyId=1939
+2026-03-04 10:06:34.891 [INF] (12) [DELETE_VERIFY] history found fid=24935 sid=23 ft=PO
+2026-03-04 10:06:34.902 [INF] (12) [DELETE_VERIFY] deleting storage row id=27970
+2026-03-04 10:06:34.912 [INF] (12) [DELETE_VERIFY] storage row deleted id=27970
+2026-03-04 10:06:34.918 [INF] (12) [DELETE_VERIFY] still storage rows exist fid=24935, skip master update
+2026-03-04 10:06:34.922 [INF] (12) [DELETE_VERIFY] success historyId=1939
+2026-03-04 10:06:34.927 [INF] (12) [JOB_REPORT] hid=1939 node=7F-M1 status=12 err=null updated=1
+2026-03-04 10:06:34.930 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 10:06:34.932 [INF] (9) [EXEC] done hid=1939 ok=true status=12
+2026-03-04 10:06:54.789 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1952 node=7F-M1
+2026-03-04 10:06:54.791 [INF] (12) [EXEC] start hid=1952 action=move from=\\192.168.30.110\nasb\tape\2101ECB3.MXF to=\\192.168.30.110\nasa\2101ECB3.MXF
+2026-03-04 10:06:54.791 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-04 10:06:54.794 [WRN] (12) [DELETE_FAIL_FIX] start hid=1952
+2026-03-04 10:06:54.799 [INF] (12) [JOB_REPORT] hid=1952 node=7F-M1 status=1 err=null updated=1
+2026-03-04 10:06:54.801 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 10:06:54.805 [WRN] (12) [DELETE_FAIL_FIX] start hid=1952
+2026-03-04 10:06:54.814 [INF] (12) [JOB_REPORT] hid=1952 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101ECB3.MXF updated=1
+2026-03-04 10:06:54.822 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 10:06:54.826 [INF] (12) [EXEC] done hid=1952 ok=false status=911
+2026-03-04 10:07:34.873 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1918 node=7F-M1
+2026-03-04 10:07:34.876 [INF] (9) [EXEC] start hid=1918 action=copy from=\\192.168.30.110\nasb\Restore\41005852.MXF to=\\192.168.30.110\nase\41005852.MXF
+2026-03-04 10:07:34.876 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-04 10:07:34.878 [WRN] (9) [DELETE_FAIL_FIX] start hid=1918
+2026-03-04 10:07:34.883 [INF] (9) [JOB_REPORT] hid=1918 node=7F-M1 status=1 err=null updated=1
+2026-03-04 10:07:34.885 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 10:07:34.886 [INF] (9) [ACT_OVERRIDE] hid=1918 hs=27 action(copy)->move (phase2)
+2026-03-04 10:07:34.901 [WRN] (12) [DELETE_FAIL_FIX] start hid=1918
+2026-03-04 10:07:34.907 [INF] (9) [JOB_REPORT] hid=1918 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\Restore\41005852.MXF updated=1
+2026-03-04 10:07:34.912 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 10:07:34.913 [INF] (9) [EXEC] done hid=1918 ok=false status=911
+2026-03-04 10:07:40.823 [INF] (9) [PENDING] returned 0 rows
+2026-03-04 10:07:41.517 [INF] (9) [PENDING] returned 0 rows
+2026-03-04 10:32:37.877 [INF] (58) Application is shutting down...
+2026-03-04 10:32:40.947 [INF] (53) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:32:46.006 [INF] (53) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:32:51.053 [INF] (53) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:32:56.124 [INF] (53) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:33:01.178 [INF] (53) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:33:06.258 [INF] (65) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:33:19.455 [INF] (8) Master dispatch loop started.
+2026-03-04 10:33:19.475 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 10:33:19.501 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 10:33:19.510 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 10:33:19.515 [INF] (2) Hosting environment: Development
+2026-03-04 10:33:19.521 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 10:37:45.141 [INF] (17) [PENDING] returned 0 rows
+2026-03-04 10:37:45.337 [INF] (6) [PENDING] returned 0 rows
+2026-03-04 10:37:45.689 [INF] (6) [PENDING] returned 0 rows
+2026-03-04 10:37:57.195 [INF] (3) Application is shutting down...
+2026-03-04 10:38:01.510 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:38:06.554 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:38:11.615 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:38:16.672 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:38:21.733 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:38:26.789 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:38:31.192 [INF] (8) Master dispatch loop started.
+2026-03-04 10:38:31.210 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 10:38:31.238 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 10:38:31.243 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 10:38:31.245 [INF] (2) Hosting environment: Development
+2026-03-04 10:38:31.250 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 10:38:39.106 [INF] (13) [PENDING] returned 0 rows
+2026-03-04 10:38:51.321 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1918 node=7F-M1
+2026-03-04 10:38:51.338 [INF] (8) Pushed 1 tasks to 7F-M1
+2026-03-04 10:38:51.339 [INF] (9) [EXEC] start hid=1918 action=copy from=\\192.168.30.110\nasb\Restore\41005852.MXF to=\\192.168.30.110\nase\41005852.MXF
+2026-03-04 10:38:51.363 [WRN] (12) [DELETE_FAIL_FIX] start hid=1918
+2026-03-04 10:38:51.387 [INF] (12) [JOB_REPORT] hid=1918 node=7F-M1 status=1 err=null updated=1
+2026-03-04 10:38:51.392 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 10:38:51.404 [WRN] (12) [DELETE_FAIL_FIX] start hid=1918
+2026-03-04 10:38:51.414 [INF] (12) [JOB_REPORT] hid=1918 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\Restore\41005852.MXF updated=1
+2026-03-04 10:38:51.436 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 10:38:51.438 [INF] (8) [EXEC] done hid=1918 ok=false status=911
+2026-03-04 10:38:54.082 [INF] (12) [PENDING] returned 0 rows
+2026-03-04 10:38:54.887 [INF] (9) [PENDING] returned 0 rows
+2026-03-04 10:39:01.384 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1952 node=7F-M1
+2026-03-04 10:39:01.390 [INF] (13) [EXEC] start hid=1952 action=move from=\\192.168.30.110\nasb\tape\2101ECB3.MXF to=\\192.168.30.110\nasa\2101ECB3.MXF
+2026-03-04 10:39:01.391 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 10:39:01.395 [WRN] (13) [DELETE_FAIL_FIX] start hid=1952
+2026-03-04 10:39:01.403 [INF] (13) [JOB_REPORT] hid=1952 node=7F-M1 status=1 err=null updated=1
+2026-03-04 10:39:01.405 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 10:39:01.413 [WRN] (13) [DELETE_FAIL_FIX] start hid=1952
+2026-03-04 10:39:01.431 [INF] (9) [JOB_REPORT] hid=1952 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101ECB3.MXF updated=1
+2026-03-04 10:39:01.439 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 10:39:01.440 [INF] (8) [EXEC] done hid=1952 ok=false status=911
+2026-03-04 10:39:51.536 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1918 node=7F-M1
+2026-03-04 10:39:51.538 [INF] (13) [EXEC] start hid=1918 action=copy from=\\192.168.30.110\nasb\Restore\41005852.MXF to=\\192.168.30.110\nase\41005852.MXF
+2026-03-04 10:39:51.538 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-04 10:39:51.540 [WRN] (13) [DELETE_FAIL_FIX] start hid=1918
+2026-03-04 10:39:51.549 [INF] (13) [JOB_REPORT] hid=1918 node=7F-M1 status=1 err=null updated=1
+2026-03-04 10:39:51.556 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 10:39:51.561 [WRN] (13) [DELETE_FAIL_FIX] start hid=1918
+2026-03-04 10:39:51.568 [INF] (13) [JOB_REPORT] hid=1918 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\Restore\41005852.MXF updated=1
+2026-03-04 10:39:51.573 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 10:39:51.575 [INF] (13) [EXEC] done hid=1918 ok=false status=911
+2026-03-04 10:47:07.189 [INF] (21) Application is shutting down...
+2026-03-04 10:47:10.769 [INF] (19) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 10:47:27.235 [INF] (8) Master dispatch loop started.
+2026-03-04 10:47:27.254 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 10:47:27.274 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 10:47:27.275 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 10:47:27.275 [INF] (2) Hosting environment: Development
+2026-03-04 10:47:27.276 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 10:47:28.897 [INF] (12) [RETRY] id=1918 action='' fromType='' fromGroup='' => newStatus=0
+2026-03-04 10:47:37.410 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1918 node=7F-M1
+2026-03-04 10:47:37.444 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-04 10:47:37.446 [INF] (6) [EXEC] start hid=1918 action=copy from=\\192.168.30.110\nasb\Restore\41005852.MXF to=\\192.168.30.110\nase\41005852.MXF
+2026-03-04 10:47:37.486 [WRN] (9) [DELETE_FAIL_FIX] start hid=1918
+2026-03-04 10:47:37.528 [INF] (9) [JOB_REPORT] hid=1918 node=7F-M1 status=1 err=null updated=1
+2026-03-04 10:47:37.530 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 10:47:37.540 [WRN] (9) [DELETE_FAIL_FIX] start hid=1918
+2026-03-04 10:47:37.547 [INF] (9) [JOB_REPORT] hid=1918 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\Restore\41005852.MXF updated=1
+2026-03-04 10:47:37.551 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 10:47:37.553 [INF] (9) [EXEC] done hid=1918 ok=false status=911
+2026-03-04 10:50:30.236 [ERR] (18) An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): 目前的命令發生嚴重錯誤。如有任何結果，應予捨棄。
+使用者已經取消作業。
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at FileMoverWeb.Services.TaskPoller.GetPendingUIAsync(String group, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\TaskPoller.cs:line 211
+   at FileMoverWeb.Controllers.JobsController.Pending(CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Controllers\JobsController.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:5c3edfbf-883f-4b23-adca-ee9711854184
+2026-03-04 10:50:30.737 [INF] (21) [PENDING] returned 0 rows
+2026-03-04 10:50:44.356 [INF] (17) [PENDING] returned 0 rows
+2026-03-04 10:50:44.593 [INF] (17) [PENDING] returned 0 rows
+2026-03-04 10:50:51.978 [INF] (18) [PENDING] returned 0 rows
+2026-03-04 10:51:12.271 [INF] (17) [PENDING] returned 0 rows
+2026-03-04 10:51:16.911 [INF] (21) [RETRY] id=1918 action='copy' fromType='RESTORE' fromGroup='7F' => newStatus=17
+2026-03-04 10:51:23.563 [INF] (21) [RETRY] id=1952 action='move' fromType='TAPE' fromGroup='7F' => newStatus=0
+2026-03-04 10:51:28.169 [INF] (23) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1952 node=7F-M1
+2026-03-04 10:51:28.188 [INF] (23) [EXEC] start hid=1952 action=move from=\\192.168.30.110\nasb\tape\2101ECB3.MXF to=\\192.168.30.110\nasa\2101ECB3.MXF
+2026-03-04 10:51:28.190 [INF] (17) Pushed 1 tasks to 7F-M1
+2026-03-04 10:51:28.202 [WRN] (23) [DELETE_FAIL_FIX] start hid=1952
+2026-03-04 10:51:28.211 [INF] (23) [JOB_REPORT] hid=1952 node=7F-M1 status=1 err=null updated=1
+2026-03-04 10:51:28.220 [INF] (23) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 10:51:28.227 [WRN] (23) [DELETE_FAIL_FIX] start hid=1952
+2026-03-04 10:51:28.236 [INF] (17) [JOB_REPORT] hid=1952 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101ECB3.MXF updated=1
+2026-03-04 10:51:28.238 [INF] (17) [SLOT] release(+1) node=7F-M1
+2026-03-04 10:51:28.239 [INF] (17) [EXEC] done hid=1952 ok=false status=911
+2026-03-04 10:53:10.932 [INF] (18) [PENDING] returned 0 rows
+2026-03-04 10:53:11.415 [INF] (21) [PENDING] returned 0 rows
+2026-03-04 10:53:11.639 [INF] (22) [PENDING] returned 0 rows
+2026-03-04 10:53:11.911 [INF] (21) [PENDING] returned 0 rows
+2026-03-04 10:53:24.898 [INF] (22) [PENDING] returned 0 rows
+2026-03-04 10:58:03.120 [INF] (6) [PENDING] returned 0 rows
+2026-03-04 11:02:29.627 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:21:48.829 [INF] (41) Application is shutting down...
+2026-03-04 11:21:52.314 [INF] (45) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:21:57.365 [INF] (45) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:22:02.426 [INF] (45) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:22:07.485 [INF] (45) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:22:12.551 [INF] (48) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:22:17.595 [INF] (48) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:24:28.862 [INF] (8) Master dispatch loop started.
+2026-03-04 11:24:28.879 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 11:24:28.904 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 11:24:28.929 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 11:24:28.930 [INF] (2) Hosting environment: Development
+2026-03-04 11:24:28.931 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 11:24:29.637 [INF] (5) [PENDING] returned 1 rows
+2026-03-04 11:24:30.046 [INF] (8) [PENDING] returned 1 rows
+2026-03-04 11:24:30.272 [INF] (8) [PENDING] returned 1 rows
+2026-03-04 11:24:30.535 [INF] (9) [PENDING] returned 1 rows
+2026-03-04 11:24:38.949 [INF] (15) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1953 node=7F-M1
+2026-03-04 11:24:38.963 [INF] (8) Pushed 1 tasks to 7F-M1
+2026-03-04 11:24:38.963 [INF] (9) [EXEC] start hid=1953 action=copy from=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF to=\\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-04 11:24:38.986 [WRN] (15) [DELETE_FAIL_FIX] start hid=1953
+2026-03-04 11:24:39.025 [INF] (15) [JOB_REPORT] hid=1953 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:24:39.033 [INF] (15) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:24:39.044 [INF] (8) [COPY] hid=1953 src=\\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.MXF temp=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF
+2026-03-04 11:24:53.459 [INF] (5) [PENDING] returned 1 rows
+2026-03-04 11:24:56.961 [INF] (9) [PENDING] returned 1 rows
+2026-03-04 11:25:00.524 [INF] (17) [1953] [VERIFY] path=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF, actual=460334712, size4F=460334712, size7F=61355063340, match4=true, match7=false, ok=true
+2026-03-04 11:25:00.526 [INF] (17) [COPY] hid=1953 finalize temp=\\192.168.30.110\nasb\Restore\temp\2101A1E8.MXF -> dst=\\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-04 11:25:00.541 [WRN] (5) [DELETE_FAIL_FIX] start hid=1953
+2026-03-04 11:25:00.557 [INF] (17) [JOB_REPORT] hid=1953 node=7F-M1 status=14 err=null updated=1
+2026-03-04 11:25:00.568 [INF] (17) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:25:00.570 [INF] (9) [EXEC] done hid=1953 ok=true status=14
+2026-03-04 11:25:19.046 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 11:25:19.049 [INF] (17) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 11:25:19.049 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 11:25:19.051 [WRN] (17) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 11:25:19.058 [INF] (17) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:25:19.062 [INF] (17) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:25:19.081 [INF] (17) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 11:25:28.241 [INF] (5) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:25:28.243 [INF] (5) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 11:25:28.295 [INF] (5) [COPY_VERIFY] start hid=1960
+2026-03-04 11:25:28.300 [INF] (5) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:25:28.333 [INF] (15) [COPY_VERIFY] inserted storage record hid=1960 file_id=24935 storage_id=44
+2026-03-04 11:25:28.335 [WRN] (15) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 11:25:28.338 [INF] (15) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:25:28.342 [INF] (15) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:25:28.344 [INF] (15) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 11:25:29.087 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 11:25:29.089 [INF] (9) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 11:25:29.089 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-04 11:25:29.091 [WRN] (15) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 11:25:29.094 [INF] (15) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:25:29.096 [INF] (15) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:25:29.141 [INF] (17) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 11:25:29.167 [INF] (15) [PENDING] returned 5 rows
+2026-03-04 11:25:33.701 [INF] (15) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:25:33.703 [INF] (15) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 11:25:33.766 [INF] (17) [COPY_VERIFY] start hid=1961
+2026-03-04 11:25:33.771 [INF] (17) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:25:33.783 [INF] (17) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 11:25:33.785 [WRN] (17) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 11:25:33.797 [INF] (9) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:25:33.798 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:25:33.799 [INF] (17) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 11:25:39.109 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 11:25:39.116 [INF] (15) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 11:25:39.116 [INF] (17) Pushed 1 tasks to 7F-M1
+2026-03-04 11:25:39.123 [WRN] (15) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 11:25:39.134 [INF] (15) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:25:39.137 [INF] (15) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:25:39.157 [INF] (17) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 11:25:48.818 [INF] (15) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 11:25:48.821 [INF] (15) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 11:25:48.829 [INF] (15) [COPY_VERIFY] start hid=1956
+2026-03-04 11:25:48.834 [INF] (15) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:25:48.850 [INF] (17) [COPY_VERIFY] inserted storage record hid=1956 file_id=24781 storage_id=44
+2026-03-04 11:25:48.860 [WRN] (17) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 11:25:48.870 [INF] (17) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:25:48.871 [INF] (17) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:25:48.872 [INF] (17) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 11:25:49.146 [INF] (15) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 11:25:49.154 [INF] (17) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 11:25:49.154 [INF] (15) Pushed 1 tasks to 7F-M1
+2026-03-04 11:25:49.188 [WRN] (17) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 11:25:49.201 [INF] (17) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:25:49.225 [INF] (17) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:25:49.240 [INF] (17) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 11:25:53.740 [INF] (9) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 11:25:53.742 [INF] (9) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 11:25:53.755 [INF] (9) [COPY_VERIFY] start hid=1957
+2026-03-04 11:25:53.758 [INF] (17) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:25:53.760 [INF] (17) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 11:25:53.761 [WRN] (17) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 11:25:53.769 [INF] (9) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:25:53.776 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:25:53.783 [INF] (9) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 11:25:58.739 [INF] (17) [PENDING] returned 2 rows
+2026-03-04 11:25:59.214 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 11:25:59.220 [INF] (17) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 11:25:59.220 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 11:25:59.226 [WRN] (17) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 11:25:59.235 [INF] (17) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:25:59.238 [INF] (17) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:25:59.249 [INF] (17) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 11:26:08.062 [INF] (15) [PENDING] returned 2 rows
+2026-03-04 11:26:08.587 [INF] (5) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:26:08.589 [INF] (5) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 11:26:08.612 [INF] (5) [COPY_VERIFY] start hid=1958
+2026-03-04 11:26:08.620 [INF] (15) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:26:08.631 [INF] (5) [COPY_VERIFY] inserted storage record hid=1958 file_id=24950 storage_id=44
+2026-03-04 11:26:08.632 [WRN] (5) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 11:26:08.656 [INF] (15) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:26:08.661 [INF] (15) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:26:08.662 [INF] (15) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 11:26:09.263 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 11:26:09.267 [INF] (15) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 11:26:09.267 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-04 11:26:09.274 [WRN] (15) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 11:26:09.287 [INF] (5) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:26:09.294 [INF] (5) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:26:09.334 [INF] (5) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 11:26:13.898 [INF] (5) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:26:13.907 [INF] (5) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 11:26:14.002 [INF] (5) [COPY_VERIFY] start hid=1959
+2026-03-04 11:26:14.010 [INF] (5) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:26:14.014 [INF] (5) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 11:26:14.015 [WRN] (5) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 11:26:14.020 [INF] (5) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:26:14.021 [INF] (5) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:26:14.022 [INF] (5) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 11:34:47.744 [INF] (39) Application is shutting down...
+2026-03-04 11:34:50.944 [INF] (32) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:34:55.997 [INF] (32) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:35:01.045 [INF] (32) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:35:06.101 [INF] (32) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:35:11.147 [INF] (32) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:35:16.202 [INF] (32) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:35:23.608 [INF] (8) Master dispatch loop started.
+2026-03-04 11:35:23.627 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 11:35:23.670 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 11:35:23.675 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 11:35:23.677 [INF] (2) Hosting environment: Development
+2026-03-04 11:35:23.678 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 11:35:25.800 [INF] (9) [PENDING] returned 7 rows
+2026-03-04 11:35:33.703 [INF] (8) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 11:35:33.721 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 11:35:33.723 [INF] (9) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 11:35:33.752 [WRN] (13) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 11:35:33.807 [INF] (13) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:35:33.812 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:35:33.841 [WRN] (8) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 11:35:33.852 [INF] (8) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 11:35:33.887 [INF] (8) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:35:33.889 [INF] (9) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 11:35:43.745 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 11:35:43.746 [INF] (8) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 11:35:43.747 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 11:35:43.748 [WRN] (13) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 11:35:43.752 [INF] (13) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:35:43.754 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:35:43.780 [INF] (13) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 11:35:53.259 [INF] (5) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:35:53.264 [INF] (5) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 11:35:53.287 [INF] (5) [COPY_VERIFY] start hid=1960
+2026-03-04 11:35:53.298 [INF] (5) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:35:53.323 [INF] (5) [COPY_VERIFY] already exists hid=1960 file_id=24935 storage_id=44
+2026-03-04 11:35:53.324 [WRN] (5) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 11:35:53.332 [INF] (5) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:35:53.334 [INF] (5) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:35:53.337 [INF] (5) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 11:35:53.767 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 11:35:53.770 [INF] (8) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 11:35:53.770 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-04 11:35:53.773 [WRN] (8) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 11:35:53.778 [INF] (8) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:35:53.780 [INF] (8) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:35:53.804 [INF] (8) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 11:35:58.255 [INF] (8) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:35:58.258 [INF] (8) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 11:35:58.333 [INF] (8) [COPY_VERIFY] start hid=1961
+2026-03-04 11:35:58.340 [INF] (8) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:35:58.347 [INF] (8) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 11:35:58.348 [WRN] (8) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 11:35:58.353 [INF] (8) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:35:58.354 [INF] (8) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:35:58.355 [INF] (8) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 11:36:03.847 [INF] (8) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 11:36:03.849 [INF] (9) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 11:36:03.849 [INF] (8) Pushed 1 tasks to 7F-M1
+2026-03-04 11:36:03.850 [WRN] (9) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 11:36:03.855 [INF] (8) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:36:03.858 [INF] (8) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:36:03.865 [INF] (9) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 11:36:13.316 [INF] (5) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 11:36:13.321 [INF] (5) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 11:36:13.341 [INF] (5) [COPY_VERIFY] start hid=1956
+2026-03-04 11:36:13.346 [INF] (5) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:36:13.353 [INF] (5) [COPY_VERIFY] already exists hid=1956 file_id=24781 storage_id=44
+2026-03-04 11:36:13.355 [WRN] (5) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 11:36:13.359 [INF] (5) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:36:13.362 [INF] (5) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:36:13.364 [INF] (9) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 11:36:13.879 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 11:36:13.881 [INF] (9) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 11:36:13.882 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 11:36:13.884 [WRN] (9) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 11:36:13.890 [INF] (9) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:36:13.893 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:36:13.917 [INF] (9) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 11:36:18.373 [INF] (9) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 11:36:18.376 [INF] (9) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 11:36:18.390 [INF] (9) [COPY_VERIFY] start hid=1957
+2026-03-04 11:36:18.402 [INF] (8) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:36:18.426 [INF] (8) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 11:36:18.427 [WRN] (8) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 11:36:18.447 [INF] (8) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:36:18.456 [INF] (8) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:36:18.458 [INF] (5) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 11:36:23.930 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 11:36:23.932 [INF] (8) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 11:36:23.932 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-04 11:36:23.934 [WRN] (8) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 11:36:23.939 [INF] (5) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:36:23.940 [INF] (5) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:36:23.968 [INF] (5) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 11:36:33.045 [INF] (5) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:36:33.047 [INF] (5) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 11:36:33.060 [INF] (5) [COPY_VERIFY] start hid=1958
+2026-03-04 11:36:33.065 [INF] (13) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:36:33.075 [INF] (13) [COPY_VERIFY] already exists hid=1958 file_id=24950 storage_id=44
+2026-03-04 11:36:33.078 [WRN] (13) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 11:36:33.090 [INF] (13) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:36:33.091 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:36:33.092 [INF] (13) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 11:36:33.983 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 11:36:33.985 [INF] (13) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 11:36:33.985 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-04 11:36:33.986 [WRN] (13) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 11:36:33.992 [INF] (13) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:36:33.993 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:36:34.004 [INF] (13) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 11:36:38.488 [INF] (8) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:36:38.489 [INF] (8) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 11:36:38.545 [INF] (8) [COPY_VERIFY] start hid=1959
+2026-03-04 11:36:38.549 [INF] (8) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:36:38.552 [INF] (8) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 11:36:38.554 [WRN] (8) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 11:36:38.558 [INF] (8) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:36:38.560 [INF] (8) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:36:38.561 [INF] (8) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 11:48:11.764 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:48:12.291 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:48:13.140 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:48:13.356 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:48:13.577 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:48:18.583 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:48:24.371 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:48:28.589 [INF] (40) [PENDING] returned 0 rows
+2026-03-04 11:48:33.579 [INF] (40) [PENDING] returned 0 rows
+2026-03-04 11:48:35.177 [INF] (42) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 11:48:35.185 [INF] (39) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 11:48:35.186 [INF] (31) Pushed 1 tasks to 7F-M1
+2026-03-04 11:48:35.189 [WRN] (40) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 11:48:35.200 [INF] (31) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:48:35.204 [INF] (31) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:48:35.211 [WRN] (31) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 11:48:35.217 [INF] (31) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 11:48:35.221 [INF] (31) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:48:35.222 [INF] (31) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 11:48:38.584 [INF] (40) [PENDING] returned 6 rows
+2026-03-04 11:48:43.597 [INF] (31) [PENDING] returned 6 rows
+2026-03-04 11:48:45.226 [INF] (31) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 11:48:45.229 [INF] (43) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 11:48:45.229 [INF] (31) Pushed 1 tasks to 7F-M1
+2026-03-04 11:48:45.232 [WRN] (43) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 11:48:45.241 [INF] (43) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:48:45.243 [INF] (43) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:48:45.272 [INF] (43) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 11:48:48.591 [INF] (43) [PENDING] returned 6 rows
+2026-03-04 11:48:53.592 [INF] (40) [PENDING] returned 6 rows
+2026-03-04 11:48:54.723 [INF] (43) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:48:54.726 [INF] (43) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 11:48:54.740 [INF] (43) [COPY_VERIFY] start hid=1960
+2026-03-04 11:48:54.750 [INF] (43) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:48:54.764 [INF] (43) [COPY_VERIFY] already exists hid=1960 file_id=24935 storage_id=44
+2026-03-04 11:48:54.766 [WRN] (43) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 11:48:54.776 [INF] (43) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:48:54.781 [INF] (43) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:48:54.783 [INF] (43) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 11:48:55.247 [INF] (31) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 11:48:55.251 [INF] (43) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 11:48:55.251 [INF] (31) Pushed 1 tasks to 7F-M1
+2026-03-04 11:48:55.256 [WRN] (43) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 11:48:55.262 [INF] (43) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:48:55.264 [INF] (43) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:48:55.287 [INF] (43) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 11:48:58.593 [INF] (40) [PENDING] returned 5 rows
+2026-03-04 11:48:59.772 [INF] (31) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:48:59.773 [INF] (31) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 11:48:59.833 [INF] (31) [COPY_VERIFY] start hid=1961
+2026-03-04 11:48:59.836 [INF] (43) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:48:59.843 [INF] (43) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 11:48:59.847 [WRN] (43) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 11:48:59.852 [INF] (43) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:48:59.855 [INF] (43) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:48:59.856 [INF] (43) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 11:49:03.586 [INF] (31) [PENDING] returned 4 rows
+2026-03-04 11:49:05.296 [INF] (31) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 11:49:05.297 [INF] (43) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 11:49:05.297 [INF] (31) Pushed 1 tasks to 7F-M1
+2026-03-04 11:49:05.298 [WRN] (43) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 11:49:05.304 [INF] (43) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:49:05.306 [INF] (43) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:49:05.314 [INF] (43) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 11:49:08.605 [INF] (31) [PENDING] returned 4 rows
+2026-03-04 11:49:13.596 [INF] (43) [PENDING] returned 4 rows
+2026-03-04 11:49:14.808 [INF] (31) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 11:49:14.810 [INF] (31) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 11:49:14.823 [INF] (31) [COPY_VERIFY] start hid=1956
+2026-03-04 11:49:14.827 [INF] (31) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:49:14.833 [INF] (31) [COPY_VERIFY] already exists hid=1956 file_id=24781 storage_id=44
+2026-03-04 11:49:14.834 [WRN] (31) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 11:49:14.862 [INF] (31) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:49:14.864 [INF] (31) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:49:14.866 [INF] (43) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 11:49:15.362 [INF] (43) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 11:49:15.371 [INF] (31) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 11:49:15.371 [INF] (43) Pushed 1 tasks to 7F-M1
+2026-03-04 11:49:15.411 [WRN] (43) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 11:49:15.417 [INF] (43) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:49:15.431 [INF] (43) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:49:15.452 [INF] (43) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 11:49:18.594 [INF] (40) [PENDING] returned 3 rows
+2026-03-04 11:49:19.993 [INF] (40) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 11:49:19.997 [INF] (40) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 11:49:20.016 [INF] (40) [COPY_VERIFY] start hid=1957
+2026-03-04 11:49:20.023 [INF] (40) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:49:20.031 [INF] (40) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 11:49:20.033 [WRN] (40) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 11:49:20.044 [INF] (31) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:49:20.045 [INF] (31) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:49:20.046 [INF] (40) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 11:49:23.596 [INF] (40) [PENDING] returned 2 rows
+2026-03-04 11:49:25.433 [INF] (40) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 11:49:25.438 [INF] (40) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 11:49:25.438 [INF] (31) Pushed 1 tasks to 7F-M1
+2026-03-04 11:49:25.444 [WRN] (40) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 11:49:25.455 [INF] (40) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:49:25.460 [INF] (40) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:49:25.468 [INF] (31) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 11:49:28.590 [INF] (31) [PENDING] returned 2 rows
+2026-03-04 11:49:33.583 [INF] (41) [PENDING] returned 2 rows
+2026-03-04 11:49:34.897 [INF] (43) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:49:34.900 [INF] (43) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 11:49:34.916 [INF] (43) [COPY_VERIFY] start hid=1958
+2026-03-04 11:49:34.922 [INF] (43) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:49:34.936 [INF] (41) [COPY_VERIFY] already exists hid=1958 file_id=24950 storage_id=44
+2026-03-04 11:49:34.937 [WRN] (41) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 11:49:34.947 [INF] (43) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:49:34.950 [INF] (43) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:49:34.952 [INF] (43) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 11:49:35.477 [INF] (43) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 11:49:35.478 [INF] (41) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 11:49:35.478 [INF] (43) Pushed 1 tasks to 7F-M1
+2026-03-04 11:49:35.480 [WRN] (31) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 11:49:35.484 [INF] (31) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:49:35.485 [INF] (31) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:49:35.501 [INF] (31) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 11:49:38.594 [INF] (43) [PENDING] returned 1 rows
+2026-03-04 11:49:40.122 [INF] (41) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:49:40.124 [INF] (41) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 11:49:40.207 [INF] (41) [COPY_VERIFY] start hid=1959
+2026-03-04 11:49:40.211 [INF] (41) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:49:40.213 [INF] (41) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 11:49:40.214 [WRN] (41) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 11:49:40.217 [INF] (41) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:49:40.218 [INF] (41) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:49:40.219 [INF] (41) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 11:49:43.575 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:49:49.358 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:49:54.359 [INF] (43) [PENDING] returned 0 rows
+2026-03-04 11:49:59.362 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:50:04.350 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:50:09.360 [INF] (43) [PENDING] returned 0 rows
+2026-03-04 11:50:14.377 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:50:19.387 [INF] (43) [PENDING] returned 0 rows
+2026-03-04 11:50:24.350 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:50:29.354 [INF] (43) [PENDING] returned 0 rows
+2026-03-04 11:50:34.345 [INF] (43) [PENDING] returned 0 rows
+2026-03-04 11:50:39.353 [INF] (43) [PENDING] returned 0 rows
+2026-03-04 11:50:44.356 [INF] (43) [PENDING] returned 0 rows
+2026-03-04 11:51:16.334 [INF] (37) [PENDING] returned 0 rows
+2026-03-04 11:51:18.375 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:51:18.579 [ERR] (43) An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): 目前的命令發生嚴重錯誤。如有任何結果，應予捨棄。
+使用者已經取消作業。
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at FileMoverWeb.Services.TaskPoller.GetPendingUIAsync(String group, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\TaskPoller.cs:line 211
+   at FileMoverWeb.Controllers.JobsController.Pending(CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Controllers\JobsController.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:0a9a1870-969d-4894-9cdb-f138613332d1
+2026-03-04 11:51:19.105 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:51:23.770 [ERR] (37) An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): 目前的命令發生嚴重錯誤。如有任何結果，應予捨棄。
+使用者已經取消作業。
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at FileMoverWeb.Services.TaskPoller.GetPendingUIAsync(String group, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Services\TaskPoller.cs:line 211
+   at FileMoverWeb.Controllers.JobsController.Pending(CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Controllers\JobsController.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:0a9a1870-969d-4894-9cdb-f138613332d1
+2026-03-04 11:51:24.151 [INF] (31) [PENDING] returned 0 rows
+2026-03-04 11:51:24.499 [INF] (35) [PENDING] returned 0 rows
+2026-03-04 11:51:24.723 [INF] (37) [PENDING] returned 0 rows
+2026-03-04 11:51:24.969 [INF] (35) [PENDING] returned 0 rows
+2026-03-04 11:51:25.431 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:51:25.639 [INF] (35) [PENDING] returned 0 rows
+2026-03-04 11:51:25.843 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:51:26.040 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:51:31.039 [INF] (43) [PENDING] returned 0 rows
+2026-03-04 11:51:36.038 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:51:41.058 [INF] (43) [PENDING] returned 7 rows
+2026-03-04 11:51:45.728 [INF] (43) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 11:51:45.732 [INF] (43) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 11:51:45.732 [INF] (33) Pushed 1 tasks to 7F-M1
+2026-03-04 11:51:45.738 [WRN] (35) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 11:51:45.746 [INF] (35) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:51:45.749 [INF] (35) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:51:45.752 [WRN] (33) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 11:51:45.759 [INF] (35) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 11:51:45.765 [INF] (35) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:51:45.767 [INF] (35) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 11:51:46.042 [INF] (33) [PENDING] returned 6 rows
+2026-03-04 11:51:51.060 [INF] (35) [PENDING] returned 6 rows
+2026-03-04 11:51:55.771 [INF] (32) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 11:51:55.773 [INF] (32) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 11:51:55.773 [INF] (33) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 11:51:55.774 [WRN] (35) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 11:51:55.775 [INF] (32) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 11:51:55.775 [INF] (33) Pushed 2 tasks to 7F-M1
+2026-03-04 11:51:55.778 [WRN] (35) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 11:51:55.779 [INF] (35) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:51:55.780 [INF] (35) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:51:55.791 [INF] (33) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:51:55.794 [INF] (33) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:51:55.799 [INF] (35) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 11:51:55.808 [INF] (33) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 11:51:56.047 [INF] (35) [PENDING] returned 6 rows
+2026-03-04 11:52:01.042 [INF] (30) [PENDING] returned 6 rows
+2026-03-04 11:52:06.046 [INF] (33) [PENDING] returned 6 rows
+2026-03-04 11:52:11.044 [INF] (30) [PENDING] returned 6 rows
+2026-03-04 11:52:13.145 [INF] (30) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:52:13.145 [INF] (43) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:52:13.148 [INF] (30) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 11:52:13.150 [INF] (43) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 11:52:13.186 [INF] (43) [COPY_VERIFY] start hid=1960
+2026-03-04 11:52:13.190 [INF] (43) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:52:13.198 [INF] (43) [COPY_VERIFY] already exists hid=1960 file_id=24935 storage_id=44
+2026-03-04 11:52:13.199 [WRN] (43) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 11:52:13.206 [INF] (43) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:52:13.221 [INF] (43) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:52:13.225 [INF] (43) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 11:52:13.241 [INF] (30) [COPY_VERIFY] start hid=1961
+2026-03-04 11:52:13.247 [INF] (30) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:52:13.267 [INF] (30) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 11:52:13.268 [WRN] (30) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 11:52:13.276 [INF] (30) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:52:13.279 [INF] (30) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:52:13.282 [INF] (30) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 11:52:15.806 [INF] (43) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 11:52:15.807 [INF] (30) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 11:52:15.807 [INF] (43) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 11:52:15.809 [WRN] (30) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 11:52:15.809 [INF] (33) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 11:52:15.810 [INF] (43) Pushed 2 tasks to 7F-M1
+2026-03-04 11:52:15.812 [WRN] (35) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 11:52:15.813 [INF] (43) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:52:15.814 [INF] (43) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:52:15.815 [INF] (35) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:52:15.817 [INF] (35) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:52:15.820 [INF] (43) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 11:52:15.822 [INF] (35) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 11:52:16.067 [INF] (32) [PENDING] returned 4 rows
+2026-03-04 11:52:21.060 [INF] (43) [PENDING] returned 4 rows
+2026-03-04 11:52:26.065 [INF] (43) [PENDING] returned 4 rows
+2026-03-04 11:52:31.061 [INF] (32) [PENDING] returned 4 rows
+2026-03-04 11:52:33.352 [INF] (35) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 11:52:33.352 [INF] (30) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 11:52:33.354 [INF] (35) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 11:52:33.356 [INF] (30) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 11:52:33.768 [INF] (35) [COPY_VERIFY] start hid=1956
+2026-03-04 11:52:33.770 [INF] (30) [COPY_VERIFY] start hid=1957
+2026-03-04 11:52:33.771 [INF] (30) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:52:33.772 [INF] (35) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:52:33.776 [INF] (35) [COPY_VERIFY] already exists hid=1956 file_id=24781 storage_id=44
+2026-03-04 11:52:33.777 [INF] (30) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 11:52:33.780 [WRN] (35) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 11:52:33.786 [INF] (35) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:52:33.790 [INF] (35) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:52:33.792 [INF] (35) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 11:52:33.800 [WRN] (30) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 11:52:33.808 [INF] (30) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:52:33.809 [INF] (30) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:52:33.810 [INF] (30) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 11:52:35.844 [INF] (35) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 11:52:35.845 [INF] (30) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 11:52:35.845 [INF] (35) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 11:52:35.847 [WRN] (30) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 11:52:35.848 [INF] (32) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 11:52:35.848 [INF] (35) Pushed 2 tasks to 7F-M1
+2026-03-04 11:52:35.850 [WRN] (32) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 11:52:35.850 [INF] (30) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:52:35.855 [INF] (32) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 11:52:35.855 [INF] (30) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:52:35.857 [INF] (32) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 11:52:35.862 [INF] (32) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 11:52:35.863 [INF] (30) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 11:52:36.052 [INF] (32) [PENDING] returned 2 rows
+2026-03-04 11:52:41.048 [INF] (32) [PENDING] returned 2 rows
+2026-03-04 11:52:46.040 [INF] (30) [PENDING] returned 2 rows
+2026-03-04 11:52:51.047 [INF] (30) [PENDING] returned 2 rows
+2026-03-04 11:52:53.421 [INF] (35) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:52:53.421 [INF] (30) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 11:52:53.425 [INF] (35) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 11:52:53.428 [INF] (30) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 11:52:53.451 [INF] (30) [COPY_VERIFY] start hid=1958
+2026-03-04 11:52:53.456 [INF] (30) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 11:52:53.465 [INF] (30) [COPY_VERIFY] already exists hid=1958 file_id=24950 storage_id=44
+2026-03-04 11:52:53.466 [WRN] (30) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 11:52:53.470 [INF] (30) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:52:53.471 [INF] (30) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:52:53.472 [INF] (30) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 11:52:53.499 [INF] (30) [COPY_VERIFY] start hid=1959
+2026-03-04 11:52:53.503 [INF] (30) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 11:52:53.507 [INF] (30) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 11:52:53.508 [WRN] (30) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 11:52:53.510 [INF] (30) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 11:52:53.511 [INF] (30) [SLOT] release(+1) node=7F-M1
+2026-03-04 11:52:53.512 [INF] (30) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 11:52:56.049 [INF] (35) [PENDING] returned 0 rows
+2026-03-04 11:53:01.044 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:53:06.036 [INF] (35) [PENDING] returned 0 rows
+2026-03-04 11:53:11.043 [INF] (35) [PENDING] returned 0 rows
+2026-03-04 11:53:16.038 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:53:21.044 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:53:26.046 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:53:31.057 [INF] (35) [PENDING] returned 0 rows
+2026-03-04 11:53:36.050 [INF] (35) [PENDING] returned 0 rows
+2026-03-04 11:53:41.044 [INF] (35) [PENDING] returned 0 rows
+2026-03-04 11:53:46.044 [INF] (34) [PENDING] returned 0 rows
+2026-03-04 11:53:51.049 [INF] (34) [PENDING] returned 0 rows
+2026-03-04 11:53:56.044 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:54:01.030 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:54:06.044 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:54:11.044 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:54:16.038 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:54:21.045 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:54:26.042 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:54:31.040 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:54:36.053 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:54:41.053 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:54:46.035 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:54:51.039 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:54:56.044 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:55:01.042 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:55:06.044 [INF] (33) [PENDING] returned 0 rows
+2026-03-04 11:55:11.037 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:55:16.035 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:55:21.043 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:55:26.047 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:55:31.046 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:55:36.041 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:55:41.054 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:55:46.047 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:55:51.042 [INF] (39) [PENDING] returned 0 rows
+2026-03-04 11:55:56.047 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:56:01.044 [INF] (30) [PENDING] returned 0 rows
+2026-03-04 11:56:01.989 [INF] (41) Application is shutting down...
+2026-03-04 11:56:05.436 [INF] (39) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:56:10.487 [INF] (30) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:56:15.537 [INF] (30) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:56:20.591 [INF] (30) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:56:25.647 [INF] (30) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 11:56:30.700 [INF] (30) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 12:00:00.707 [INF] (8) Master dispatch loop started.
+2026-03-04 12:00:00.725 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 12:00:00.749 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 12:00:00.750 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 12:00:00.751 [INF] (2) Hosting environment: Development
+2026-03-04 12:00:00.752 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 12:00:20.796 [INF] (14) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 12:00:20.815 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 12:00:20.816 [INF] (9) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 12:00:20.846 [WRN] (9) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:00:20.928 [INF] (13) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:00:20.947 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:00:20.953 [WRN] (13) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:00:20.961 [INF] (13) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 12:00:20.968 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:00:20.969 [INF] (13) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 12:00:30.837 [INF] (14) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 12:00:30.839 [INF] (13) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:00:30.839 [INF] (14) Pushed 1 tasks to 7F-M1
+2026-03-04 12:00:30.841 [WRN] (9) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:00:30.845 [INF] (9) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:00:30.846 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:00:30.873 [INF] (9) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 12:00:40.013 [INF] (13) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:00:40.015 [INF] (13) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:00:40.030 [INF] (13) [COPY_VERIFY] start hid=1960
+2026-03-04 12:00:40.057 [INF] (13) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:00:40.066 [INF] (13) [COPY_VERIFY] already exists hid=1960 file_id=24935 storage_id=44
+2026-03-04 12:00:40.068 [WRN] (13) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:00:40.096 [INF] (12) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:00:40.100 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:00:40.101 [INF] (9) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 12:00:40.891 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 12:00:40.893 [INF] (9) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:00:40.893 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 12:00:40.894 [WRN] (14) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:00:40.897 [INF] (13) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:00:40.899 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:00:40.910 [INF] (13) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 12:00:45.364 [INF] (9) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:00:45.366 [INF] (9) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:00:45.425 [INF] (9) [COPY_VERIFY] start hid=1961
+2026-03-04 12:00:45.432 [INF] (13) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:00:45.440 [INF] (13) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 12:00:45.441 [WRN] (13) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:00:45.447 [INF] (13) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:00:45.449 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:00:45.451 [INF] (9) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 12:00:50.920 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 12:00:50.921 [INF] (9) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:00:50.921 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 12:00:50.923 [WRN] (9) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:00:50.926 [INF] (13) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:00:50.927 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:00:50.942 [INF] (14) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 12:01:00.389 [INF] (15) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:01:00.390 [INF] (15) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:01:00.404 [INF] (15) [COPY_VERIFY] start hid=1956
+2026-03-04 12:01:00.409 [INF] (15) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:01:00.438 [INF] (15) [COPY_VERIFY] already exists hid=1956 file_id=24781 storage_id=44
+2026-03-04 12:01:00.439 [WRN] (15) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:01:00.450 [INF] (15) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:01:00.461 [INF] (15) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:01:00.474 [INF] (15) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 12:01:00.952 [INF] (15) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 12:01:00.954 [INF] (13) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:01:00.954 [INF] (15) Pushed 1 tasks to 7F-M1
+2026-03-04 12:01:00.956 [WRN] (13) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:01:00.960 [INF] (13) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:01:00.961 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:01:00.995 [INF] (13) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 12:01:05.526 [INF] (12) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:01:05.530 [INF] (12) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:01:05.547 [INF] (12) [COPY_VERIFY] start hid=1957
+2026-03-04 12:01:05.549 [INF] (12) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:01:05.552 [INF] (12) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 12:01:05.553 [WRN] (12) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:01:05.557 [INF] (9) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:01:05.558 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:01:05.560 [INF] (12) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 12:01:10.996 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 12:01:11.001 [INF] (14) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:01:11.001 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 12:01:11.009 [WRN] (14) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:01:11.019 [INF] (14) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:01:11.023 [INF] (14) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:01:11.032 [INF] (14) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 12:01:20.394 [INF] (9) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:01:20.396 [INF] (9) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:01:20.409 [INF] (9) [COPY_VERIFY] start hid=1958
+2026-03-04 12:01:20.412 [INF] (14) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:01:20.424 [INF] (14) [COPY_VERIFY] already exists hid=1958 file_id=24950 storage_id=44
+2026-03-04 12:01:20.432 [WRN] (14) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:01:20.440 [INF] (9) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:01:20.442 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:01:20.462 [INF] (9) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 12:01:21.040 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 12:01:21.042 [INF] (14) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:01:21.042 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 12:01:21.044 [WRN] (14) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:01:21.048 [INF] (14) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:01:21.055 [INF] (14) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:01:21.076 [INF] (14) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 12:01:25.558 [INF] (14) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:01:25.560 [INF] (14) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:01:25.634 [INF] (14) [COPY_VERIFY] start hid=1959
+2026-03-04 12:01:25.638 [INF] (14) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:01:25.641 [INF] (14) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 12:01:25.641 [WRN] (14) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:01:25.646 [INF] (5) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:01:25.647 [INF] (5) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:01:25.648 [INF] (5) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 12:01:41.085 [INF] (14) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 12:01:41.086 [INF] (13) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 12:01:41.086 [INF] (14) Pushed 1 tasks to 7F-M1
+2026-03-04 12:01:41.088 [WRN] (13) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:01:41.092 [INF] (13) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:01:41.093 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:01:41.095 [WRN] (13) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:01:41.106 [INF] (13) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 12:01:41.110 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:01:41.112 [INF] (5) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 12:01:51.108 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 12:01:51.110 [INF] (14) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:01:51.110 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-04 12:01:51.111 [WRN] (14) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:01:51.115 [INF] (14) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:01:51.116 [INF] (14) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:01:51.139 [INF] (14) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 12:02:00.149 [INF] (5) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:02:00.151 [INF] (5) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:02:00.163 [INF] (5) [COPY_VERIFY] start hid=1960
+2026-03-04 12:02:00.167 [INF] (5) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:02:00.171 [INF] (5) [COPY_VERIFY] already exists hid=1960 file_id=24935 storage_id=44
+2026-03-04 12:02:00.172 [WRN] (5) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:02:00.179 [INF] (5) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:02:00.188 [INF] (5) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:02:00.191 [INF] (5) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 12:02:01.151 [INF] (16) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 12:02:01.159 [INF] (5) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:02:01.159 [INF] (16) Pushed 1 tasks to 7F-M1
+2026-03-04 12:02:01.161 [WRN] (14) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:02:01.165 [INF] (16) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:02:01.166 [INF] (16) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:02:01.181 [INF] (16) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 12:02:05.671 [INF] (14) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:02:05.673 [INF] (14) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:02:05.736 [INF] (14) [COPY_VERIFY] start hid=1961
+2026-03-04 12:02:05.741 [INF] (14) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:02:05.754 [INF] (14) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 12:02:05.761 [WRN] (14) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:02:05.774 [INF] (14) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:02:05.775 [INF] (14) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:02:05.776 [INF] (14) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 12:02:11.218 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 12:02:11.225 [INF] (13) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:02:11.225 [INF] (17) Pushed 1 tasks to 7F-M1
+2026-03-04 12:02:11.249 [WRN] (13) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:02:11.261 [INF] (13) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:02:11.267 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:02:11.279 [INF] (13) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 12:02:20.343 [INF] (14) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:02:20.345 [INF] (14) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:02:20.358 [INF] (14) [COPY_VERIFY] start hid=1956
+2026-03-04 12:02:20.361 [INF] (14) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:02:20.392 [INF] (14) [COPY_VERIFY] already exists hid=1956 file_id=24781 storage_id=44
+2026-03-04 12:02:20.394 [WRN] (14) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:02:20.399 [INF] (14) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:02:20.401 [INF] (14) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:02:20.402 [INF] (14) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 12:02:21.297 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 12:02:21.299 [INF] (13) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:02:21.299 [INF] (14) Pushed 1 tasks to 7F-M1
+2026-03-04 12:02:21.300 [WRN] (13) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:02:21.304 [INF] (13) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:02:21.305 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:02:21.324 [INF] (13) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 12:02:25.864 [INF] (17) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:02:25.866 [INF] (17) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:02:25.880 [INF] (14) [COPY_VERIFY] start hid=1957
+2026-03-04 12:02:25.884 [INF] (14) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:02:25.888 [INF] (14) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 12:02:25.889 [WRN] (14) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:02:25.901 [INF] (14) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:02:25.922 [INF] (14) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:02:25.925 [INF] (14) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 12:02:31.344 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 12:02:31.345 [INF] (16) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:02:31.345 [INF] (17) Pushed 1 tasks to 7F-M1
+2026-03-04 12:02:31.346 [WRN] (16) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:02:31.350 [INF] (17) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:02:31.352 [INF] (17) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:02:31.356 [INF] (17) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 12:02:41.125 [INF] (16) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:02:41.128 [INF] (16) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:02:41.184 [INF] (16) [COPY_VERIFY] start hid=1958
+2026-03-04 12:02:41.188 [INF] (16) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:02:41.193 [INF] (16) [COPY_VERIFY] already exists hid=1958 file_id=24950 storage_id=44
+2026-03-04 12:02:41.199 [WRN] (16) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:02:41.224 [INF] (13) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:02:41.229 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:02:41.231 [INF] (13) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 12:02:41.370 [INF] (16) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 12:02:41.371 [INF] (17) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:02:41.372 [INF] (16) Pushed 1 tasks to 7F-M1
+2026-03-04 12:02:41.373 [WRN] (17) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:02:41.377 [INF] (17) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:02:41.379 [INF] (17) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:02:41.411 [INF] (17) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 12:02:45.946 [INF] (13) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:02:45.948 [INF] (13) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:02:46.013 [INF] (13) [COPY_VERIFY] start hid=1959
+2026-03-04 12:02:46.015 [INF] (13) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:02:46.019 [INF] (13) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 12:02:46.020 [WRN] (13) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:02:46.047 [INF] (17) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:02:46.048 [INF] (17) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:02:46.049 [INF] (17) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 12:03:01.403 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 12:03:01.404 [INF] (15) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 12:03:01.404 [INF] (17) Pushed 1 tasks to 7F-M1
+2026-03-04 12:03:01.405 [WRN] (15) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:03:01.409 [INF] (15) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:03:01.410 [INF] (15) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:03:01.413 [WRN] (15) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:03:01.417 [INF] (15) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 12:03:01.418 [INF] (15) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:03:01.419 [INF] (15) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 12:03:11.435 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 12:03:11.437 [INF] (15) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:03:11.437 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 12:03:11.439 [WRN] (16) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:03:11.443 [INF] (16) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:03:11.444 [INF] (16) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:03:11.460 [INF] (16) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 12:03:20.550 [INF] (12) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:03:20.551 [INF] (12) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:03:20.581 [INF] (12) [COPY_VERIFY] start hid=1960
+2026-03-04 12:03:20.588 [INF] (12) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:03:20.593 [INF] (12) [COPY_VERIFY] already exists hid=1960 file_id=24935 storage_id=44
+2026-03-04 12:03:20.594 [WRN] (12) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:03:20.599 [INF] (12) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:03:20.601 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:03:20.602 [INF] (12) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 12:03:21.467 [INF] (16) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 12:03:21.469 [INF] (12) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:03:21.469 [INF] (16) Pushed 1 tasks to 7F-M1
+2026-03-04 12:03:21.470 [WRN] (12) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:03:21.475 [INF] (12) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:03:21.477 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:03:21.513 [INF] (12) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 12:03:26.170 [INF] (16) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:03:26.172 [INF] (16) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:03:26.254 [INF] (16) [COPY_VERIFY] start hid=1961
+2026-03-04 12:03:26.261 [INF] (16) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:03:26.266 [INF] (12) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 12:03:26.267 [WRN] (12) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:03:26.271 [INF] (12) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:03:26.273 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:03:26.274 [INF] (12) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 12:03:31.493 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 12:03:31.495 [INF] (16) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:03:31.495 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-04 12:03:31.496 [WRN] (16) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:03:31.499 [INF] (16) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:03:31.500 [INF] (16) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:03:31.513 [INF] (16) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 12:03:41.393 [INF] (15) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:03:41.394 [INF] (15) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:03:41.407 [INF] (15) [COPY_VERIFY] start hid=1956
+2026-03-04 12:03:41.412 [INF] (15) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:03:41.419 [INF] (15) [COPY_VERIFY] already exists hid=1956 file_id=24781 storage_id=44
+2026-03-04 12:03:41.421 [WRN] (15) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:03:41.427 [INF] (15) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:03:41.433 [INF] (15) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:03:41.435 [INF] (15) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 12:03:41.516 [INF] (16) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 12:03:41.520 [INF] (15) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:03:41.520 [INF] (16) Pushed 1 tasks to 7F-M1
+2026-03-04 12:03:41.522 [WRN] (12) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:03:41.526 [INF] (12) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:03:41.527 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:03:41.545 [INF] (12) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 12:03:46.010 [INF] (15) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:03:46.013 [INF] (15) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:03:46.048 [INF] (15) [COPY_VERIFY] start hid=1957
+2026-03-04 12:03:46.056 [INF] (15) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:03:46.060 [INF] (15) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 12:03:46.062 [WRN] (15) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:03:46.073 [INF] (17) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:03:46.089 [INF] (17) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:03:46.090 [INF] (17) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 12:03:51.549 [INF] (15) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 12:03:51.556 [INF] (15) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:03:51.556 [INF] (17) Pushed 1 tasks to 7F-M1
+2026-03-04 12:03:51.588 [WRN] (15) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:03:51.596 [INF] (17) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:03:51.603 [INF] (17) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:03:51.611 [INF] (15) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 12:04:00.833 [INF] (13) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:04:00.835 [INF] (13) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:04:00.847 [INF] (13) [COPY_VERIFY] start hid=1958
+2026-03-04 12:04:00.849 [INF] (13) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:04:00.865 [INF] (13) [COPY_VERIFY] already exists hid=1958 file_id=24950 storage_id=44
+2026-03-04 12:04:00.872 [WRN] (13) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:04:00.876 [INF] (13) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:04:00.878 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:04:00.878 [INF] (13) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 12:04:01.617 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 12:04:01.618 [INF] (12) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:04:01.618 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 12:04:01.620 [WRN] (15) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:04:01.624 [INF] (15) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:04:01.625 [INF] (15) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:04:01.643 [INF] (15) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 12:04:06.136 [INF] (13) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:04:06.138 [INF] (13) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:04:06.219 [INF] (13) [COPY_VERIFY] start hid=1959
+2026-03-04 12:04:06.221 [INF] (13) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:04:06.223 [INF] (13) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 12:04:06.224 [WRN] (13) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:04:06.227 [INF] (13) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:04:06.228 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:04:06.229 [INF] (13) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 12:04:21.670 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 12:04:21.671 [INF] (13) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 12:04:21.671 [INF] (17) Pushed 1 tasks to 7F-M1
+2026-03-04 12:04:21.673 [WRN] (13) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:04:21.677 [INF] (13) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:04:21.682 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:04:21.687 [WRN] (17) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:04:21.694 [INF] (13) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 12:04:21.698 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:04:21.701 [INF] (13) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 12:04:31.717 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 12:04:31.724 [INF] (13) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:04:31.724 [INF] (17) Pushed 1 tasks to 7F-M1
+2026-03-04 12:04:31.760 [WRN] (13) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:04:31.770 [INF] (17) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:04:31.773 [INF] (17) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:04:31.788 [INF] (17) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 12:04:41.110 [INF] (13) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:04:41.113 [INF] (13) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:04:41.126 [INF] (13) [COPY_VERIFY] start hid=1960
+2026-03-04 12:04:41.128 [INF] (13) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:04:41.142 [INF] (13) [COPY_VERIFY] already exists hid=1960 file_id=24935 storage_id=44
+2026-03-04 12:04:41.146 [WRN] (13) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:04:41.155 [INF] (13) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:04:41.156 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:04:41.157 [INF] (13) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 12:04:41.792 [INF] (15) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 12:04:41.793 [INF] (15) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:04:41.793 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 12:04:41.795 [WRN] (17) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:04:41.801 [INF] (17) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:04:41.803 [INF] (17) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:04:41.819 [INF] (17) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 12:04:46.256 [INF] (15) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:04:46.258 [INF] (15) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:04:46.348 [INF] (15) [COPY_VERIFY] start hid=1961
+2026-03-04 12:04:46.351 [INF] (15) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:04:46.356 [INF] (15) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 12:04:46.357 [WRN] (15) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:04:46.365 [INF] (15) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:04:46.366 [INF] (15) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:04:46.367 [INF] (15) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 12:04:51.814 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 12:04:51.815 [INF] (15) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:04:51.815 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-04 12:04:51.817 [WRN] (15) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:04:51.820 [INF] (15) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:04:51.822 [INF] (15) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:04:51.853 [INF] (15) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 12:05:01.116 [INF] (12) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:05:01.118 [INF] (12) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:05:01.131 [INF] (12) [COPY_VERIFY] start hid=1956
+2026-03-04 12:05:01.140 [INF] (12) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:05:01.152 [INF] (12) [COPY_VERIFY] already exists hid=1956 file_id=24781 storage_id=44
+2026-03-04 12:05:01.154 [WRN] (12) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:05:01.160 [INF] (12) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:05:01.161 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:05:01.162 [INF] (12) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 12:05:01.836 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 12:05:01.842 [INF] (15) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:05:01.842 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-04 12:05:01.864 [WRN] (15) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:05:01.876 [INF] (15) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:05:01.895 [INF] (15) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:05:01.907 [INF] (15) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 12:05:06.436 [INF] (12) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:05:06.438 [INF] (12) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:05:06.466 [INF] (17) [COPY_VERIFY] start hid=1957
+2026-03-04 12:05:06.470 [INF] (17) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:05:06.475 [INF] (17) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 12:05:06.477 [WRN] (17) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:05:06.482 [INF] (12) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:05:06.484 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:05:06.485 [INF] (12) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 12:05:11.886 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 12:05:11.887 [INF] (12) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:05:11.888 [INF] (17) Pushed 1 tasks to 7F-M1
+2026-03-04 12:05:11.889 [WRN] (12) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:05:11.892 [INF] (12) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:05:11.893 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:05:11.902 [INF] (12) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 12:05:21.346 [INF] (12) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:05:21.348 [INF] (12) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:05:21.360 [INF] (15) [COPY_VERIFY] start hid=1958
+2026-03-04 12:05:21.365 [INF] (15) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:05:21.400 [INF] (15) [COPY_VERIFY] already exists hid=1958 file_id=24950 storage_id=44
+2026-03-04 12:05:21.401 [WRN] (15) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:05:21.410 [INF] (15) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:05:21.412 [INF] (15) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:05:21.413 [INF] (15) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 12:05:21.910 [INF] (15) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 12:05:21.912 [INF] (15) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:05:21.912 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-04 12:05:21.915 [WRN] (15) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:05:21.921 [INF] (15) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:05:21.932 [INF] (15) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:05:21.960 [INF] (15) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 12:05:26.472 [INF] (12) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:05:26.475 [INF] (12) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:05:26.550 [INF] (12) [COPY_VERIFY] start hid=1959
+2026-03-04 12:05:26.552 [INF] (12) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:05:26.557 [INF] (12) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 12:05:26.558 [WRN] (12) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:05:26.561 [INF] (12) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:05:26.562 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:05:26.563 [INF] (12) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 12:09:52.404 [INF] (30) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 12:09:52.406 [INF] (27) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 12:09:52.406 [INF] (30) Pushed 1 tasks to 7F-M1
+2026-03-04 12:09:52.407 [WRN] (23) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:09:52.412 [INF] (30) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:09:52.413 [INF] (30) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:09:52.417 [WRN] (30) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:09:52.421 [INF] (30) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 12:09:52.425 [INF] (30) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:09:52.427 [INF] (23) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 12:10:02.426 [INF] (30) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 12:10:02.427 [INF] (23) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:10:02.427 [INF] (30) Pushed 1 tasks to 7F-M1
+2026-03-04 12:10:02.429 [WRN] (23) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:10:02.434 [INF] (23) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:10:02.435 [INF] (23) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:10:02.454 [INF] (23) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 12:10:11.661 [INF] (33) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:10:11.663 [INF] (33) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:10:11.675 [INF] (33) [COPY_VERIFY] start hid=1960
+2026-03-04 12:10:11.680 [INF] (33) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:10:11.697 [INF] (33) [COPY_VERIFY] already exists hid=1960 file_id=24935 storage_id=44
+2026-03-04 12:10:11.700 [WRN] (33) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:10:11.710 [INF] (33) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:10:11.723 [INF] (33) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:10:11.727 [INF] (27) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 12:10:12.461 [INF] (33) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 12:10:12.462 [INF] (33) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:10:12.462 [INF] (27) Pushed 1 tasks to 7F-M1
+2026-03-04 12:10:12.464 [WRN] (33) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:10:12.468 [INF] (33) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:10:12.486 [INF] (33) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:10:12.533 [INF] (33) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 12:10:16.972 [INF] (27) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:10:16.974 [INF] (27) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:10:17.045 [INF] (27) [COPY_VERIFY] start hid=1961
+2026-03-04 12:10:17.051 [INF] (27) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:10:17.054 [INF] (27) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 12:10:17.055 [WRN] (27) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:10:17.059 [INF] (33) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:10:17.074 [INF] (33) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:10:17.084 [INF] (33) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 12:10:22.482 [INF] (30) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 12:10:22.483 [INF] (33) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:10:22.483 [INF] (30) Pushed 1 tasks to 7F-M1
+2026-03-04 12:10:22.484 [WRN] (33) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:10:22.488 [INF] (33) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:10:22.489 [INF] (33) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:10:22.500 [INF] (33) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 12:10:32.346 [INF] (33) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:10:32.349 [INF] (33) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:10:32.403 [INF] (33) [COPY_VERIFY] start hid=1956
+2026-03-04 12:10:32.408 [INF] (33) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:10:32.416 [INF] (33) [COPY_VERIFY] already exists hid=1956 file_id=24781 storage_id=44
+2026-03-04 12:10:32.419 [WRN] (33) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:10:32.431 [INF] (33) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:10:32.434 [INF] (33) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:10:32.436 [INF] (33) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 12:10:32.520 [INF] (27) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 12:10:32.521 [INF] (33) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:10:32.521 [INF] (27) Pushed 1 tasks to 7F-M1
+2026-03-04 12:10:32.522 [WRN] (33) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:10:32.526 [INF] (33) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:10:32.527 [INF] (33) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:10:32.545 [INF] (33) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 12:10:37.021 [INF] (33) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:10:37.023 [INF] (33) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:10:37.063 [INF] (30) [COPY_VERIFY] start hid=1957
+2026-03-04 12:10:37.068 [INF] (30) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:10:37.073 [INF] (30) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 12:10:37.079 [WRN] (30) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:10:37.094 [INF] (33) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:10:37.102 [INF] (33) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:10:37.103 [INF] (33) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 12:10:42.543 [INF] (30) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 12:10:42.550 [INF] (30) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:10:42.550 [INF] (33) Pushed 1 tasks to 7F-M1
+2026-03-04 12:10:42.606 [WRN] (30) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:10:42.623 [INF] (30) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:10:42.629 [INF] (30) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:10:42.636 [INF] (30) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 12:10:51.805 [INF] (33) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:10:51.808 [INF] (33) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:10:51.885 [INF] (33) [COPY_VERIFY] start hid=1958
+2026-03-04 12:10:51.887 [INF] (33) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:10:51.890 [INF] (33) [COPY_VERIFY] already exists hid=1958 file_id=24950 storage_id=44
+2026-03-04 12:10:51.891 [WRN] (33) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:10:51.899 [INF] (26) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:10:51.905 [INF] (26) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:10:51.911 [INF] (26) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 12:10:52.634 [INF] (33) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 12:10:52.637 [INF] (26) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:10:52.638 [INF] (33) Pushed 1 tasks to 7F-M1
+2026-03-04 12:10:52.640 [WRN] (26) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:10:52.646 [INF] (26) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:10:52.648 [INF] (26) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:10:52.674 [INF] (26) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 12:10:57.135 [INF] (27) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:10:57.139 [INF] (27) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:10:57.219 [INF] (27) [COPY_VERIFY] start hid=1959
+2026-03-04 12:10:57.221 [INF] (27) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:10:57.224 [INF] (27) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 12:10:57.225 [WRN] (27) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:10:57.229 [INF] (27) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:10:57.231 [INF] (27) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:10:57.232 [INF] (27) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 12:11:12.687 [INF] (27) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 12:11:12.689 [INF] (30) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 12:11:12.689 [INF] (27) Pushed 1 tasks to 7F-M1
+2026-03-04 12:11:12.690 [WRN] (30) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:11:12.695 [INF] (30) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:11:12.696 [INF] (30) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:11:12.698 [WRN] (30) [DELETE_FAIL_FIX] start hid=1955
+2026-03-04 12:11:12.713 [INF] (27) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 12:11:12.724 [INF] (27) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:11:12.725 [INF] (27) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 12:11:22.707 [INF] (27) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1960 node=7F-M1
+2026-03-04 12:11:22.713 [INF] (27) [EXEC] start hid=1960 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:11:22.713 [INF] (32) Pushed 1 tasks to 7F-M1
+2026-03-04 12:11:22.729 [WRN] (27) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:11:22.758 [INF] (27) [JOB_REPORT] hid=1960 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:11:22.762 [INF] (27) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:11:22.778 [INF] (27) [COPY] hid=1960 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasd\temp\2101F50C.MXF
+2026-03-04 12:11:31.921 [INF] (26) [1960] [VERIFY] path=\\192.168.30.110\nasd\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:11:31.923 [INF] (26) [COPY] hid=1960 finalize temp=\\192.168.30.110\nasd\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasd\2101F50C.MXF
+2026-03-04 12:11:31.935 [INF] (26) [COPY_VERIFY] start hid=1960
+2026-03-04 12:11:31.940 [INF] (26) [COPY_VERIFY] hid=1960 file_id=24935 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:11:31.956 [INF] (26) [COPY_VERIFY] already exists hid=1960 file_id=24935 storage_id=44
+2026-03-04 12:11:31.959 [WRN] (26) [DELETE_FAIL_FIX] start hid=1960
+2026-03-04 12:11:31.969 [INF] (26) [JOB_REPORT] hid=1960 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:11:31.970 [INF] (26) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:11:31.971 [INF] (26) [EXEC] done hid=1960 ok=true status=11
+2026-03-04 12:11:32.769 [INF] (32) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1961 node=7F-M1
+2026-03-04 12:11:32.771 [INF] (26) [EXEC] start hid=1961 action=copy from=\\192.168.30.110\nasb\2101F50C.MXF to=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:11:32.771 [INF] (32) Pushed 1 tasks to 7F-M1
+2026-03-04 12:11:32.772 [WRN] (26) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:11:32.775 [INF] (26) [JOB_REPORT] hid=1961 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:11:32.776 [INF] (26) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:11:32.794 [INF] (26) [COPY] hid=1961 src=\\192.168.30.110\nasb\2101F50C.MXF temp=\\192.168.30.110\nasb\temp\2101F50C.MXF
+2026-03-04 12:11:37.299 [INF] (30) [1961] [VERIFY] path=\\192.168.30.110\nasb\temp\2101F50C.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:11:37.302 [INF] (30) [COPY] hid=1961 finalize temp=\\192.168.30.110\nasb\temp\2101F50C.MXF -> dst=\\192.168.30.110\nasb\2101F50C.MXF
+2026-03-04 12:11:37.373 [INF] (27) [COPY_VERIFY] start hid=1961
+2026-03-04 12:11:37.378 [INF] (27) [COPY_VERIFY] hid=1961 file_id=24935 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:11:37.405 [INF] (27) [COPY_VERIFY] already exists hid=1961 file_id=24935 storage_id=28
+2026-03-04 12:11:37.407 [WRN] (27) [DELETE_FAIL_FIX] start hid=1961
+2026-03-04 12:11:37.416 [INF] (27) [JOB_REPORT] hid=1961 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:11:37.418 [INF] (27) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:11:37.418 [INF] (27) [EXEC] done hid=1961 ok=true status=11
+2026-03-04 12:11:42.801 [INF] (27) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1956 node=7F-M1
+2026-03-04 12:11:42.804 [INF] (30) [EXEC] start hid=1956 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:11:42.804 [INF] (27) Pushed 1 tasks to 7F-M1
+2026-03-04 12:11:42.807 [WRN] (30) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:11:42.814 [INF] (30) [JOB_REPORT] hid=1956 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:11:42.818 [INF] (30) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:11:42.828 [INF] (30) [COPY] hid=1956 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasd\temp\2101AE05.MXF
+2026-03-04 12:11:51.970 [INF] (32) [1956] [VERIFY] path=\\192.168.30.110\nasd\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:11:51.972 [INF] (32) [COPY] hid=1956 finalize temp=\\192.168.30.110\nasd\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasd\2101AE05.MXF
+2026-03-04 12:11:51.985 [INF] (30) [COPY_VERIFY] start hid=1956
+2026-03-04 12:11:51.987 [INF] (30) [COPY_VERIFY] hid=1956 file_id=24781 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:11:51.993 [INF] (30) [COPY_VERIFY] already exists hid=1956 file_id=24781 storage_id=44
+2026-03-04 12:11:51.997 [WRN] (30) [DELETE_FAIL_FIX] start hid=1956
+2026-03-04 12:11:52.001 [INF] (30) [JOB_REPORT] hid=1956 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:11:52.009 [INF] (30) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:11:52.013 [INF] (32) [EXEC] done hid=1956 ok=true status=11
+2026-03-04 12:11:52.839 [INF] (26) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1957 node=7F-M1
+2026-03-04 12:11:52.842 [INF] (26) [EXEC] start hid=1957 action=copy from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:11:52.842 [INF] (28) Pushed 1 tasks to 7F-M1
+2026-03-04 12:11:52.846 [WRN] (30) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:11:52.850 [INF] (28) [JOB_REPORT] hid=1957 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:11:52.852 [INF] (28) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:11:52.895 [INF] (28) [COPY] hid=1957 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\temp\2101AE05.MXF
+2026-03-04 12:11:57.420 [INF] (30) [1957] [VERIFY] path=\\192.168.30.110\nasb\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 12:11:57.422 [INF] (30) [COPY] hid=1957 finalize temp=\\192.168.30.110\nasb\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\2101AE05.MXF
+2026-03-04 12:11:57.437 [INF] (32) [COPY_VERIFY] start hid=1957
+2026-03-04 12:11:57.439 [INF] (32) [COPY_VERIFY] hid=1957 file_id=24781 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:11:57.464 [INF] (32) [COPY_VERIFY] already exists hid=1957 file_id=24781 storage_id=28
+2026-03-04 12:11:57.468 [WRN] (32) [DELETE_FAIL_FIX] start hid=1957
+2026-03-04 12:11:57.474 [INF] (32) [JOB_REPORT] hid=1957 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:11:57.475 [INF] (32) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:11:57.476 [INF] (32) [EXEC] done hid=1957 ok=true status=11
+2026-03-04 12:12:02.861 [INF] (30) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1958 node=7F-M1
+2026-03-04 12:12:02.868 [INF] (26) [EXEC] start hid=1958 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:12:02.868 [INF] (30) Pushed 1 tasks to 7F-M1
+2026-03-04 12:12:02.872 [WRN] (26) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:12:02.878 [INF] (26) [JOB_REPORT] hid=1958 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:12:02.880 [INF] (26) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:12:02.887 [INF] (26) [COPY] hid=1958 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasd\temp\2101ED10.MXF
+2026-03-04 12:12:12.332 [INF] (32) [1958] [VERIFY] path=\\192.168.30.110\nasd\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:12:12.334 [INF] (32) [COPY] hid=1958 finalize temp=\\192.168.30.110\nasd\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasd\2101ED10.MXF
+2026-03-04 12:12:12.349 [INF] (26) [COPY_VERIFY] start hid=1958
+2026-03-04 12:12:12.375 [INF] (26) [COPY_VERIFY] hid=1958 file_id=24950 to_storage_id=44 file_type=PO action=copy
+2026-03-04 12:12:12.383 [INF] (26) [COPY_VERIFY] already exists hid=1958 file_id=24950 storage_id=44
+2026-03-04 12:12:12.384 [WRN] (26) [DELETE_FAIL_FIX] start hid=1958
+2026-03-04 12:12:12.411 [INF] (26) [JOB_REPORT] hid=1958 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:12:12.415 [INF] (26) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:12:12.416 [INF] (26) [EXEC] done hid=1958 ok=true status=11
+2026-03-04 12:12:12.897 [INF] (32) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1959 node=7F-M1
+2026-03-04 12:12:12.898 [INF] (26) [EXEC] start hid=1959 action=copy from=\\192.168.30.110\nasb\2101ED10.MXF to=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:12:12.898 [INF] (32) Pushed 1 tasks to 7F-M1
+2026-03-04 12:12:12.899 [WRN] (26) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:12:12.903 [INF] (26) [JOB_REPORT] hid=1959 node=7F-M1 status=1 err=null updated=1
+2026-03-04 12:12:12.904 [INF] (26) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 12:12:12.928 [INF] (26) [COPY] hid=1959 src=\\192.168.30.110\nasb\2101ED10.MXF temp=\\192.168.30.110\nasb\temp\2101ED10.MXF
+2026-03-04 12:12:17.406 [INF] (30) [1959] [VERIFY] path=\\192.168.30.110\nasb\temp\2101ED10.MXF, actual=460334712, size4F=0, size7F=460334712, match4=false, match7=true, ok=true
+2026-03-04 12:12:17.408 [INF] (30) [COPY] hid=1959 finalize temp=\\192.168.30.110\nasb\temp\2101ED10.MXF -> dst=\\192.168.30.110\nasb\2101ED10.MXF
+2026-03-04 12:12:17.472 [INF] (30) [COPY_VERIFY] start hid=1959
+2026-03-04 12:12:17.478 [INF] (32) [COPY_VERIFY] hid=1959 file_id=24950 to_storage_id=28 file_type=PO action=copy
+2026-03-04 12:12:17.484 [INF] (32) [COPY_VERIFY] already exists hid=1959 file_id=24950 storage_id=28
+2026-03-04 12:12:17.487 [WRN] (32) [DELETE_FAIL_FIX] start hid=1959
+2026-03-04 12:12:17.497 [INF] (32) [JOB_REPORT] hid=1959 node=7F-M1 status=11 err=null updated=1
+2026-03-04 12:12:17.498 [INF] (32) [SLOT] release(+1) node=7F-M1
+2026-03-04 12:12:17.499 [INF] (32) [EXEC] done hid=1959 ok=true status=11
+2026-03-04 14:23:00.835 [INF] (53) Application is shutting down...
+2026-03-04 14:23:37.870 [INF] (8) Master dispatch loop started.
+2026-03-04 14:23:37.895 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 14:23:37.918 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 14:23:37.920 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 14:23:37.922 [INF] (2) Hosting environment: Development
+2026-03-04 14:23:37.923 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 14:23:47.941 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1962 node=7F-M1
+2026-03-04 14:23:47.956 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 14:23:47.957 [INF] (12) [EXEC] start hid=1962 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 14:23:47.979 [WRN] (13) [DELETE_FAIL_FIX] start hid=1962
+2026-03-04 14:23:47.990 [INF] (13) [JOB_REPORT] hid=1962 node=7F-M1 status=1 err=null updated=1
+2026-03-04 14:23:47.991 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 14:23:48.005 [WRN] (13) [DELETE_FAIL_FIX] start hid=1962
+2026-03-04 14:23:48.013 [INF] (13) [JOB_REPORT] hid=1962 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 14:23:48.014 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 14:23:48.015 [INF] (13) [EXEC] done hid=1962 ok=false status=911
+2026-03-04 14:25:39.526 [INF] (17) [RETRY] id=1962 action='move' fromType='TAPE' fromGroup='7F' => newStatus=0
+2026-03-04 14:25:48.151 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1962 node=7F-M1
+2026-03-04 14:25:48.155 [INF] (17) [EXEC] start hid=1962 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 14:25:48.155 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-04 14:25:48.159 [WRN] (13) [DELETE_FAIL_FIX] start hid=1962
+2026-03-04 14:25:48.168 [INF] (13) [JOB_REPORT] hid=1962 node=7F-M1 status=1 err=null updated=1
+2026-03-04 14:25:48.174 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 14:25:48.179 [INF] (13) [MOVE] hid=1962 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 14:25:50.069 [INF] (13) [1962] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 14:25:50.081 [INF] (13) [MOVE] hid=1962 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 14:25:50.111 [INF] (13) [COPY_VERIFY] start hid=1962
+2026-03-04 14:25:50.117 [INF] (13) [COPY_VERIFY] hid=1962 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 14:25:50.129 [INF] (13) [COPY_VERIFY] skip non-copy action hid=1962
+2026-03-04 14:25:50.132 [WRN] (13) [DELETE_FAIL_FIX] start hid=1962
+2026-03-04 14:25:50.139 [INF] (13) [JOB_REPORT] hid=1962 node=7F-M1 status=11 err=null updated=1
+2026-03-04 14:25:50.140 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 14:25:50.141 [INF] (13) [EXEC] done hid=1962 ok=true status=11
+2026-03-04 14:29:56.072 [INF] (12) Application is shutting down...
+2026-03-04 14:30:05.871 [INF] (8) Master dispatch loop started.
+2026-03-04 14:30:05.889 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 14:30:05.920 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 14:30:05.972 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 14:30:05.973 [INF] (2) Hosting environment: Development
+2026-03-04 14:30:05.974 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 14:30:36.250 [INF] (13) [RETRY] id=1962 action='move' fromType='TAPE' fromGroup='7F' => newStatus=13
+2026-03-04 14:32:16.119 [INF] (21) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1963 node=7F-M1
+2026-03-04 14:32:16.143 [INF] (20) [EXEC] start hid=1963 action=move from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 14:32:16.153 [INF] (21) Pushed 1 tasks to 7F-M1
+2026-03-04 14:32:16.191 [WRN] (20) [DELETE_FAIL_FIX] start hid=1963
+2026-03-04 14:32:16.225 [INF] (20) [JOB_REPORT] hid=1963 node=7F-M1 status=1 err=null updated=1
+2026-03-04 14:32:16.228 [INF] (20) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 14:32:16.237 [INF] (20) [MOVE] hid=1963 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF
+2026-03-04 14:32:18.091 [INF] (20) [1963] [VERIFY] path=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 14:32:18.093 [INF] (20) [MOVE] hid=1963 finalize temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 14:32:18.120 [WRN] (20) [DELETE_FAIL_FIX] start hid=1963
+2026-03-04 14:32:18.133 [INF] (20) [JOB_REPORT] hid=1963 node=7F-M1 status=13 err=null updated=1
+2026-03-04 14:32:18.135 [INF] (20) [SLOT] release(+1) node=7F-M1
+2026-03-04 14:32:18.136 [INF] (13) [EXEC] done hid=1963 ok=true status=13
+2026-03-04 14:34:06.441 [INF] (18) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1964 node=7F-M1
+2026-03-04 14:34:06.443 [INF] (18) Pushed 1 tasks to 7F-M1
+2026-03-04 14:34:06.443 [INF] (21) [EXEC] start hid=1964 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 14:34:06.446 [WRN] (18) [DELETE_FAIL_FIX] start hid=1964
+2026-03-04 14:34:06.450 [INF] (18) [JOB_REPORT] hid=1964 node=7F-M1 status=1 err=null updated=1
+2026-03-04 14:34:06.452 [INF] (18) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 14:34:06.456 [INF] (18) [MOVE] hid=1964 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 14:34:08.324 [INF] (18) [1964] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 14:34:08.326 [INF] (18) [MOVE] hid=1964 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 14:34:08.344 [INF] (18) [COPY_VERIFY] start hid=1964
+2026-03-04 14:34:08.350 [INF] (18) [COPY_VERIFY] hid=1964 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 14:34:08.351 [INF] (18) [COPY_VERIFY] skip non-copy action hid=1964
+2026-03-04 14:34:08.352 [WRN] (18) [DELETE_FAIL_FIX] start hid=1964
+2026-03-04 14:34:08.361 [INF] (18) [JOB_REPORT] hid=1964 node=7F-M1 status=11 err=null updated=1
+2026-03-04 14:34:08.368 [INF] (18) [SLOT] release(+1) node=7F-M1
+2026-03-04 14:34:08.370 [INF] (18) [EXEC] done hid=1964 ok=true status=11
+2026-03-04 14:38:28.564 [INF] (28) Application is shutting down...
+2026-03-04 14:38:33.541 [INF] (27) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:38:38.590 [INF] (27) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:38:43.641 [INF] (27) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:38:48.697 [INF] (27) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:38:53.758 [INF] (27) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:41:57.277 [INF] (8) Master dispatch loop started.
+2026-03-04 14:41:57.303 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 14:41:57.342 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 14:41:57.350 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 14:41:57.351 [INF] (2) Hosting environment: Development
+2026-03-04 14:41:57.354 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 14:42:07.373 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1965 node=7F-M1
+2026-03-04 14:42:07.405 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-04 14:42:07.407 [INF] (13) [EXEC] start hid=1965 action=move from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 14:42:07.430 [WRN] (12) [DELETE_FAIL_FIX] start hid=1965
+2026-03-04 14:42:07.463 [INF] (12) [JOB_REPORT] hid=1965 node=7F-M1 status=1 err=null updated=1
+2026-03-04 14:42:07.486 [INF] (12) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 14:42:07.553 [INF] (6) [MOVE] hid=1965 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF
+2026-03-04 14:42:09.519 [INF] (6) [1965] [VERIFY] path=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 14:42:09.522 [INF] (6) [MOVE] hid=1965 finalize temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 14:42:09.537 [WRN] (6) [DELETE_FAIL_FIX] start hid=1965
+2026-03-04 14:42:09.543 [INF] (13) [JOB_REPORT] hid=1965 node=7F-M1 status=13 err=null updated=1
+2026-03-04 14:42:09.555 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-04 14:42:09.556 [INF] (6) [EXEC] done hid=1965 ok=true status=13
+2026-03-04 14:42:27.479 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1966 node=7F-M1
+2026-03-04 14:42:27.481 [INF] (12) [EXEC] start hid=1966 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 14:42:27.482 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 14:42:27.485 [WRN] (6) [DELETE_FAIL_FIX] start hid=1966
+2026-03-04 14:42:27.493 [INF] (6) [JOB_REPORT] hid=1966 node=7F-M1 status=1 err=null updated=1
+2026-03-04 14:42:27.502 [INF] (6) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 14:42:27.507 [INF] (6) [MOVE] hid=1966 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 14:42:29.404 [INF] (6) [1966] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 14:42:29.415 [INF] (6) [MOVE] hid=1966 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 14:42:29.437 [INF] (6) [COPY_VERIFY] start hid=1966
+2026-03-04 14:42:29.450 [INF] (6) [COPY_VERIFY] hid=1966 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 14:42:29.454 [INF] (6) [COPY_VERIFY] skip non-copy action hid=1966
+2026-03-04 14:42:29.456 [WRN] (6) [DELETE_FAIL_FIX] start hid=1966
+2026-03-04 14:42:29.465 [INF] (6) [JOB_REPORT] hid=1966 node=7F-M1 status=11 err=null updated=1
+2026-03-04 14:42:29.466 [INF] (6) [SLOT] release(+1) node=7F-M1
+2026-03-04 14:42:29.467 [INF] (6) [EXEC] done hid=1966 ok=true status=11
+2026-03-04 14:58:24.283 [INF] (37) Application is shutting down...
+2026-03-04 14:58:29.310 [INF] (33) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:58:34.356 [INF] (33) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:58:39.421 [INF] (33) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:58:44.483 [INF] (33) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:58:49.539 [INF] (33) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 14:59:42.028 [INF] (8) Master dispatch loop started.
+2026-03-04 14:59:42.053 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 14:59:42.075 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 14:59:42.076 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 14:59:42.077 [INF] (2) Hosting environment: Development
+2026-03-04 14:59:42.077 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 14:59:52.135 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1967 node=7F-M1
+2026-03-04 14:59:52.155 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-04 14:59:52.157 [INF] (9) [EXEC] start hid=1967 action=move from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 14:59:52.183 [WRN] (12) [] start hid=1967
+2026-03-04 14:59:52.255 [INF] (9) [JOB_REPORT] hid=1967 node=7F-M1 status=1 err=null updated=1
+2026-03-04 14:59:52.263 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 14:59:52.273 [INF] (9) [MOVE] hid=1967 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF
+2026-03-04 14:59:54.396 [INF] (9) [1967] [VERIFY] path=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 14:59:54.405 [INF] (9) [MOVE] hid=1967 finalize temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 14:59:54.459 [WRN] (12) [] start hid=1967
+2026-03-04 14:59:54.467 [INF] (12) [JOB_REPORT] hid=1967 node=7F-M1 status=13 err=null updated=1
+2026-03-04 14:59:54.483 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 14:59:54.490 [INF] (12) [EXEC] done hid=1967 ok=true status=13
+2026-03-04 15:00:12.207 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1968 node=7F-M1
+2026-03-04 15:00:12.210 [INF] (6) [EXEC] start hid=1968 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:00:12.210 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 15:00:12.214 [WRN] (6) [] start hid=1968
+2026-03-04 15:00:12.219 [INF] (6) [JOB_REPORT] hid=1968 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:00:12.221 [INF] (6) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:00:12.225 [INF] (12) [MOVE] hid=1968 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 15:00:14.240 [INF] (12) [1968] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:00:14.242 [INF] (12) [MOVE] hid=1968 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:00:14.256 [INF] (12) [COPY_VERIFY] start hid=1968
+2026-03-04 15:00:14.262 [INF] (12) [COPY_VERIFY] hid=1968 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 15:00:14.263 [INF] (12) [COPY_VERIFY] skip non-copy action hid=1968
+2026-03-04 15:00:14.264 [WRN] (12) [] start hid=1968
+2026-03-04 15:00:14.276 [INF] (12) [JOB_REPORT] hid=1968 node=7F-M1 status=11 err=null updated=1
+2026-03-04 15:00:14.290 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:00:14.296 [INF] (12) [EXEC] done hid=1968 ok=true status=11
+2026-03-04 15:02:06.162 [INF] (22) Application is shutting down...
+2026-03-04 15:02:08.737 [INF] (23) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:02:13.787 [INF] (23) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:02:18.851 [INF] (23) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:02:23.918 [INF] (23) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:02:28.986 [INF] (23) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:02:34.052 [INF] (23) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:04:17.822 [INF] (8) Master dispatch loop started.
+2026-03-04 15:04:17.844 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:04:17.891 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 15:04:17.892 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 15:04:17.893 [INF] (2) Hosting environment: Development
+2026-03-04 15:04:17.894 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 15:04:27.900 [INF] (8) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1969 node=7F-M1
+2026-03-04 15:04:27.930 [INF] (14) [EXEC] start hid=1969 action=move from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:04:27.932 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-04 15:04:27.954 [WRN] (8) [] start hid=1969
+2026-03-04 15:04:27.998 [INF] (14) [JOB_REPORT] hid=1969 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:04:28.002 [INF] (14) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:04:28.014 [INF] (6) [MOVE] hid=1969 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF
+2026-03-04 15:04:29.948 [INF] (6) [1969] [VERIFY] path=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:04:29.950 [INF] (6) [MOVE] hid=1969 finalize temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:04:29.965 [WRN] (6) [] start hid=1969
+2026-03-04 15:04:29.971 [INF] (14) [JOB_REPORT] hid=1969 node=7F-M1 status=13 err=null updated=1
+2026-03-04 15:04:29.975 [INF] (14) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:04:29.977 [INF] (14) [EXEC] done hid=1969 ok=true status=13
+2026-03-04 15:04:37.964 [INF] (14) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1970 node=7F-M1
+2026-03-04 15:04:37.966 [INF] (6) [EXEC] start hid=1970 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:04:37.966 [INF] (14) Pushed 1 tasks to 7F-M1
+2026-03-04 15:04:37.968 [WRN] (6) [] start hid=1970
+2026-03-04 15:04:37.972 [INF] (6) [JOB_REPORT] hid=1970 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:04:37.973 [INF] (6) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:04:37.975 [INF] (8) [MOVE] hid=1970 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 15:04:39.948 [INF] (8) [1970] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:04:39.953 [INF] (8) [MOVE] hid=1970 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:04:39.973 [INF] (8) [COPY_VERIFY] start hid=1970
+2026-03-04 15:04:39.982 [INF] (8) [COPY_VERIFY] hid=1970 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 15:04:39.987 [INF] (8) [COPY_VERIFY] skip non-copy action hid=1970
+2026-03-04 15:04:39.989 [WRN] (8) [] start hid=1970
+2026-03-04 15:04:40.002 [INF] (8) [JOB_REPORT] hid=1970 node=7F-M1 status=11 err=null updated=1
+2026-03-04 15:04:40.005 [INF] (8) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:04:40.006 [INF] (8) [EXEC] done hid=1970 ok=true status=11
+2026-03-04 15:12:48.801 [INF] (25) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1971 node=7F-M1
+2026-03-04 15:12:48.812 [INF] (29) [EXEC] start hid=1971 action=move from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:12:48.812 [INF] (25) Pushed 1 tasks to 7F-M1
+2026-03-04 15:12:48.816 [WRN] (28) [] start hid=1971
+2026-03-04 15:12:48.822 [INF] (28) [JOB_REPORT] hid=1971 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:12:48.824 [INF] (28) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:12:48.831 [INF] (25) [MOVE] hid=1971 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF
+2026-03-04 15:12:50.967 [INF] (25) [1971] [VERIFY] path=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:12:50.969 [INF] (25) [MOVE] hid=1971 finalize temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:12:50.984 [WRN] (25) [] start hid=1971
+2026-03-04 15:12:50.989 [INF] (25) [JOB_REPORT] hid=1971 node=7F-M1 status=13 err=null updated=1
+2026-03-04 15:12:50.990 [INF] (25) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:12:50.991 [INF] (25) [EXEC] done hid=1971 ok=true status=13
+2026-03-04 15:13:00.091 [INF] (26) Application is shutting down...
+2026-03-04 15:13:10.543 [INF] (8) Master dispatch loop started.
+2026-03-04 15:13:10.565 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:13:10.586 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 15:13:10.587 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 15:13:10.592 [INF] (2) Hosting environment: Development
+2026-03-04 15:13:10.596 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 15:13:20.659 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1972 node=7F-M1
+2026-03-04 15:13:20.681 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 15:13:20.680 [INF] (8) [EXEC] start hid=1972 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:13:20.715 [WRN] (6) [] start hid=1972
+2026-03-04 15:13:20.738 [WRN] (6) [TAPE_CHECK] hid=1972 status=1 setTape=null node='7F-M1'
+2026-03-04 15:13:20.746 [INF] (8) [JOB_REPORT] hid=1972 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:13:20.766 [INF] (8) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:13:20.775 [INF] (9) [MOVE] hid=1972 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 15:13:22.633 [INF] (9) [1972] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:13:22.635 [INF] (9) [MOVE] hid=1972 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:13:22.646 [INF] (8) [COPY_VERIFY] start hid=1972
+2026-03-04 15:13:22.650 [INF] (8) [COPY_VERIFY] hid=1972 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 15:13:22.652 [INF] (8) [COPY_VERIFY] skip non-copy action hid=1972
+2026-03-04 15:13:22.658 [WRN] (8) [] start hid=1972
+2026-03-04 15:13:22.670 [WRN] (8) [TAPE_CHECK] hid=1972 status=11 setTape=null node='7F-M1'
+2026-03-04 15:13:22.689 [INF] (8) [JOB_REPORT] hid=1972 node=7F-M1 status=11 err=null updated=1
+2026-03-04 15:13:22.703 [INF] (8) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:13:22.705 [INF] (9) [EXEC] done hid=1972 ok=true status=11
+2026-03-04 15:19:12.995 [INF] (16) Application is shutting down...
+2026-03-04 15:19:16.759 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:19:21.813 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:19:26.862 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:19:31.911 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:19:36.973 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:19:42.148 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:19:53.441 [INF] (8) Master dispatch loop started.
+2026-03-04 15:19:53.460 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:19:53.499 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 15:19:53.506 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 15:19:53.507 [INF] (2) Hosting environment: Development
+2026-03-04 15:19:53.511 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 15:20:03.527 [INF] (8) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1973 node=7F-M1
+2026-03-04 15:20:03.546 [INF] (6) [EXEC] start hid=1973 action=move from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:20:03.549 [INF] (8) Pushed 1 tasks to 7F-M1
+2026-03-04 15:20:03.574 [WRN] (8) [] start hid=1973
+2026-03-04 15:20:03.617 [WRN] (8) [TAPE_CHECK] hid=1973 status=1 setTape=null node='7F-M1'
+2026-03-04 15:20:03.654 [INF] (8) [JOB_REPORT] hid=1973 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:20:03.657 [INF] (8) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:20:03.688 [INF] (6) [MOVE] hid=1973 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF
+2026-03-04 15:20:05.608 [INF] (6) [1973] [VERIFY] path=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:20:05.610 [INF] (6) [MOVE] hid=1973 finalize temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:20:05.623 [WRN] (8) [] start hid=1973
+2026-03-04 15:20:05.626 [WRN] (8) [TAPE_CHECK] hid=1973 status=13 setTape=false node='7F-M1'
+2026-03-04 15:20:05.629 [INF] (6) [JOB_REPORT] hid=1973 node=7F-M1 status=13 err=null updated=1
+2026-03-04 15:20:05.632 [INF] (6) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:20:05.657 [INF] (6) [EXEC] done hid=1973 ok=true status=13
+2026-03-04 15:20:53.680 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1974 node=7F-M1
+2026-03-04 15:20:53.682 [INF] (13) [EXEC] start hid=1974 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:20:53.682 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 15:20:53.683 [WRN] (8) [] start hid=1974
+2026-03-04 15:20:53.686 [WRN] (8) [TAPE_CHECK] hid=1974 status=1 setTape=null node='7F-M1'
+2026-03-04 15:20:53.690 [INF] (8) [JOB_REPORT] hid=1974 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:20:53.692 [INF] (8) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:20:53.697 [INF] (8) [MOVE] hid=1974 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 15:20:55.839 [INF] (8) [1974] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:20:55.849 [INF] (8) [MOVE] hid=1974 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:20:55.871 [INF] (9) [COPY_VERIFY] start hid=1974
+2026-03-04 15:20:55.881 [INF] (9) [COPY_VERIFY] hid=1974 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 15:20:55.887 [INF] (9) [COPY_VERIFY] skip non-copy action hid=1974
+2026-03-04 15:20:55.889 [WRN] (9) [] start hid=1974
+2026-03-04 15:20:55.895 [WRN] (9) [TAPE_CHECK] hid=1974 status=11 setTape=false node='7F-M1'
+2026-03-04 15:20:55.903 [INF] (9) [JOB_REPORT] hid=1974 node=7F-M1 status=11 err=null updated=1
+2026-03-04 15:20:55.904 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:20:55.905 [INF] (6) [EXEC] done hid=1974 ok=true status=11
+2026-03-04 15:27:22.266 [INF] (15) Application is shutting down...
+2026-03-04 15:27:26.976 [INF] (16) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:27:32.019 [INF] (16) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:27:37.058 [INF] (22) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:27:42.110 [INF] (22) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:27:47.166 [INF] (22) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:27:52.222 [INF] (22) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:27:58.400 [INF] (8) Master dispatch loop started.
+2026-03-04 15:27:58.437 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:27:58.465 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 15:27:58.467 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 15:27:58.468 [INF] (2) Hosting environment: Development
+2026-03-04 15:27:58.469 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 15:28:08.514 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1975 node=7F-M1
+2026-03-04 15:28:08.540 [INF] (9) [EXEC] start hid=1975 action=move from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:28:08.544 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-04 15:28:08.563 [WRN] (8) [] start hid=1975
+2026-03-04 15:28:08.588 [WRN] (8) [TAPE_CHECK] hid=1975 status=1 setTape=false node='7F-M1'
+2026-03-04 15:28:08.608 [INF] (8) [JOB_REPORT] hid=1975 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:28:08.614 [INF] (8) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:28:08.630 [INF] (9) [MOVE] hid=1975 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF
+2026-03-04 15:28:10.514 [INF] (9) [1975] [VERIFY] path=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:28:10.525 [INF] (9) [MOVE] hid=1975 finalize temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:28:10.549 [WRN] (6) [] start hid=1975
+2026-03-04 15:28:10.559 [WRN] (9) [TAPE_CHECK] hid=1975 status=13 setTape=false node='7F-M1'
+2026-03-04 15:28:10.574 [INF] (9) [JOB_REPORT] hid=1975 node=7F-M1 status=13 err=null updated=1
+2026-03-04 15:28:10.578 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:28:10.586 [INF] (6) [EXEC] done hid=1975 ok=true status=13
+2026-03-04 15:28:18.587 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1976 node=7F-M1
+2026-03-04 15:28:18.594 [INF] (9) [EXEC] start hid=1976 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:28:18.595 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-04 15:28:18.610 [WRN] (9) [] start hid=1976
+2026-03-04 15:28:18.622 [WRN] (9) [TAPE_CHECK] hid=1976 status=1 setTape=false node='7F-M1'
+2026-03-04 15:28:18.630 [INF] (9) [JOB_REPORT] hid=1976 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:28:18.635 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:28:18.638 [INF] (9) [MOVE] hid=1976 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 15:28:20.631 [INF] (9) [1976] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:28:20.635 [INF] (9) [MOVE] hid=1976 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:28:20.648 [INF] (9) [COPY_VERIFY] start hid=1976
+2026-03-04 15:28:20.657 [INF] (9) [COPY_VERIFY] hid=1976 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 15:28:20.662 [INF] (9) [COPY_VERIFY] skip non-copy action hid=1976
+2026-03-04 15:28:20.665 [WRN] (9) [] start hid=1976
+2026-03-04 15:28:20.670 [WRN] (9) [TAPE_CHECK] hid=1976 status=11 setTape=false node='7F-M1'
+2026-03-04 15:28:20.679 [INF] (9) [JOB_REPORT] hid=1976 node=7F-M1 status=11 err=null updated=1
+2026-03-04 15:28:20.681 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:28:20.682 [INF] (12) [EXEC] done hid=1976 ok=true status=11
+2026-03-04 15:33:09.785 [INF] (21) Application is shutting down...
+2026-03-04 15:33:13.498 [INF] (3) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:33:18.560 [INF] (3) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:33:23.620 [INF] (3) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:33:28.683 [INF] (3) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:33:33.741 [INF] (3) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:33:38.800 [INF] (3) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:34:25.683 [INF] (8) Master dispatch loop started.
+2026-03-04 15:34:25.702 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:34:25.731 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 15:34:25.735 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 15:34:25.738 [INF] (2) Hosting environment: Development
+2026-03-04 15:34:25.743 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 15:34:35.762 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1977 node=7F-M1
+2026-03-04 15:34:35.777 [INF] (12) Pushed 1 tasks to 7F-M1
+2026-03-04 15:34:35.778 [INF] (9) [EXEC] start hid=1977 action=move from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:34:35.799 [WRN] (8) [] start hid=1977
+2026-03-04 15:34:35.819 [WRN] (8) [TAPE_CHECK] hid=1977 status=1 setTape=false node='7F-M1'
+2026-03-04 15:34:35.843 [INF] (8) [JOB_REPORT] hid=1977 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:34:35.857 [INF] (8) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:34:35.934 [INF] (12) [MOVE] hid=1977 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF
+2026-03-04 15:34:38.028 [INF] (12) [1977] [VERIFY] path=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:34:38.041 [INF] (12) [MOVE] hid=1977 finalize temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:34:38.123 [WRN] (12) [] start hid=1977
+2026-03-04 15:34:38.134 [WRN] (12) [TAPE_CHECK] hid=1977 status=13 setTape=false node='7F-M1'
+2026-03-04 15:34:38.138 [INF] (8) [JOB_REPORT] hid=1977 node=7F-M1 status=13 err=null updated=1
+2026-03-04 15:34:38.139 [INF] (8) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:34:38.140 [INF] (8) [EXEC] done hid=1977 ok=true status=13
+2026-03-04 15:34:45.816 [INF] (8) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1978 node=7F-M1
+2026-03-04 15:34:45.818 [INF] (12) [EXEC] start hid=1978 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:34:45.818 [INF] (8) Pushed 1 tasks to 7F-M1
+2026-03-04 15:34:45.820 [WRN] (12) [] start hid=1978
+2026-03-04 15:34:45.823 [WRN] (12) [TAPE_CHECK] hid=1978 status=1 setTape=false node='7F-M1'
+2026-03-04 15:34:45.827 [INF] (8) [JOB_REPORT] hid=1978 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:34:45.828 [INF] (8) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:34:45.830 [INF] (6) [MOVE] hid=1978 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 15:34:47.792 [INF] (6) [1978] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:34:47.802 [INF] (6) [MOVE] hid=1978 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:34:47.835 [INF] (6) [COPY_VERIFY] start hid=1978
+2026-03-04 15:34:47.864 [INF] (6) [COPY_VERIFY] hid=1978 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 15:34:47.871 [INF] (6) [COPY_VERIFY] skip non-copy action hid=1978
+2026-03-04 15:34:47.872 [WRN] (6) [] start hid=1978
+2026-03-04 15:34:47.877 [WRN] (8) [TAPE_CHECK] hid=1978 status=11 setTape=true node='7F-M1'
+2026-03-04 15:34:47.883 [WRN] (8) [TAPE_CHECK] hid=1978 fileId=24781
+2026-03-04 15:34:47.898 [INF] (8) [TAPE_UPDATE] hid=1978 fileId=24781 tape_id=-1
+2026-03-04 15:34:47.909 [INF] (6) [JOB_REPORT] hid=1978 node=7F-M1 status=11 err=null updated=1
+2026-03-04 15:34:47.918 [INF] (6) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:34:47.919 [INF] (12) [EXEC] done hid=1978 ok=true status=11
+2026-03-04 15:35:50.360 [INF] (15) Application is shutting down...
+2026-03-04 15:35:55.178 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:36:00.231 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:36:05.296 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:36:10.354 [INF] (13) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:36:15.406 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:38:38.929 [INF] (8) Master dispatch loop started.
+2026-03-04 15:38:38.957 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:38:39.011 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 15:38:39.013 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 15:38:39.014 [INF] (2) Hosting environment: Development
+2026-03-04 15:38:39.015 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 15:39:14.590 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1979 node=7F-M1
+2026-03-04 15:39:14.611 [INF] (21) Pushed 1 tasks to 7F-M1
+2026-03-04 15:39:14.612 [INF] (13) [EXEC] start hid=1979 action=move from=\\192.168.30.110\nasa\2101AE05.MXF to=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:39:14.639 [WRN] (13) [] start hid=1979
+2026-03-04 15:39:14.653 [WRN] (13) [TAPE_CHECK] hid=1979 status=1 setTape=false node='7F-M1'
+2026-03-04 15:39:14.681 [INF] (13) [JOB_REPORT] hid=1979 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:39:14.682 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:39:14.690 [INF] (17) [MOVE] hid=1979 src=\\192.168.30.110\nasa\2101AE05.MXF temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF
+2026-03-04 15:39:16.690 [INF] (17) [1979] [VERIFY] path=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:39:16.694 [INF] (17) [MOVE] hid=1979 finalize temp=\\192.168.30.110\nasb\tape\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasb\tape\2101AE05.MXF
+2026-03-04 15:39:16.706 [WRN] (21) [] start hid=1979
+2026-03-04 15:39:16.711 [WRN] (21) [TAPE_CHECK] hid=1979 status=13 setTape=false node='7F-M1'
+2026-03-04 15:39:16.718 [INF] (17) [JOB_REPORT] hid=1979 node=7F-M1 status=13 err=null updated=1
+2026-03-04 15:39:16.722 [INF] (17) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:39:16.724 [INF] (17) [EXEC] done hid=1979 ok=true status=13
+2026-03-04 15:53:36.058 [INF] (40) Application is shutting down...
+2026-03-04 15:53:40.915 [INF] (39) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:53:45.983 [INF] (39) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:53:51.050 [INF] (39) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:53:56.127 [INF] (39) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:54:01.168 [INF] (39) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:54:35.816 [INF] (8) Master dispatch loop started.
+2026-03-04 15:54:35.833 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:54:35.857 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 15:54:35.858 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 15:54:35.859 [INF] (2) Hosting environment: Development
+2026-03-04 15:54:35.859 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 15:54:55.921 [INF] (12) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1980 node=7F-M1
+2026-03-04 15:54:55.936 [INF] (5) Pushed 1 tasks to 7F-M1
+2026-03-04 15:54:55.937 [INF] (12) [EXEC] start hid=1980 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:54:55.953 [WRN] (8) [] start hid=1980
+2026-03-04 15:54:55.964 [WRN] (8) [TAPE_CHECK] hid=1980 status=1 setTape=false node='7F-M1'
+2026-03-04 15:54:55.980 [INF] (8) [JOB_REPORT] hid=1980 node=7F-M1 status=1 err=null updated=1
+2026-03-04 15:54:55.981 [INF] (8) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 15:54:55.989 [INF] (5) [MOVE] hid=1980 src=\\192.168.30.110\nasb\tape\2101AE05.MXF temp=\\192.168.30.110\nasa\temp\2101AE05.MXF
+2026-03-04 15:54:57.993 [INF] (5) [1980] [VERIFY] path=\\192.168.30.110\nasa\temp\2101AE05.MXF, actual=460334712, size4F=460334712, size7F=56976002208, match4=true, match7=false, ok=true
+2026-03-04 15:54:57.997 [INF] (5) [MOVE] hid=1980 finalize temp=\\192.168.30.110\nasa\temp\2101AE05.MXF -> dst=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 15:54:58.013 [INF] (9) [COPY_VERIFY] start hid=1980
+2026-03-04 15:54:58.023 [INF] (5) [COPY_VERIFY] hid=1980 file_id=24781 to_storage_id=23 file_type=PO action=move
+2026-03-04 15:54:58.028 [INF] (5) [COPY_VERIFY] skip non-copy action hid=1980
+2026-03-04 15:54:58.031 [WRN] (5) [] start hid=1980
+2026-03-04 15:54:58.038 [WRN] (5) [TAPE_CHECK] hid=1980 status=11 setTape=true node='7F-M1'
+2026-03-04 15:54:58.049 [WRN] (5) [TAPE_CHECK] hid=1980 fileId=24781
+2026-03-04 15:54:58.060 [INF] (5) [TAPE_UPDATE] hid=1980 fileId=24781 tape_id=-1
+2026-03-04 15:54:58.066 [INF] (5) [JOB_REPORT] hid=1980 node=7F-M1 status=11 err=null updated=1
+2026-03-04 15:54:58.076 [INF] (5) [SLOT] release(+1) node=7F-M1
+2026-03-04 15:54:58.078 [INF] (12) [EXEC] done hid=1980 ok=true status=11
+2026-03-04 15:55:52.190 [INF] (15) Application is shutting down...
+2026-03-04 15:55:56.337 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:56:01.382 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:56:06.443 [INF] (17) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:56:11.529 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:56:16.589 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:56:21.631 [INF] (18) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 15:59:34.833 [INF] (8) Master dispatch loop started.
+2026-03-04 15:59:34.852 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:59:34.878 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 15:59:34.879 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 15:59:34.881 [INF] (2) Hosting environment: Development
+2026-03-04 15:59:34.882 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 16:19:06.156 [INF] (30) Application is shutting down...
+2026-03-04 16:19:10.678 [INF] (27) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:19:15.715 [INF] (29) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:19:20.766 [INF] (29) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:19:25.809 [INF] (29) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:19:30.870 [INF] (29) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:19:35.930 [INF] (29) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:19:46.750 [INF] (8) Master dispatch loop started.
+2026-03-04 16:19:46.770 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 16:19:46.794 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 16:19:46.795 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 16:19:46.796 [INF] (2) Hosting environment: Development
+2026-03-04 16:19:46.796 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 16:20:10.415 [ERR] (6) An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): 無效的資料行名稱 'file_name'。
+無效的資料行名稱 'user_bit'。
+無效的資料行名稱 'from_storage'。
+無效的資料行名稱 'to_storage'。
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__195_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in /_/Dapper/SqlMapper.Async.cs:line 434
+   at FileMoverWeb.Controllers.HistoryController.Recent(Int32 take, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Controllers\HistoryController.cs:line 104
+   at FileMoverWeb.Controllers.HistoryController.Recent(Int32 take, CancellationToken ct) in C:\Users\coco\projects\FileMoverWeb\Controllers\HistoryController.cs:line 107
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:dc9e96a3-27ba-44f0-9cbc-94bbc934492b
+Error Number:207,State:1,Class:16
+2026-03-04 16:20:29.336 [INF] (15) Application is shutting down...
+2026-03-04 16:20:34.118 [INF] (8) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:20:39.154 [INF] (8) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:20:44.195 [INF] (8) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:20:49.253 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:20:54.315 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 16:28:11.473 [INF] (8) Master dispatch loop started.
+2026-03-04 16:28:11.496 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 16:28:11.525 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 16:28:11.526 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 16:28:11.527 [INF] (2) Hosting environment: Development
+2026-03-04 16:28:11.528 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 16:46:42.943 [INF] (8) [RETRY] id=1955 action='move' fromType='' fromGroup='' => newStatus=0
+2026-03-04 16:46:43.143 [INF] (8) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1955 node=7F-M1
+2026-03-04 16:46:43.196 [INF] (33) Pushed 1 tasks to 7F-M1
+2026-03-04 16:46:43.197 [INF] (32) [EXEC] start hid=1955 action=move from=\\192.168.30.110\nasb\tape\2101AE05.MXF to=\\192.168.30.110\nasa\2101AE05.MXF
+2026-03-04 16:46:43.244 [WRN] (32) [] start hid=1955
+2026-03-04 16:46:43.259 [WRN] (32) [TAPE_CHECK] hid=1955 status=1 setTape=false node='7F-M1'
+2026-03-04 16:46:43.280 [INF] (32) [JOB_REPORT] hid=1955 node=7F-M1 status=1 err=null updated=1
+2026-03-04 16:46:43.283 [INF] (32) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 16:46:43.320 [WRN] (32) [] start hid=1955
+2026-03-04 16:46:43.325 [WRN] (32) [TAPE_CHECK] hid=1955 status=911 setTape=false node='7F-M1'
+2026-03-04 16:46:43.338 [INF] (32) [JOB_REPORT] hid=1955 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\tape\2101AE05.MXF updated=1
+2026-03-04 16:46:43.355 [INF] (32) [SLOT] release(+1) node=7F-M1
+2026-03-04 16:46:43.356 [INF] (32) [EXEC] done hid=1955 ok=false status=911
+2026-03-04 17:07:55.504 [INF] (54) Application is shutting down...
+2026-03-04 17:07:59.570 [INF] (47) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:08:04.635 [INF] (47) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:08:09.693 [INF] (53) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:08:14.759 [INF] (53) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:08:19.822 [INF] (47) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:08:24.868 [INF] (47) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:08:37.276 [INF] (8) Master dispatch loop started.
+2026-03-04 17:08:37.299 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 17:08:37.324 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-04 17:08:37.337 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-04 17:08:37.345 [INF] (2) Hosting environment: Development
+2026-03-04 17:08:37.348 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-04 17:09:17.390 [INF] (5) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=1918 node=7F-M1
+2026-03-04 17:09:17.409 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-04 17:09:17.411 [INF] (12) [EXEC] start hid=1918 action=copy from=\\192.168.30.110\nasb\Restore\41005852.MXF to=\\192.168.30.110\nase\41005852.MXF
+2026-03-04 17:09:17.432 [WRN] (5) [] start hid=1918
+2026-03-04 17:09:17.438 [WRN] (5) [TAPE_CHECK] hid=1918 status=1 setTape=false node='7F-M1'
+2026-03-04 17:09:17.453 [INF] (5) [JOB_REPORT] hid=1918 node=7F-M1 status=1 err=null updated=1
+2026-03-04 17:09:17.456 [INF] (5) [SLOT] consume node=7F-M1 ok=true
+2026-03-04 17:09:17.462 [INF] (5) [ACT_OVERRIDE] hid=1918 hs=27 action(copy)->move (phase2)
+2026-03-04 17:09:17.496 [WRN] (12) [] start hid=1918
+2026-03-04 17:09:17.502 [WRN] (12) [TAPE_CHECK] hid=1918 status=911 setTape=false node='7F-M1'
+2026-03-04 17:09:17.510 [INF] (12) [JOB_REPORT] hid=1918 node=7F-M1 status=911 err=Source not found: \\192.168.30.110\nasb\Restore\41005852.MXF updated=1
+2026-03-04 17:09:17.513 [INF] (12) [SLOT] release(+1) node=7F-M1
+2026-03-04 17:09:17.514 [INF] (12) [EXEC] done hid=1918 ok=false status=911
+2026-03-04 17:45:39.296 [INF] (56) Application is shutting down...
+2026-03-04 17:45:42.813 [INF] (52) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:45:47.880 [INF] (52) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:45:52.944 [INF] (52) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:45:58.003 [INF] (52) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:46:03.062 [INF] (52) [HB] master offline: http://127.0.0.1:5089
+2026-03-04 17:46:08.106 [INF] (18) [HB] master offline: http://127.0.0.1:5089

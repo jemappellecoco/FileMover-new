@@ -79,7 +79,8 @@ namespace FileMoverWeb.Controllers
                     node = nodeName,
                     fileStatus = 1,
                     error = (string?)null,
-                    assumeFreedSlot = false
+                    assumeFreedSlot = false,
+                    SetTape = false
                 }, ct);
 
                 // 2️⃣ 執行實際檔案動作（用 ct：只有服務關閉才會中止）
@@ -92,7 +93,8 @@ namespace FileMoverWeb.Controllers
                     node = nodeName,
                     fileStatus = result.FileStatus,
                     error = result.Error,
-                    assumeFreedSlot = true
+                    assumeFreedSlot = true,
+                    SetTape = result.SetTape
                 }, ct);
 
                 _log.LogInformation("[EXEC] done hid={hid} ok={ok} status={st}",
@@ -115,7 +117,8 @@ namespace FileMoverWeb.Controllers
                         node = nodeName,
                         fileStatus = 91,
                         error = ex.Message,
-                        assumeFreedSlot = true
+                        assumeFreedSlot = true,
+                        SetTape = false
                     }, ct);
                 }
                 catch { }

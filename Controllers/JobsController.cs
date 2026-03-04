@@ -42,7 +42,7 @@ namespace FileMoverWeb.Controllers
         {
             var group = (_cfg["Cluster:Group"] ?? "").Trim();
             var rows = await _poller.GetPendingUIAsync(group,ct);
-            _log.LogInformation("[PENDING] returned {count} rows", rows.Count);
+            // _log.LogInformation("[PENDING] returned {count} rows", rows.Count);
             return Ok(rows);
         }
 

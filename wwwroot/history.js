@@ -196,21 +196,25 @@ function makeSig(rows) {
     return String(code ?? '');
   }
 
-  function actionLabelByRow(r) {
-    const hasToSid = (r.toStorageId != null) || (r.ToStorageId != null);
-    if (hasToSid) {
-      const toSid = Number(r.toStorageId ?? r.ToStorageId);
-      if (toSid === 0) return '刪除';
+    function actionLabelByRow(r) {
+      // 1. 先抓出 action 字串做最準確的判斷
+      const act = String(r.action || r.Action || '').toLowerCase();
+      if (act === 'move') return '搬移';
+      if (act === 'delete') return '刪除';
+
+      
+
+      // 3. 最後看類型判斷
+      const destType = r.destType ?? r.DestType ?? r.toType ?? r.ToType;
+      if (!destType) return '搬移';
+
+      const t = String(destType).toUpperCase();
+      if (t === 'L1' || t === 'L2') return '歸檔';
+      if (t === 'DOWNLOAD') return '下載';
+      if (t === 'IMPORT') return '搬移'; // 你的資料裡 destType 是 IMPORT
+
+      return '搬移';
     }
-
-    const destType = r.destType ?? r.DestType ?? r.toType ?? r.ToType;
-    if (!destType) return '搬移';
-
-    const t = String(destType).toUpperCase();
-    if (t === 'L1' || t === 'L2') return '歸檔';
-    if (t === 'DOWNLOAD') return '下載';
-    return '搬移';
-  }
 
   function pill(label, tooltip, status) {
     const safeTip = tooltip ? String(tooltip).replace(/"/g, '&quot;') : '';
@@ -368,8 +372,13 @@ function makeSig(rows) {
         <td>
           ${pill(label, tooltip, r.status)}
           ${canRetry ? `
-            <button class="btn-retry" data-id="${r.historyId}"
+            <button class="btn-retry"
+              data-id="${r.historyId}"
+              data-action="${String(r.action ?? r.Action ?? '').toLowerCase()}"
+              data-fromtype="${String(r.fromType ?? r.FromType ?? '')}"
+              data-fromgroup="${String(r.fromGroup ?? r.FromGroup ?? '')}"
               style="margin-left:6px;padding:2px 8px;font-size:12px;">重試</button>
+              
             <button class="btn-remove" data-id="${r.historyId}"
               style="margin-left:6px;padding:2px 8px;font-size:12px;">移除</button>
           ` : ''}
@@ -529,8 +538,23 @@ function makeSig(rows) {
       if (!confirm(`確定要重試這筆任務嗎？#${historyId}`)) return;
 
       try {
-        const resp = await fetch(`/history/${historyId}/retry`, { method: 'POST' });
-        if (!resp.ok) throw new Error(await resp.text());
+        // const resp = await fetch(`/history/${historyId}/retry`, { method: 'POST' });
+        const action    = retryBtn.dataset.action || '';
+        const fromType  = retryBtn.dataset.fromtype || '';
+        const fromGroup = retryBtn.dataset.fromgroup || '';
+
+        const resp = await fetch(`/history/${historyId}/retry`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action, fromType, fromGroup })
+        })
+        // if (!resp.ok) throw new Error(await resp.text());
+        if (!resp.ok) {
+        const ct = resp.headers.get('content-type') || '';
+        const payload = ct.includes('application/json') ? await resp.json() : await resp.text();
+        const msg = typeof payload === 'string' ? payload : (payload.message || JSON.stringify(payload));
+        throw new Error(msg);
+      }
         alert(`重試已送出：#${historyId}`);
         // 這裡不一定要重抓全量，但狀態會變，所以保守重抓一次
         loadAllHistory({ silent: false });

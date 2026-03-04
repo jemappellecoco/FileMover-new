@@ -10,5 +10,6 @@ namespace FileMoverWeb.Models.Execution
         public int FileStatus { get; set; }
 
         public string? Error { get; set; }
+        public bool SetTape { get; set;}
     }
 }

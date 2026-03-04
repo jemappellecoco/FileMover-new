@@ -76,9 +76,11 @@ namespace FileMoverWeb.Services
                 var st = string.Equals(toType, "TAPE", StringComparison.OrdinalIgnoreCase)
                     ? Status.MoveDone  // 13
                     : Status.CopyDone; // 11
-
-                _log.LogInformation("[MOVE] hid={hid} toType={toType} -> status={st}", hid, toType, st);
-                return Ok(hid, st);
+                var fromType = (task.FromType ?? "").Trim();
+                // ✅ 只有「from=TAPE 且 to!=TAPE 且 成功回 11」才要清 tape_id
+                    var setTape = string.Equals(fromType, "TAPE", StringComparison.OrdinalIgnoreCase)
+                                && st == Status.CopyDone; // 11                _log.LogInformation("[MOVE] hid={hid} toType={toType} -> status={st} Tape_id={set_type}", hid, toType, st,set_type);
+                return Ok(hid, st,setTape);
             }
 
             if (effectiveAct == "delete")
@@ -276,7 +278,17 @@ namespace FileMoverWeb.Services
                 Directory.CreateDirectory(Path.GetDirectoryName(temp)!);
 
                 _log.LogInformation("[MOVE] hid={hid} src={src} temp={temp}", hid, src, temp);
-
+                // ✨ 新增：發送初始虛擬進度 (50%)
+                _progress.Publish(new ProgressReportDto
+                {
+                    HistoryId = hid,
+                    Node = _nodeName,
+                    Action = "move",
+                    BytesDone = 0,
+                    BytesTotal = 0,
+                    Percent = 50,
+                    Message = "start"
+                });
                 if (!await FileHelper.WaitFileFreeAsync(src, 3000, ct).ConfigureAwait(false))
                     throw new IOException($"Source busy: {src}");
 
@@ -292,6 +304,17 @@ namespace FileMoverWeb.Services
 
                 _log.LogInformation("[MOVE] hid={hid} finalize temp={temp} -> dst={dst}", hid, temp, dst);
                 FileActionHelpers.MoveReplace(temp, dst);
+                // ✅ 完成送 100%
+                _progress.Publish(new ProgressReportDto
+                {
+                    HistoryId = hid,
+                    Node = _nodeName,
+                    Action = "move",
+                    BytesDone = 0,
+                    BytesTotal = 0,
+                    Percent = 100,
+                    Message = "done"
+                });
             }
 
         private Task DeleteAsync(HistoryTask t, CancellationToken ct)
@@ -301,28 +324,48 @@ namespace FileMoverWeb.Services
 
             if (string.IsNullOrWhiteSpace(src))
                 throw new ArgumentException("FromFullPath is empty");
-
+            _progress.Publish(new ProgressReportDto
+            {
+                HistoryId = hid,
+                Node = _nodeName,
+                Action = "delete",
+                BytesDone = 0,
+                BytesTotal = 0,
+                Percent = 50,
+                Message = "start"
+            });
             _log.LogInformation("[DELETE] hid={hid} src={src}", hid, src);
-
+            
             if (!File.Exists(src))
                 throw new FileNotFoundException($"Source not found: {src}", src);
 
-
+            _progress.Publish(new ProgressReportDto
+                {
+                    HistoryId = hid,
+                    Node = _nodeName,
+                    Action = "delete",
+                    BytesDone = 0,
+                    BytesTotal = 0,
+                    Percent = 100,
+                    Message = "done"
+                });
             // 你要保守就 wait free
             // 這裡不 await 也行，但風格一致我們用 await
             return FileActionHelpers.DeleteFileSafeAsync(src, ct);
+            
         }
 
         // -------------------------
         // Results
         // -------------------------
 
-        private static FileActionResult Ok(int hid, int fileStatus) => new()
+        private static FileActionResult Ok(int hid, int fileStatus,bool setTape = false) => new()
         {
             HistoryId = hid,
             Success = true,
             FileStatus = fileStatus,
-            Error = null
+            Error = null,
+             SetTape = setTape
         };
 
         private static FileActionResult Fail(int hid, int code, string msg) => new()
@@ -330,7 +373,8 @@ namespace FileMoverWeb.Services
             HistoryId = hid,
             Success = false,
             FileStatus = code,
-            Error = msg
+            Error = msg,
+            SetTape = false
         };
     }
 

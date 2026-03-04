@@ -43,7 +43,10 @@ namespace FileMoverWeb.Controllers
             "assigned_node",
             "update_time"
         };
-
+        private static readonly string[] FileDataWhitelist =
+            {
+                "tape_id"
+           };
         // POST /api/jobs/report
        [HttpPost("report")]
     public async Task<IActionResult> Report([FromBody] JobReportDto dto, CancellationToken ct)
@@ -113,7 +116,8 @@ namespace FileMoverWeb.Controllers
 
         return Ok(new { ok = true, updated });
     }
-
+        // 你另外加一個白名單（如果你 BaseModel 有做 whitelist）
+   
         private async Task<int> UpdateHistoryStatusAsync(JobReportDto dto, CancellationToken ct)
         {
             var connStr = _cfg.GetConnectionString("DefaultConnection")!;
@@ -142,9 +146,43 @@ namespace FileMoverWeb.Controllers
             // ✅ 沒有任何欄位要改，就不做事
             if (patch.Count == 0)
                 return 0;
+             // ✅ 先更新 History
+            var node = dto.Node!.Trim();
+                _log.LogWarning(
+    "[TAPE_CHECK] hid={hid} status={st} setTape={setTape} node='{node}'",
+    dto.HistoryId, dto.FileStatus, dto.SetTape, node);
+        // 2️⃣ 若成功且需要清 tape_id
+            if (dto.SetTape == true && dto.FileStatus == Status.CopyDone /* 11 */)
+            {
+                
+                // 用 history 找 file_id
+                var fileId = await baseModel.FindWhereAsync<int?>(
+                    table: "dbo.FileData_History",
+                    whereSql: "id = @hid",
+                    parameters: new { hid = dto.HistoryId },
+                    selectSql: "file_id",
+                    ct: ct);
+                _log.LogWarning("[TAPE_CHECK] hid={hid} fileId={fileId}", dto.HistoryId, fileId);
+                if (fileId.HasValue && fileId.Value > 0)
+                {
+                    await baseModel.UpdateAsync(
+                        table: "dbo.FileData",
+                        pkName: "id",          // ✅ FileData 主鍵
+                        id: fileId.Value,     // ✅ 就是 History.file_id
+                        data: new Dictionary<string, object?>
+                        {
+                            ["tape_id"] = -1
+                        },
+                        columnsWhitelist: FileDataWhitelist,
+                        ct: ct);
 
-            // ✅ 保留原本語意：必須 assigned_node = node 才能改
-            return await baseModel.UpdateAsync(
+                    _log.LogInformation(
+                        "[TAPE_UPDATE] hid={hid} fileId={fid} tape_id=-1",
+                        dto.HistoryId,
+                        fileId.Value);
+                }
+            }
+            var updated = await baseModel.UpdateAsync(
                 table: "dbo.FileData_History",
                 pkName: "id",
                 id: dto.HistoryId,
@@ -153,7 +191,20 @@ namespace FileMoverWeb.Controllers
                 extraWhereSql: "assigned_node = @node",
                 extraWhereParams: new { node = dto.Node!.Trim() },
                 ct: ct);
+
+            return updated;
         }
+            // ✅ 保留原本語意：必須 assigned_node = node 才能改
+            // return await baseModel.UpdateAsync(
+            //     table: "dbo.FileData_History",
+            //     pkName: "id",
+            //     id: dto.HistoryId,
+            //     data: patch,
+            //     columnsWhitelist: HistoryWhitelist,
+            //     extraWhereSql: "assigned_node = @node",
+            //     extraWhereParams: new { node = dto.Node!.Trim() },
+            //     ct: ct);
+        
 
         private bool IsMaster()
             => string.Equals(_cfg["Cluster:Role"], "Master", StringComparison.OrdinalIgnoreCase);
@@ -171,6 +222,8 @@ namespace FileMoverWeb.Controllers
 
             // ✅ nullable；null = 不動；true = 釋放；false = consume（搭配 FileStatus==1）
             public bool? AssumeFreedSlot { get; set; }
+            public bool? SetTape { get; set; }
         }
+        
     }
 }
