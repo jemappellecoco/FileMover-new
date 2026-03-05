@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[2.1.66, )"
             },
+            "FluentFTP": {
+              "target": "Package",
+              "version": "[53.0.2, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.10, )"

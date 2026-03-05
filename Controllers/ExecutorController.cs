@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using FileMoverWeb.Models;
 using FileMoverWeb.Services;
 
+
 namespace FileMoverWeb.Controllers
 {
     [ApiController]
@@ -20,34 +21,87 @@ namespace FileMoverWeb.Controllers
         private readonly FileActionWorker _worker;
         private readonly IHttpClientFactory _http;
         private readonly IHostApplicationLifetime _life;
+        private readonly JobTracker _tracker;
 
         public ExecutorController(
             IConfiguration cfg,
             ILogger<ExecutorController> log,
             FileActionWorker worker,
             IHttpClientFactory http,
-            IHostApplicationLifetime life)
+            IHostApplicationLifetime life,
+            JobTracker tracker)
         {
             _cfg = cfg;
             _log = log;
             _worker = worker;
             _http = http;
             _life = life;
+            _tracker = tracker;
+        }
+/// <summary>
+        /// 批次取消任務 (由 Master 調用)
+        /// </summary>
+        [HttpPost("cancel-batch")]
+        public IActionResult CancelBatch([FromBody] List<int> ids)
+        {
+            if (ids == null || ids.Count == 0) return BadRequest("No IDs provided");
+
+            var results = new Dictionary<int, bool>();
+            foreach (var id in ids)
+            {
+                // 發送中斷信號，不在此處 Unregister，由 RunAndReportAsync 的 finally 處理
+                bool ok = _tracker.Cancel(id);
+                results[id] = ok;
+                
+                if (ok) _log.LogWarning("[EXEC] Batch Cancel: hid={id} signal sent.", id);
+            }
+
+            return Ok(new 
+            { 
+                success = true, 
+                processedCount = results.Count(x => x.Value),
+                details = results 
+            });
         }
 
-        // Master push 到 Slave：POST /api/executor/receive
+        /// <summary>
+        /// 單筆取消任務 (包裝 Batch API 邏輯)
+        /// </summary>
+        [HttpPost("cancel/{id}")]
+        public IActionResult Cancel(int id)
+        {
+            return CancelBatch(new List<int> { id });
+        }
+
+        /// <summary>
+        /// 接收任務並執行 (由 Master PUSH)
+        /// </summary>
         [HttpPost("receive")]
         public IActionResult Receive([FromBody] HistoryTask task)
         {
             if (task == null || task.HistoryId <= 0)
                 return BadRequest(new { error = "invalid task" });
 
-            // ✅ 不要用 RequestAborted：HTTP 回應結束就會 cancel
-            // ✅ 改用 ApplicationStopping：只有服務要關機才取消
-            var ct = _life.ApplicationStopping;
+            // ✅ 建立連動 Token：當服務停止 (ApplicationStopping) 或手動取消時觸發
+            var cts = CancellationTokenSource.CreateLinkedTokenSource(_life.ApplicationStopping);
+            
+            // ✅ 將此任務的中斷控制源註冊到 Tracker
+            _tracker.Register(task.HistoryId, cts);
 
-            // ✅ 先回 200，避免大檔案搬移卡住 Master 的 HTTP
-            _ = Task.Run(() => RunAndReportAsync(task, ct), ct);
+            // ✅ 在背景執行並回報
+            _ = Task.Run(async () => 
+            {
+                try 
+                {
+                    await RunAndReportAsync(task, cts.Token);
+                }
+                finally 
+                {
+                    // ✅ 務必在最後註銷並 Dispose，避免資源洩漏
+                    _tracker.Unregister(task.HistoryId);
+                    cts.Dispose();
+                }
+            }, cts.Token);
 
             return Ok(new { ok = true });
         }
@@ -95,7 +149,7 @@ namespace FileMoverWeb.Controllers
                     error = result.Error,
                     assumeFreedSlot = true,
                     SetTape = result.SetTape
-                }, ct);
+                }, CancellationToken.None);
 
                 _log.LogInformation("[EXEC] done hid={hid} ok={ok} status={st}",
                     hid, result.Success, result.FileStatus);
@@ -103,6 +157,21 @@ namespace FileMoverWeb.Controllers
             catch (OperationCanceledException)
             {
                 _log.LogWarning("[EXEC] cancelled (app stopping) hid={hid}", hid);
+            
+            // 🚨 被取消時，仍須回報 Master 釋放 Slot
+                try
+                {
+                    await client.PostAsJsonAsync(reportUrl, new
+                    {
+                        historyId = hid,
+                        node = nodeName,
+                        fileStatus = 999, // 使用者取消狀態碼
+                        error = "Canceled by user or system",
+                        assumeFreedSlot = true,
+                        SetTape = false
+                    }, CancellationToken.None);
+                }
+                catch { }
             }
             catch (Exception ex)
             {

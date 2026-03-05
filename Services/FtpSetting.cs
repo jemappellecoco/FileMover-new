@@ -47,14 +47,21 @@ namespace FileMoverWeb.Services
         private static (string host, int port) ParseIpPort(string? input)
         {
             if (string.IsNullOrWhiteSpace(input))
-                throw new InvalidOperationException("IC ToPath is empty (expect IP:PORT)");
+                throw new InvalidOperationException("IC ToPath is empty (expect IP or IP:PORT)");
 
             var s = input.Trim();
-
-            // 只允許一個冒號（避免 C:\path 或其他格式混進來）
             int idx = s.IndexOf(':');
-            if (idx <= 0 || idx != s.LastIndexOf(':') || idx == s.Length - 1)
-                throw new InvalidOperationException($"Invalid IC address: '{s}' (expect IP:PORT)");
+
+            // ✅ 新增：如果找不到冒號，直接回傳 IP 並給予預設 Port 21
+            if (idx == -1)
+            {
+                return (s, 21); 
+            }
+
+            // 原本的嚴格檢查（僅針對「有冒號」的情況）
+            // 避免出現 "192.168.1.1:" 或 ":21" 這種錯誤格式
+            if (idx == 0 || idx != s.LastIndexOf(':') || idx == s.Length - 1)
+                throw new InvalidOperationException($"Invalid IC address format: '{s}' (expect IP or IP:PORT)");
 
             var host = s.Substring(0, idx).Trim();
             var portStr = s.Substring(idx + 1).Trim();

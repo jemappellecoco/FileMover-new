@@ -8,7 +8,8 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using FileMoverWeb.Services;
-
+using System.Linq;
+using System.Net.Http.Json;
 namespace FileMoverWeb.Controllers
 {
     [ApiController]
@@ -20,19 +21,21 @@ namespace FileMoverWeb.Controllers
         private readonly NodeRuntimeRegistry _registry;
         private readonly DeleteVerifier _deleteVerifier;
         private readonly CopyVerifier _copyVerifier;
-
+    private readonly IHttpClientFactory _http;
         public JobReportController
         (IConfiguration cfg, 
         ILogger<JobReportController> log, 
         NodeRuntimeRegistry registry, 
         DeleteVerifier deleteVerifier,
-        CopyVerifier copyVerifier)
+        CopyVerifier copyVerifier,
+         IHttpClientFactory http)
         {
             _cfg = cfg;
             _log = log;
             _registry = registry;
              _deleteVerifier = deleteVerifier;
               _copyVerifier = copyVerifier;
+              _http = http;
         }
 
         // ✅ 只允許更新這些欄位（白名單）
@@ -224,6 +227,182 @@ namespace FileMoverWeb.Controllers
             public bool? AssumeFreedSlot { get; set; }
             public bool? SetTape { get; set; }
         }
+
+        // POST /api/jobs/cancel-batch
+    [HttpPost("cancel-batch")]
+    public async Task<IActionResult> CancelBatch([FromBody] List<int> ids, CancellationToken ct)
+    {       // === 第一階段：驗證與初始化 ===
+        if (!IsMaster()) return Forbid();
+        if (ids == null || ids.Count == 0) return BadRequest("No IDs provided");
+
+        ids = ids.Distinct().Where(x => x > 0).ToList();
+        if (ids.Count == 0) return BadRequest("No valid IDs");
+
+        var connStr = _cfg.GetConnectionString("DefaultConnection")!;
+        await using var conn = new SqlConnection(connStr);
+        var baseModel = new FileMoverWeb.Core.BaseModel(conn);
+        // === 第二階段：狀態查詢 ===
+        var rows = (await baseModel.QueryAsync<CancelRow>(
+            "SELECT id AS HistoryId, file_status AS FileStatus, assigned_node AS AssignedNode FROM dbo.FileData_History WHERE id IN @ids",
+            new { ids }, 
+            ct)).ToList();
+
+        // 找不到的 id
+        var foundSet = rows.Select(r => r.HistoryId).ToHashSet();
+        var notFound = ids.Where(id => !foundSet.Contains(id)).ToList();
+
+    // === 第三階段：處理排隊中 (Pending) 任務 - 批次 SQL ===
+        var pendingIds = rows.Where(r => r.FileStatus is 0 or -1 or 24 or 27).Select(r => r.HistoryId).ToList();
+        int canceledInQueue = 0;
+
+        if (pendingIds.Any())
+        {
+            var historyWhitelist = new[] { "file_status", "update_time", "note" };
+            var updateParams = new Dictionary<string, object?>
+            {
+                ["file_status"] = 999,
+                ["update_time"] = DateTime.Now,
+                ["note"] = "canceled_in_batch"
+            };
+
+            // ✨ 參數化形式呼叫，100 筆更新也只需幾毫秒
+            canceledInQueue = await baseModel.UpdateBatchAsync(
+                table: "dbo.FileData_History",
+                pkName: "id",
+                ids: pendingIds,
+                data: updateParams,
+                columnsWhitelist: historyWhitelist,
+                extraWhereSql: "file_status IN (0, -1, 24, 27)", // 二次防護：確保更新當下狀態未變
+                ct: ct
+            );
+        }
+    // === 第四階段：處理執行中 (Running) 任務 - HTTP 轉發 ===
+        var runningGroups = rows
+            .Where(r => r.FileStatus == 1 && !string.IsNullOrWhiteSpace(r.AssignedNode))
+            .GroupBy(r => r.AssignedNode!.Trim(), StringComparer.OrdinalIgnoreCase);
+
+        var details = new Dictionary<int, string>();
+        foreach (var id in pendingIds) details[id] = "canceled_in_queue";
+        foreach (var id in notFound) details[id] = "not_found";
+
+        // 取得 node endpoint（從 registry snapshot）
+        var hbTimeout = int.TryParse(_cfg["Cluster:HeartbeatTimeoutSeconds"], out var t) ? t : 30;
+        var nodes = _registry.ListSnapshot(hbTimeout); // 你已有 registry
+
+        var client = _http.CreateClient();
+
+        foreach (var g in runningGroups)
+        {
+            var nodeName = g.Key;
+            var idsOnNode = g.Select(x => x.HistoryId).Distinct().ToList();
+
+            var node = nodes.FirstOrDefault(n => string.Equals(n.NodeName, nodeName, StringComparison.OrdinalIgnoreCase));
+            if (node == null || string.IsNullOrWhiteSpace(node.IpAddress))
+            {
+                _log.LogError("[CANCEL] node not found: {node}", nodeName);
+                foreach (var id in idsOnNode) details[id] = "node_not_found";
+                continue;
+            }
+
+            var baseUrl = node.IpAddress.Trim().TrimEnd('/');
+            var url = $"{baseUrl}/api/executor/cancel-batch";
+
+            try
+            {
+                _log.LogWarning("[CANCEL] -> {node} ids={ids}", nodeName, string.Join(",", idsOnNode));
+                var resp = await client.PostAsJsonAsync(url, idsOnNode, ct);
+
+                if (!resp.IsSuccessStatusCode)
+                {
+                    _log.LogError("[CANCEL] node {node} http={code}", nodeName, resp.StatusCode);
+                    foreach (var id in idsOnNode) details[id] = $"node_http_{(int)resp.StatusCode}";
+                }
+                else
+                {
+                    foreach (var id in idsOnNode) details[id] = "cancel_signal_sent";
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.LogError(ex, "[CANCEL] node unreachable {node}", nodeName);
+                foreach (var id in idsOnNode) details[id] = "node_unreachable";
+            }
+        }
+
+        return Ok(new
+        {
+            ok = true,
+            totalRequested = ids.Count,
+            canceledInQueue,
+            details
+        });
+    }
+
+    // POST /api/jobs/cancel/123
+    [HttpPost("cancel/{id}")]
+    public Task<IActionResult> CancelOne(int id, CancellationToken ct)
+        => CancelBatch(new List<int> { id }, ct);
+
+    // 用來接 DB 查詢
+    private sealed class CancelRow
+    {
+        public int HistoryId { get; set; }
+        public int FileStatus { get; set; }
+        public string? AssignedNode { get; set; }
+    }
         
+
+
+    public sealed class UpdatePriorityReq
+{
+    public int HistoryId { get; set; }
+    public int Priority { get; set; }
+}
+
+// POST /api/jobs/update-priority
+    [HttpPost("update-priority")]
+    public async Task<IActionResult> UpdatePriority([FromBody] UpdatePriorityReq req, CancellationToken ct)
+    {
+        if (!IsMaster()) return Forbid();
+
+        if (req is null || req.HistoryId <= 0)
+            return BadRequest(new { ok = false, message = "historyId is required" });
+
+        // 你想限制 priority 範圍可以加在這
+        // 例如 UI 用 0~10：
+        if (req.Priority < 0 || req.Priority > 10)
+            return BadRequest(new { ok = false, message = "priority must be between 0 and 10" });
+
+        var connStr = _cfg.GetConnectionString("DefaultConnection")!;
+        await using var conn = new SqlConnection(connStr);
+        var baseModel = new FileMoverWeb.Core.BaseModel(conn);
+
+        var patch = new Dictionary<string, object?>
+        {
+            ["priority"] = req.Priority,
+            ["update_time"] = DateTime.Now
+        };
+
+        // ✅ gate：只允許「還沒被派發」的任務改 priority
+        // 1) 狀態必須還在 queue/pending/phase2 pending
+        // 2) assigned_node 必須是空（避免已被別台 claim）
+        var updated = await baseModel.UpdateAsync(
+            table: "dbo.FileData_History",
+            pkName: "id",
+            id: req.HistoryId,
+            data: patch,
+            columnsWhitelist: new[] { "priority", "update_time" },
+            extraWhereSql: "file_status IN (0, -1, 24, 27) AND (assigned_node IS NULL OR assigned_node = '')",
+            ct: ct);
+
+        if (updated == 0)
+            return BadRequest(new
+            {
+                ok = false,
+                message = "update rejected (status not allowed or already assigned to a node)"
+            });
+
+        return Ok(new { ok = true, historyId = req.HistoryId, priority = req.Priority });
+    }
     }
 }

@@ -114,4 +114,5 @@ C:\Users\coco\projects\FileMoverWeb\bin\Debug\net9.0\System.Text.Json.dll
 C:\Users\coco\projects\FileMoverWeb\bin\Debug\net9.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\coco\projects\FileMoverWeb\bin\Debug\net9.0\runtimes\win\lib\net9.0\System.Text.Encodings.Web.dll
 C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\1mh2ygiuf8-7qzjjckyx2.gz
-C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\4688xoxu7j-ut48n9u1c0.gz
+C:\Users\coco\projects\FileMoverWeb\bin\Debug\net9.0\FluentFTP.dll
+C:\Users\coco\projects\FileMoverWeb\obj\Debug\net9.0\compressed\4688xoxu7j-bfzl0ertkq.gz

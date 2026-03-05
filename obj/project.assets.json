@@ -51,6 +51,19 @@
           }
         }
       },
+      "FluentFTP/53.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/FluentFTP.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/FluentFTP.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.OpenApi/9.0.10": {
         "type": "package",
         "dependencies": {
@@ -1086,6 +1099,33 @@
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml",
         "readme.md"
+      ]
+    },
+    "FluentFTP/53.0.2": {
+      "sha512": "EaBY+FECGqlfDL1HnxaSrPCuakebW6xlfNt/VsH5daPS76kfKA3hZiJjH6OTceNzNDWl9HTpwRXOP96mHWhbIg==",
+      "type": "package",
+      "path": "fluentftp/53.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "fluentftp.53.0.2.nupkg.sha512",
+        "fluentftp.nuspec",
+        "lib/net462/FluentFTP.dll",
+        "lib/net462/FluentFTP.xml",
+        "lib/net472/FluentFTP.dll",
+        "lib/net472/FluentFTP.xml",
+        "lib/net7.0/FluentFTP.dll",
+        "lib/net7.0/FluentFTP.xml",
+        "lib/net8.0/FluentFTP.dll",
+        "lib/net8.0/FluentFTP.xml",
+        "lib/net9.0/FluentFTP.dll",
+        "lib/net9.0/FluentFTP.xml",
+        "lib/netstandard2.0/FluentFTP.dll",
+        "lib/netstandard2.0/FluentFTP.xml",
+        "lib/netstandard2.1/FluentFTP.dll",
+        "lib/netstandard2.1/FluentFTP.xml",
+        "logo-nuget.png"
       ]
     },
     "Microsoft.AspNetCore.OpenApi/9.0.10": {
@@ -2599,6 +2639,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Dapper >= 2.1.66",
+      "FluentFTP >= 53.0.2",
       "Microsoft.AspNetCore.OpenApi >= 9.0.10",
       "Microsoft.Data.SqlClient >= 6.1.4",
       "Serilog.AspNetCore >= 10.0.0",
@@ -2653,6 +2694,10 @@
           "Dapper": {
             "target": "Package",
             "version": "[2.1.66, )"
+          },
+          "FluentFTP": {
+            "target": "Package",
+            "version": "[53.0.2, )"
           },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",

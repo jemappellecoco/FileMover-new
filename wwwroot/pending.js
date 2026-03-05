@@ -333,6 +333,44 @@ startProgressSse();
                 </button>
             </td>`;
     }
+    async function requestCancel(ids) {
+    if (!ids || ids.length === 0) return;
+
+    try {
+        // 統一呼叫 Master 的 Batch API
+        const resp = await fetch('/api/jobs/cancel-batch', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(ids)
+        });
+
+        if (resp.ok) {
+          // 清除進度快取，讓進度條歸零
+            ids.forEach(id => {
+                const key = `TO-${id}`;
+                progressState.delete(key);
+                rateState.delete(key);
+            });
+            alert(`取消指令已送出 (共 ${ids.length} 筆)`);
+            loadPending(false); // 立即刷新列表
+            selectedIds.clear(); // 清除勾選狀態
+        } else {
+            const msg = await resp.text();
+            throw new Error(msg || '取消失敗');
+        }
+    } catch (err) {
+        alert('操作失敗: ' + err.message);
+    }
+}
+root.querySelector('#btnCancelSelected')?.addEventListener('click', () => {
+    const checked = Array.from(root.querySelectorAll('.chk-pending:checked'));
+    if (checked.length === 0) return alert('請先勾選任務');
+
+    const ids = checked.map(chk => parseInt(chk.dataset.id));
+    if (confirm(`確定取消選取的 ${ids.length} 筆任務？`)) {
+        requestCancel(ids);
+    }
+});
 
     // === 資料載入 ===
     async function loadPending(isAuto = true) {
@@ -581,6 +619,65 @@ async function loadPendHistoryRecent({ silent=false } = {}){
   }
 }
 root.addEventListener('click', async (e) => {
+  // === 1. 單筆取消邏輯 ===
+  const cancelBtn = e.target.closest('.btn-cancel');
+    if (cancelBtn) {
+        const id = Number(cancelBtn.dataset.id);
+        if (!id) return;
+
+        // 判斷是否正在執行中 (可以看文字或狀態)
+        const isRunning = cancelBtn.innerText.includes('中斷') || 
+                          cancelBtn.closest('tr').innerText.includes('執行中');
+
+        const msg = isRunning 
+            ? ` 任務 #${id} 執行中` 
+            : `確定要取消任務 #${id} 嗎？`;
+
+        if (confirm(msg)) {
+            await requestCancel([id]); // 雖然只有一筆，也包成陣列 [id]
+        }
+        return;
+    }
+
+    // ✅ Priority change -> update DB
+root.addEventListener('change', async (e) => {
+  const sel = e.target.closest('.pri-select');
+  if (!sel) return;
+
+  const historyId = Number(sel.dataset.id);
+  const newPriority = Number(sel.value);
+
+  if (!historyId || !Number.isFinite(newPriority)) return;
+
+  // 如果正在執行中，被 disabled 的話基本不會進來；保險再擋一次
+  if (sel.disabled) return;
+
+  try {
+    const resp = await fetch('/api/jobs/update-priority', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ historyId, priority: newPriority })
+    });
+
+    if (!resp.ok) {
+      const msg = await resp.text();
+      throw new Error(msg || 'update-priority failed');
+    }
+
+    // ✅ 成功：不用整頁重拉也可以
+    // 1) 先更新本地 allRows，避免下次 auto-refresh 短暫跳回舊值
+    const row = allRows.find(x => x.historyId === historyId);
+    if (row) row.priority = newPriority;
+
+    // 2) 你如果想立刻讓排序生效（不用等 5 秒），就手動重畫一次
+    //    但不要閃：你可以直接呼叫 loadPending(false)（保守、最簡單）
+    loadPending(false);
+  } catch (err) {
+    alert('修改優先級失敗：' + (err.message || err));
+    loadPending(false); // 拉回 DB 正確值
+  }
+});
+    // === 2. 原本的 Retry 邏輯 (你提供的代碼) ===
   const retryBtn = e.target.closest('.btn-retry');
   if (retryBtn) {
     const historyId = Number(retryBtn.dataset.id);
@@ -604,7 +701,10 @@ root.addEventListener('click', async (e) => {
         const msg = typeof payload === 'string' ? payload : (payload.message || JSON.stringify(payload));
         throw new Error(msg);
       }
-
+      // 重試成功，清除舊的進度快取
+    const key = `TO-${historyId}`;
+    progressState.delete(key);
+    rateState.delete(key)
       alert(`重試已送出：#${historyId}`);
       // 你可以選擇：只 reload recent（快） or reload pending（保守）
       loadPendHistoryRecent({ silent: false });
@@ -614,6 +714,13 @@ root.addEventListener('click', async (e) => {
     }
     return;
   }
+  // 在 initPending 結尾處加入
+$chkAll?.addEventListener('change', (e) => {
+    const isChecked = e.target.checked;
+    root.querySelectorAll('.chk-pending:not(:disabled)').forEach(chk => {
+        chk.checked = isChecked;
+    });
+});
 
   const rmBtn = e.target.closest('.btn-remove');
   if (rmBtn) {

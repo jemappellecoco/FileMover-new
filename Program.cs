@@ -67,6 +67,8 @@ builder.Services.AddSingleton<DeleteVerifier>();
 builder.Services.AddSingleton<CopyVerifier>();
 builder.Services.AddSingleton<ArchivePoller>();
 builder.Services.AddSingleton<FtpSetting>();
+builder.Services.AddSingleton<FtpTransfer>();
+builder.Services.AddSingleton<JobTracker>();
 var role = builder.Configuration["Cluster:Role"];
 
 if (string.Equals(role, "Master", StringComparison.OrdinalIgnoreCase))

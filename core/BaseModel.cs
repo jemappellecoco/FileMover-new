@@ -104,6 +104,48 @@ namespace FileMoverWeb.Core
 //     columnsWhitelist: new[] { "action", "file_status", "assigned_node", "note", "update_time" },
 //     ct: ct
 // );
+/// <summary>
+        /// 批次更新：針對多個 ID 一次性更新相同欄位
+        /// </summary>
+        public async Task<int> UpdateBatchAsync(
+            string table,
+            string pkName,
+            IEnumerable<int> ids,
+            Dictionary<string, object?> data,
+            IReadOnlyCollection<string> columnsWhitelist,
+            string? extraWhereSql = null,
+            object? extraWhereParams = null,
+            CancellationToken ct = default)
+        {
+            var idList = ids?.ToList();
+            if (idList == null || !idList.Any() || data == null || !data.Any()) 
+                return 0;
+
+            // 1. 白名單安全性過濾
+            var clean = data
+                .Where(kv => columnsWhitelist.Contains(kv.Key, StringComparer.OrdinalIgnoreCase))
+                .ToDictionary(kv => kv.Key, kv => kv.Value);
+
+            if (!clean.Any()) return 0;
+
+            // 2. 組成 SET 語句 (例如: file_status = @file_status, note = @note)
+            var setSql = string.Join(", ", clean.Keys.Select(k => $"{k} = @{k}"));
+
+            // 3. 組成完整 SQL (使用 WHERE pk IN @ids)
+            var sql = $"UPDATE {table} SET {setSql} WHERE {pkName} IN @ids";
+            
+            if (!string.IsNullOrWhiteSpace(extraWhereSql))
+                sql += $" AND ({extraWhereSql})";
+
+            // 4. 準備參數
+            var p = new DynamicParameters(clean);
+            p.Add("ids", idList); // Dapper 會自動處理為 IN (...)
+            if (extraWhereParams != null) p.AddDynamicParams(extraWhereParams);
+
+            // 5. 執行
+            return await _conn.ExecuteAsync(new CommandDefinition(sql, p, cancellationToken: ct));
+        }
+    
 public Task<IEnumerable<T>> QueryAsync<T>(string sql, object? parameters, CancellationToken ct = default)
 {
     return _conn.QueryAsync<T>(new CommandDefinition(sql, parameters, cancellationToken: ct));
@@ -113,6 +155,24 @@ public Task<T?> FindAsync<T>(string table, string pkName, int id, CancellationTo
     var sql = $"SELECT * FROM {table} WHERE {pkName} = @id";
     return _conn.QueryFirstOrDefaultAsync<T>(new CommandDefinition(sql, new { id }, cancellationToken: ct));
 }
+
+public Task<int> CreateManyAsync(
+    string table,
+    IReadOnlyCollection<string> columns,
+    IEnumerable<object> rows,
+    CancellationToken ct = default)
+{
+    if (columns == null || columns.Count == 0) throw new ArgumentException("columns empty");
+    var cols = string.Join(", ", columns);
+    var vals = string.Join(", ", columns.Select(c => "@" + c));
+
+    var sql = $@"
+INSERT INTO {table} ({cols})
+VALUES ({vals});
+";
+    return _conn.ExecuteAsync(new CommandDefinition(sql, rows, cancellationToken: ct));
+}
+
 public Task<T?> FindWhereAsync<T>(
     string table,
     string whereSql,

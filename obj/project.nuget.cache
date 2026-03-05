@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "mmGS/lmV9is=",
+  "dgSpecHash": "s4oEE2JiTUQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\coco\\projects\\FileMoverWeb\\FileMoverWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\coco\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\coco\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",
     "C:\\Users\\coco\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
+    "C:\\Users\\coco\\.nuget\\packages\\fluentftp\\53.0.2\\fluentftp.53.0.2.nupkg.sha512",
     "C:\\Users\\coco\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.10\\microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
     "C:\\Users\\coco\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\coco\\.nuget\\packages\\microsoft.data.sqlclient\\6.1.4\\microsoft.data.sqlclient.6.1.4.nupkg.sha512",

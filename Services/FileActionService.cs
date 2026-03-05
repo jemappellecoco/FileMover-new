@@ -17,11 +17,15 @@ namespace FileMoverWeb.Services
         // private readonly ProgressHub _progress;
         private readonly IProgressReporter _progress;
         private readonly string _nodeName;
-        public FileActionWorker(ILogger<FileActionWorker> log, IProgressReporter progress, IConfiguration cfg)
+        private readonly FtpSetting _ftp;
+        private readonly FtpTransfer _ftpTransfer;
+        public FileActionWorker(ILogger<FileActionWorker> log, IProgressReporter progress, IConfiguration cfg,  FtpSetting ftp,FtpTransfer ftpTransfer)
         {
             _log = log;
              _progress = progress;
             _nodeName = (cfg["Cluster:NodeName"] ?? "UNKNOWN").Trim();
+            _ftp = ftp;
+            _ftpTransfer = ftpTransfer; 
         }
 
         public async Task<FileActionResult> RunOneAsync(HistoryTask task, CancellationToken ct = default)
@@ -180,14 +184,19 @@ namespace FileMoverWeb.Services
         // -------------------------
         // Actions
         // -------------------------
-
+        
         private async Task CopyAsync(HistoryTask t, CancellationToken ct)
             {
                 var hid = t.HistoryId;
-
+                var toType = (t.ToType ?? "").Trim().ToUpper();
                 var src = t.FromFullPath;
                 var dstFinal = t.ToFullPath;
-
+                // ✅ 判斷是否為 IC 儲存類型
+                if (toType == "IC")
+                {
+                    await CopyToIcAsync(t, ct).ConfigureAwait(false);
+                    return;
+                }
                 if (string.IsNullOrWhiteSpace(src))
                     throw new ArgumentException("FromFullPath is empty");
                 if (string.IsNullOrWhiteSpace(dstFinal))
@@ -257,7 +266,57 @@ namespace FileMoverWeb.Services
 
                 FileActionHelpers.MoveReplace(temp, dst);
             }
+        private async Task CopyToIcAsync(HistoryTask t, CancellationToken ct)
+            {
+                var hid = t.HistoryId;
+                var src = t.FromFullPath;
 
+                if (string.IsNullOrWhiteSpace(src))
+                    throw new ArgumentException("FromFullPath is empty (IC)");
+                if (!File.Exists(src))
+                    throw new FileNotFoundException($"Source not found for IC upload: {src}", src);
+
+                var total = new FileInfo(src).Length;
+                var fileName = Path.GetFileName(src);
+
+                _log.LogInformation("[COPY_IC] hid={hid} src={src} toType=IC (FTP)", hid, src);
+
+                // 1. 發送開始進度
+                _progress.Publish(new ProgressReportDto
+                {
+                    HistoryId = hid,
+                    Node = _nodeName,
+                    Action = "copy (ftp)",
+                    BytesDone = 0,
+                    BytesTotal = total,
+                    FileName = fileName,
+                    Message = "start ftp upload"
+                });
+
+                // 2. 呼叫 FtpTransfer 執行上傳
+                // 注意：UploadToIcAsync 內部會透過 _setting.GetIcEndpointFromTask(t) 取得 IP:PORT
+                await _ftpTransfer.UploadToIcAsync(
+                    t, 
+                    src, 
+                    ct, 
+                    onProgress: (sent, totalBytes) =>
+                    {
+                        _progress.Publish(new ProgressReportDto
+                        {
+                            HistoryId = hid,
+                            Node = _nodeName,
+                            Action = "copy (ftp)",
+                            BytesDone = sent,
+                            BytesTotal = totalBytes,
+                            FileName = fileName
+                        });
+                    }
+                ).ConfigureAwait(false);
+
+                _log.LogInformation("[COPY_IC] hid={hid} upload success", hid);
+                
+                // 3. 完成回報 (Optional, 因為 RunOneAsync 最後會回傳 Ok 狀態)
+            }
        private async Task MoveAsync(HistoryTask t, CancellationToken ct)
             {
                 var hid = t.HistoryId;
