@@ -69,12 +69,12 @@ namespace FileMoverWeb.Services
             var row = await baseModel.FindWhereAsync<StorageRow>(
                 table: "dbo.FileData_Storage",
                 whereSql: @"
-file_id = @fid
-AND storage_id = @sid
-AND (
-    (@ft IS NULL AND file_type IS NULL)
-    OR (file_type = @ft)
-)",
+                file_id = @fid
+                AND storage_id = @sid
+                AND (
+                    (@ft IS NULL AND file_type IS NULL)
+                    OR (file_type = @ft)
+                )",
                 parameters: new
                 {
                     fid = h.file_id,
@@ -126,9 +126,9 @@ AND (
                     data: new Dictionary<string, object?>
                     {
                         ["file_status"] = -1,
-                        ["update_time"] = DateTime.Now
+                      
                     },
-                    columnsWhitelist: new[] { "file_status", "update_time" },
+                    columnsWhitelist: new[] { "file_status" },
                     extraWhereSql: "is_file_4F = 'N' AND is_file_7F = 'N'",
                     ct: ct);
 

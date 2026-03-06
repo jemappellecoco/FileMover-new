@@ -37,7 +37,7 @@ namespace FileMoverWeb.Services
         var effectiveAct = act;
 
         // ✅ Phase2：24/27 一律用 move（不管 DB action 是什麼）
-        if (task.HistoryStatus is 24 or 27)
+        if (act != "delete" && task.HistoryStatus is 24 or 27)
         {
             effectiveAct = "move";
             _log.LogInformation(
@@ -471,7 +471,7 @@ namespace FileMoverWeb.Services
        public const int Fatal           = 91;
         public const int Canceled        = 999;
 
-        public const int InvalidTask     = 910;
+        public const int InvalidTask     = 91;
         public const int SourceNotFound  = 911;
 
         public const int FileInUse       = 912;

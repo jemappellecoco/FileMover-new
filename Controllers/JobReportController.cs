@@ -74,22 +74,26 @@ namespace FileMoverWeb.Controllers
                 dto.FileStatus = 904;   // 你自訂：copy verify failed
                 dto.Error = msg ?? "copy verify failed";
             }
-        }
-       // DeleteDone(12) → 正常 verify
+        }    
+            // --- Delete 驗證 / 失敗修復邏輯（修正版） ---
         if (dto.FileStatus.Value == 12)
         {
+            // ✅ DeleteDone(12) → 驗證刪除是否真的成功
             var (okVerify, msg) = await _deleteVerifier.VerifyDeleteAsync(dto.HistoryId, ct);
 
             if (!okVerify)
             {
+                // ✅ 只有 verify 失敗才 restore
                 await _deleteVerifier.FileOnFailAsync(dto.HistoryId, ct);
                 dto.FileStatus = 904;
                 dto.Error = msg ?? "delete verify failed";
             }
         }
-        else
+        else if ( dto.FileStatus.Value == 91 ||dto.FileStatus.Value >= 900)
         {
-            // ✅ 不是 12 → 如果是 delete 任務，就 restore
+            // ✅ 只有「取消 / 錯誤類狀態」才 restore
+            // 999: 使用者取消
+            // 900+: 你自訂的錯誤碼（901/902/903/904...）
             await _deleteVerifier.FileOnFailAsync(dto.HistoryId, ct);
         }
 
@@ -100,7 +104,7 @@ namespace FileMoverWeb.Controllers
             dto.HistoryId, dto.Node, dto.FileStatus, dto.Error, updated);
 
         if (updated == 0)
-            return Ok(new { ok = true, updated = 0, message = "no rows updated (node mismatch or no patch fields)" });
+            return Ok(new { ok = true, updated = 0, message = "no rows updated " });
 
         // ---- SLOT LOGIC ----
         // Consume：當 worker 回報「開始跑」(file_status==1) 且 assumeFreedSlot==false
@@ -125,9 +129,15 @@ namespace FileMoverWeb.Controllers
         {
             var connStr = _cfg.GetConnectionString("DefaultConnection")!;
             await using var conn = new SqlConnection(connStr);
+            await conn.OpenAsync(ct);
+            
 
-            var baseModel = new FileMoverWeb.Core.BaseModel(conn);
-
+            // 1 開啟 (Transaction)
+            await using var trans = await conn.BeginTransactionAsync(ct);
+            var baseModel = new FileMoverWeb.Core.BaseModel(conn,(SqlTransaction)trans);
+           try
+    {
+           
             // ✅ Patch：只更新你有給的欄位
             var patch = new Dictionary<string, object?>();
 
@@ -136,8 +146,8 @@ namespace FileMoverWeb.Controllers
 
             if (dto.Error != null)
             {
-                // 避免超長（你的 DB note 可能 nvarchar(4000)）
-                var note = dto.Error.Length > 4000 ? dto.Error.Substring(0, 4000) : dto.Error;
+
+                var note =  dto.Error;
                 patch["note"] = note;
             }
 
@@ -152,8 +162,8 @@ namespace FileMoverWeb.Controllers
              // ✅ 先更新 History
             var node = dto.Node!.Trim();
                 _log.LogWarning(
-    "[TAPE_CHECK] hid={hid} status={st} setTape={setTape} node='{node}'",
-    dto.HistoryId, dto.FileStatus, dto.SetTape, node);
+                    "[TAPE_CHECK] hid={hid} status={st} setTape={setTape} node='{node}'",
+                    dto.HistoryId, dto.FileStatus, dto.SetTape, node);
         // 2️⃣ 若成功且需要清 tape_id
             if (dto.SetTape == true && dto.FileStatus == Status.CopyDone /* 11 */)
             {
@@ -185,18 +195,30 @@ namespace FileMoverWeb.Controllers
                         fileId.Value);
                 }
             }
+            _log.LogWarning(
+                "[REPORT_APPLY] hid={hid} node={node} status={st}",
+                dto.HistoryId, dto.Node, dto.FileStatus);
             var updated = await baseModel.UpdateAsync(
                 table: "dbo.FileData_History",
                 pkName: "id",
                 id: dto.HistoryId,
                 data: patch,
                 columnsWhitelist: HistoryWhitelist,
-                extraWhereSql: "assigned_node = @node",
-                extraWhereParams: new { node = dto.Node!.Trim() },
                 ct: ct);
-
+            await trans.CommitAsync(ct);
+            _log.LogWarning(
+    "[REPORT_RESULT] hid={hid} updated={updated} status={st}",
+    dto.HistoryId, updated, dto.FileStatus);
             return updated;
-        }
+        }catch (Exception ex)
+    {
+        // 發生任何意外，全部還原
+        await trans.RollbackAsync(ct);
+        _log.LogError(ex, "[REPORT_ERR] hid={hid} transaction fallback!", dto.HistoryId);
+        throw;
+    }
+}
+        
             // ✅ 保留原本語意：必須 assigned_node = node 才能改
             // return await baseModel.UpdateAsync(
             //     table: "dbo.FileData_History",

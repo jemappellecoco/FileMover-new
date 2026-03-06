@@ -1279,3 +1279,465 @@ System.IO.IOException: FTP upload failed. host=192.168.30.218:21, remote=2101EB1
 2026-03-05 14:59:24.820 [INF] (45) [HB] master offline: http://127.0.0.1:5089
 2026-03-05 14:59:29.873 [INF] (45) [HB] master offline: http://127.0.0.1:5089
 2026-03-05 14:59:34.909 [INF] (45) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:43:09.387 [INF] (8) Master dispatch loop started.
+2026-03-05 15:43:09.411 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-05 15:43:09.446 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-05 15:43:09.454 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-05 15:43:09.454 [INF] (2) Hosting environment: Development
+2026-03-05 15:43:09.455 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-05 15:49:58.883 [INF] (14) Application is shutting down...
+2026-03-05 15:50:03.803 [INF] (8) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:50:08.864 [INF] (16) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:50:13.924 [INF] (16) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:50:18.961 [INF] (8) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:50:24.034 [INF] (8) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:50:39.657 [INF] (8) Master dispatch loop started.
+2026-03-05 15:50:39.682 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-05 15:50:39.716 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-05 15:50:39.727 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-05 15:50:39.729 [INF] (2) Hosting environment: Development
+2026-03-05 15:50:39.730 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-05 15:55:49.914 [INF] (3) Application is shutting down...
+2026-03-05 15:55:54.773 [INF] (17) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:55:59.834 [INF] (17) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:56:04.880 [INF] (17) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:56:09.936 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:56:14.989 [INF] (17) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:56:35.944 [INF] (8) Master dispatch loop started.
+2026-03-05 15:56:35.965 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-05 15:56:36.117 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-05 15:56:36.123 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-05 15:56:36.124 [INF] (2) Hosting environment: Development
+2026-03-05 15:56:36.125 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-05 15:58:34.332 [INF] (14) Application is shutting down...
+2026-03-05 15:58:38.754 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:58:43.926 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:58:48.981 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:59:00.098 [INF] (8) Master dispatch loop started.
+2026-03-05 15:59:00.098 [INF] (9) DeleteScheduleService started (MASTER)
+2026-03-05 15:59:00.128 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-05 15:59:00.139 [INF] (9) DeleteSchedule run time set to 15:59, MaxPerStorage=3000, Recursive=false
+2026-03-05 15:59:00.161 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-05 15:59:00.314 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-05 15:59:00.316 [INF] (2) Hosting environment: Development
+2026-03-05 15:59:00.317 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-05 15:59:06.058 [INF] (15) Application is shutting down...
+2026-03-05 15:59:08.551 [INF] (6) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:59:13.615 [INF] (9) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:59:18.683 [INF] (9) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:59:23.733 [INF] (9) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:59:28.794 [INF] (10) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:59:33.860 [INF] (10) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 15:59:41.095 [INF] (8) Master dispatch loop started.
+2026-03-05 15:59:41.095 [INF] (9) DeleteScheduleService started (MASTER)
+2026-03-05 15:59:41.126 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-05 15:59:41.140 [INF] (9) DeleteSchedule run time set to 16:00, MaxPerStorage=3000, Recursive=false
+2026-03-05 15:59:41.156 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-05 15:59:41.179 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-05 15:59:41.180 [INF] (2) Hosting environment: Development
+2026-03-05 15:59:41.181 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-05 16:00:00.004 [INF] (9) DeleteScheduler RUN START at "2026-03-05T16:00:00.0046371+08:00"
+2026-03-05 16:00:00.031 [INF] (9) DeleteScheduler found 7 storages
+2026-03-05 16:00:00.052 [INF] (9) scan file: \\192.168.30.110\nasa\11013274.mxf
+2026-03-05 16:00:00.074 [INF] (9) scan file: \\192.168.30.110\nasa\2101AE05 (2).MXF
+2026-03-05 16:00:00.078 [INF] (9) scan file: \\192.168.30.110\nasa\2101AE05.MXF
+2026-03-05 16:00:00.087 [INF] (9) scan file: \\192.168.30.110\nasa\2101EC3E.mxf
+2026-03-05 16:00:00.100 [INF] (6) scan file: \\192.168.30.110\nasa\2101ECB3.MXF
+2026-03-05 16:00:00.101 [INF] (6) scan file: \\192.168.30.110\nasa\2101ECBC.mxf
+2026-03-05 16:00:00.114 [INF] (6) scan file: \\192.168.30.110\nasa\2101F0FC.MXF
+2026-03-05 16:00:00.143 [INF] (9) scan file: \\192.168.30.110\nasa\2101F22B.MXF
+2026-03-05 16:00:00.157 [INF] (9) scan file: \\192.168.30.110\nasa\C300AB9F.MXF
+2026-03-05 16:00:00.293 [INF] (6) DeleteScheduler storage=23 scanned=9 pending=6 inserted=6
+2026-03-05 16:00:00.296 [INF] (6) DeleteScheduler storage=24 scanned=0 pending=0 inserted=0
+2026-03-05 16:00:01.283 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2003 node=7F-M1
+2026-03-05 16:00:01.302 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-05 16:00:01.304 [INF] (8) [EXEC] start hid=2003 action=delete_test from=null to=null
+2026-03-05 16:00:01.342 [WRN] (9) [] start hid=2003
+2026-03-05 16:00:01.353 [WRN] (9) [TAPE_CHECK] hid=2003 status=1 setTape=false node='7F-M1'
+2026-03-05 16:00:01.386 [INF] (9) [JOB_REPORT] hid=2003 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:00:01.387 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:00:01.393 [WRN] (8) [] start hid=2003
+2026-03-05 16:00:01.403 [WRN] (8) [TAPE_CHECK] hid=2003 status=910 setTape=false node='7F-M1'
+2026-03-05 16:00:01.417 [INF] (8) [JOB_REPORT] hid=2003 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:00:01.419 [INF] (8) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:00:01.421 [INF] (9) [EXEC] done hid=2003 ok=false status=910
+2026-03-05 16:00:11.327 [INF] (10) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2004 node=7F-M1
+2026-03-05 16:00:11.332 [INF] (9) [EXEC] start hid=2004 action=delete_test from=\\192.168.30.110\nasa\2101EC3E.MXF to=null
+2026-03-05 16:00:11.332 [INF] (10) Pushed 1 tasks to 7F-M1
+2026-03-05 16:00:11.334 [WRN] (9) [] start hid=2004
+2026-03-05 16:00:11.337 [WRN] (9) [TAPE_CHECK] hid=2004 status=1 setTape=false node='7F-M1'
+2026-03-05 16:00:11.340 [INF] (9) [JOB_REPORT] hid=2004 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:00:11.342 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:00:11.347 [WRN] (9) [] start hid=2004
+2026-03-05 16:00:11.374 [WRN] (9) [TAPE_CHECK] hid=2004 status=910 setTape=false node='7F-M1'
+2026-03-05 16:00:11.379 [INF] (9) [JOB_REPORT] hid=2004 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:00:11.380 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:00:11.381 [INF] (13) [EXEC] done hid=2004 ok=false status=910
+2026-03-05 16:00:12.575 [INF] (6) DeleteScheduler storage=22 scanned=0 pending=0 inserted=0
+2026-03-05 16:00:12.630 [INF] (6) scan file: \\192.168.30.110\nase\11013721.MXF
+2026-03-05 16:00:12.645 [INF] (6) scan file: \\192.168.30.110\nase\21019DA5.MXF
+2026-03-05 16:00:12.675 [INF] (13) scan file: \\192.168.30.110\nase\2101EB19.MXF
+2026-03-05 16:00:12.702 [INF] (6) DeleteScheduler storage=25 scanned=3 pending=2 inserted=2
+2026-03-05 16:00:12.737 [INF] (6) scan file: \\192.168.30.110\nasb\Restore\10000001.MXF
+2026-03-05 16:00:12.746 [INF] (13) scan file: \\192.168.30.110\nasb\Restore\2101A1E8.MXF
+2026-03-05 16:00:12.747 [INF] (13) scan file: \\192.168.30.110\nasb\Restore\2101F0FD.MXF
+2026-03-05 16:00:12.753 [INF] (13) scan file: \\192.168.30.110\nasb\Restore\2101F22B - 複製 (2).MXF
+2026-03-05 16:00:12.780 [INF] (6) scan file: \\192.168.30.110\nasb\Restore\2101F22B - 複製.MXF
+2026-03-05 16:00:12.808 [INF] (9) DeleteScheduler storage=26 scanned=5 pending=4 inserted=4
+2026-03-05 16:00:12.822 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101A1E8.mxf
+2026-03-05 16:00:12.839 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101A1E9.mxf
+2026-03-05 16:00:12.868 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101AC2D.MXF
+2026-03-05 16:00:12.884 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101B3CF.MXF
+2026-03-05 16:00:12.912 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101C4E9.mxf
+2026-03-05 16:00:12.920 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101EC14.mxf
+2026-03-05 16:00:12.957 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101EC3E.MXF
+2026-03-05 16:00:12.959 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101EC74.mxf
+2026-03-05 16:00:12.986 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101EC8D.mxf
+2026-03-05 16:00:13.095 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101ECB0.mxf
+2026-03-05 16:00:13.115 [INF] (6) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101ECB1.mxf
+2026-03-05 16:00:13.120 [INF] (6) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101ECB2.mxf
+2026-03-05 16:00:13.153 [INF] (6) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101ECB3.mxf
+2026-03-05 16:00:13.161 [INF] (6) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101ED10.MXF
+2026-03-05 16:00:13.209 [INF] (6) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101F0FC.mxf
+2026-03-05 16:00:13.235 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101F104.mxf
+2026-03-05 16:00:13.240 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101F2C2.mxf
+2026-03-05 16:00:13.250 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101F4D1.mxf
+2026-03-05 16:00:13.260 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\2101F50D.mxf
+2026-03-05 16:00:13.269 [INF] (6) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\310146B0.mxf
+2026-03-05 16:00:13.274 [INF] (9) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\41005836.MXF
+2026-03-05 16:00:13.279 [INF] (6) scan file: \\192.168.30.110\nasb\TEST-7F-NAS\D10002F3.mxf
+2026-03-05 16:00:13.351 [INF] (10) DeleteScheduler storage=27 scanned=22 pending=21 inserted=21
+2026-03-05 16:00:13.362 [INF] (10) scan file: \\192.168.30.110\vlcode\11013274 - 複製.mxf
+2026-03-05 16:00:13.396 [INF] (10) scan file: \\192.168.30.110\vlcode\2101ECB3.MXF
+2026-03-05 16:00:13.401 [INF] (10) scan file: \\192.168.30.110\vlcode\2101ECBC.mxf
+2026-03-05 16:00:13.432 [INF] (10) scan file: \\192.168.30.110\vlcode\2101F0FC.MXF
+2026-03-05 16:00:13.438 [INF] (10) scan file: \\192.168.30.110\vlcode\2101F22B.MXF
+2026-03-05 16:00:13.444 [INF] (10) scan file: \\192.168.30.110\vlcode\2101F50C.mxf
+2026-03-05 16:00:13.472 [INF] (10) scan file: \\192.168.30.110\vlcode\23000058.MXF
+2026-03-05 16:00:13.478 [INF] (6) scan file: \\192.168.30.110\vlcode\33000010.MXF
+2026-03-05 16:00:13.511 [INF] (10) scan file: \\192.168.30.110\vlcode\33000053.MXF
+2026-03-05 16:00:13.517 [INF] (10) scan file: \\192.168.30.110\vlcode\33000114.MXF
+2026-03-05 16:00:13.523 [INF] (10) scan file: \\192.168.30.110\vlcode\33000115.MXF
+2026-03-05 16:00:13.554 [INF] (6) scan file: \\192.168.30.110\vlcode\C3008755.MXF
+2026-03-05 16:00:13.564 [INF] (6) scan file: \\192.168.30.110\vlcode\C300A935.MXF
+2026-03-05 16:00:13.595 [INF] (10) scan file: \\192.168.30.110\vlcode\C300AB9F.MXF
+2026-03-05 16:00:13.605 [INF] (10) scan file: \\192.168.30.110\vlcode\H200A14A.MXF
+2026-03-05 16:00:13.618 [INF] (10) scan file: \\192.168.30.110\vlcode\H200B121.MXF
+2026-03-05 16:00:13.637 [INF] (6) DeleteScheduler storage=31 scanned=16 pending=16 inserted=16
+2026-03-05 16:00:21.359 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2005 node=7F-M1
+2026-03-05 16:00:21.361 [INF] (10) [EXEC] start hid=2005 action=delete_test from=\\192.168.30.110\nasa\2101ECBC.MXF to=null
+2026-03-05 16:00:21.361 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:00:21.362 [WRN] (9) [] start hid=2005
+2026-03-05 16:00:21.365 [WRN] (9) [TAPE_CHECK] hid=2005 status=1 setTape=false node='7F-M1'
+2026-03-05 16:00:21.367 [INF] (9) [JOB_REPORT] hid=2005 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:00:21.368 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:00:21.370 [WRN] (13) [] start hid=2005
+2026-03-05 16:00:21.372 [WRN] (13) [TAPE_CHECK] hid=2005 status=910 setTape=false node='7F-M1'
+2026-03-05 16:00:21.375 [INF] (13) [JOB_REPORT] hid=2005 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:00:21.376 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:00:21.377 [INF] (9) [EXEC] done hid=2005 ok=false status=910
+2026-03-05 16:00:37.822 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2006 node=7F-M1
+2026-03-05 16:00:37.825 [INF] (10) [EXEC] start hid=2006 action=delete_test from=\\192.168.30.110\nasa\2101F0FC.MXF to=null
+2026-03-05 16:00:37.825 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-05 16:00:37.874 [WRN] (10) [] start hid=2006
+2026-03-05 16:00:37.879 [WRN] (10) [TAPE_CHECK] hid=2006 status=1 setTape=false node='7F-M1'
+2026-03-05 16:00:37.884 [INF] (10) [JOB_REPORT] hid=2006 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:00:37.885 [INF] (10) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:00:37.913 [WRN] (13) [] start hid=2006
+2026-03-05 16:00:37.917 [WRN] (13) [TAPE_CHECK] hid=2006 status=910 setTape=false node='7F-M1'
+2026-03-05 16:00:37.924 [INF] (13) [JOB_REPORT] hid=2006 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:00:37.926 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:00:37.927 [INF] (9) [EXEC] done hid=2006 ok=false status=910
+2026-03-05 16:00:47.912 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2007 node=7F-M1
+2026-03-05 16:00:47.914 [INF] (13) [EXEC] start hid=2007 action=delete_test from=\\192.168.30.110\nasa\2101F22B.MXF to=null
+2026-03-05 16:00:47.914 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-05 16:00:47.916 [WRN] (10) [] start hid=2007
+2026-03-05 16:00:47.919 [WRN] (10) [TAPE_CHECK] hid=2007 status=1 setTape=false node='7F-M1'
+2026-03-05 16:00:47.922 [INF] (10) [JOB_REPORT] hid=2007 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:00:47.924 [INF] (10) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:00:47.925 [WRN] (10) [] start hid=2007
+2026-03-05 16:00:47.929 [WRN] (10) [TAPE_CHECK] hid=2007 status=910 setTape=false node='7F-M1'
+2026-03-05 16:00:47.959 [INF] (10) [JOB_REPORT] hid=2007 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:00:47.961 [INF] (10) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:00:47.962 [INF] (10) [EXEC] done hid=2007 ok=false status=910
+2026-03-05 16:00:57.947 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2008 node=7F-M1
+2026-03-05 16:00:57.949 [INF] (9) [EXEC] start hid=2008 action=delete_test from=null to=null
+2026-03-05 16:00:57.949 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-05 16:00:57.950 [WRN] (10) [] start hid=2008
+2026-03-05 16:00:57.953 [WRN] (10) [TAPE_CHECK] hid=2008 status=1 setTape=false node='7F-M1'
+2026-03-05 16:00:57.955 [INF] (10) [JOB_REPORT] hid=2008 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:00:57.956 [INF] (10) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:00:57.958 [WRN] (10) [] start hid=2008
+2026-03-05 16:00:57.961 [WRN] (13) [TAPE_CHECK] hid=2008 status=910 setTape=false node='7F-M1'
+2026-03-05 16:00:57.966 [INF] (13) [JOB_REPORT] hid=2008 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:00:57.969 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:00:57.971 [INF] (13) [EXEC] done hid=2008 ok=false status=910
+2026-03-05 16:01:07.975 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2011 node=7F-M1
+2026-03-05 16:01:07.979 [INF] (10) [EXEC] start hid=2011 action=delete_test from=null to=null
+2026-03-05 16:01:07.979 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:01:07.981 [WRN] (10) [] start hid=2011
+2026-03-05 16:01:07.984 [WRN] (10) [TAPE_CHECK] hid=2011 status=1 setTape=false node='7F-M1'
+2026-03-05 16:01:08.021 [INF] (10) [JOB_REPORT] hid=2011 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:01:08.032 [INF] (10) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:01:08.078 [WRN] (10) [] start hid=2011
+2026-03-05 16:01:08.091 [WRN] (10) [TAPE_CHECK] hid=2011 status=910 setTape=false node='7F-M1'
+2026-03-05 16:01:08.135 [INF] (10) [JOB_REPORT] hid=2011 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:01:08.137 [INF] (10) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:01:08.139 [INF] (10) [EXEC] done hid=2011 ok=false status=910
+2026-03-05 16:01:17.997 [INF] (10) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2012 node=7F-M1
+2026-03-05 16:01:17.998 [INF] (6) [EXEC] start hid=2012 action=delete_test from=\\192.168.30.110\nasb\Restore\2101F0FD.MXF to=null
+2026-03-05 16:01:17.998 [INF] (10) Pushed 1 tasks to 7F-M1
+2026-03-05 16:01:18.000 [WRN] (9) [] start hid=2012
+2026-03-05 16:01:18.002 [WRN] (9) [TAPE_CHECK] hid=2012 status=1 setTape=false node='7F-M1'
+2026-03-05 16:01:18.005 [INF] (9) [JOB_REPORT] hid=2012 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:01:18.013 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:01:18.019 [WRN] (9) [] start hid=2012
+2026-03-05 16:01:18.023 [WRN] (9) [TAPE_CHECK] hid=2012 status=910 setTape=false node='7F-M1'
+2026-03-05 16:01:18.030 [INF] (9) [JOB_REPORT] hid=2012 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:01:18.035 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:01:18.036 [INF] (9) [EXEC] done hid=2012 ok=false status=910
+2026-03-05 16:01:28.032 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2013 node=7F-M1
+2026-03-05 16:01:28.034 [INF] (9) [EXEC] start hid=2013 action=delete_test from=null to=null
+2026-03-05 16:01:28.034 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:01:28.035 [WRN] (10) [] start hid=2013
+2026-03-05 16:01:28.038 [WRN] (10) [TAPE_CHECK] hid=2013 status=1 setTape=false node='7F-M1'
+2026-03-05 16:01:28.041 [INF] (10) [JOB_REPORT] hid=2013 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:01:28.043 [INF] (10) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:01:28.072 [WRN] (9) [] start hid=2013
+2026-03-05 16:01:28.075 [WRN] (9) [TAPE_CHECK] hid=2013 status=910 setTape=false node='7F-M1'
+2026-03-05 16:01:28.079 [INF] (9) [JOB_REPORT] hid=2013 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:01:28.081 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:01:28.082 [INF] (6) [EXEC] done hid=2013 ok=false status=910
+2026-03-05 16:01:38.071 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2014 node=7F-M1
+2026-03-05 16:01:38.073 [INF] (6) [EXEC] start hid=2014 action=delete_test from=null to=null
+2026-03-05 16:01:38.073 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-05 16:01:38.074 [WRN] (10) [] start hid=2014
+2026-03-05 16:01:38.077 [WRN] (10) [TAPE_CHECK] hid=2014 status=1 setTape=false node='7F-M1'
+2026-03-05 16:01:38.081 [INF] (10) [JOB_REPORT] hid=2014 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:01:38.083 [INF] (10) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:01:38.084 [WRN] (10) [] start hid=2014
+2026-03-05 16:01:38.088 [WRN] (10) [TAPE_CHECK] hid=2014 status=910 setTape=false node='7F-M1'
+2026-03-05 16:01:38.095 [INF] (10) [JOB_REPORT] hid=2014 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:01:38.101 [INF] (10) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:01:38.104 [INF] (10) [EXEC] done hid=2014 ok=false status=910
+2026-03-05 16:01:48.119 [INF] (9) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2036 node=7F-M1
+2026-03-05 16:01:48.124 [INF] (6) [EXEC] start hid=2036 action=delete_test from=null to=null
+2026-03-05 16:01:48.124 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-05 16:01:48.127 [WRN] (6) [] start hid=2036
+2026-03-05 16:01:48.132 [WRN] (6) [TAPE_CHECK] hid=2036 status=1 setTape=false node='7F-M1'
+2026-03-05 16:01:48.136 [INF] (6) [JOB_REPORT] hid=2036 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:01:48.154 [INF] (6) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:01:48.168 [WRN] (9) [] start hid=2036
+2026-03-05 16:01:48.174 [WRN] (9) [TAPE_CHECK] hid=2036 status=910 setTape=false node='7F-M1'
+2026-03-05 16:01:48.179 [INF] (9) [JOB_REPORT] hid=2036 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:01:48.181 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:01:48.182 [INF] (9) [EXEC] done hid=2036 ok=false status=910
+2026-03-05 16:01:58.171 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2037 node=7F-M1
+2026-03-05 16:01:58.172 [INF] (9) [EXEC] start hid=2037 action=delete_test from=\\192.168.30.110\vlcode\2101ECB3.MXF to=null
+2026-03-05 16:01:58.172 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-05 16:01:58.173 [WRN] (9) [] start hid=2037
+2026-03-05 16:01:58.177 [WRN] (9) [TAPE_CHECK] hid=2037 status=1 setTape=false node='7F-M1'
+2026-03-05 16:01:58.180 [INF] (9) [JOB_REPORT] hid=2037 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:01:58.182 [INF] (9) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:01:58.183 [WRN] (13) [] start hid=2037
+2026-03-05 16:01:58.186 [WRN] (9) [TAPE_CHECK] hid=2037 status=910 setTape=false node='7F-M1'
+2026-03-05 16:01:58.212 [INF] (13) [JOB_REPORT] hid=2037 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:01:58.214 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:01:58.215 [INF] (13) [EXEC] done hid=2037 ok=false status=910
+2026-03-05 16:02:08.198 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2038 node=7F-M1
+2026-03-05 16:02:08.200 [INF] (13) [EXEC] start hid=2038 action=delete_test from=\\192.168.30.110\vlcode\2101ECBC.MXF to=null
+2026-03-05 16:02:08.200 [INF] (9) Pushed 1 tasks to 7F-M1
+2026-03-05 16:02:08.201 [WRN] (13) [] start hid=2038
+2026-03-05 16:02:08.204 [WRN] (13) [TAPE_CHECK] hid=2038 status=1 setTape=false node='7F-M1'
+2026-03-05 16:02:08.207 [INF] (13) [JOB_REPORT] hid=2038 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:02:08.208 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:02:08.210 [WRN] (9) [] start hid=2038
+2026-03-05 16:02:08.214 [WRN] (9) [TAPE_CHECK] hid=2038 status=910 setTape=false node='7F-M1'
+2026-03-05 16:02:08.242 [INF] (9) [JOB_REPORT] hid=2038 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:02:08.244 [INF] (9) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:02:08.245 [INF] (9) [EXEC] done hid=2038 ok=false status=910
+2026-03-05 16:02:18.250 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2039 node=7F-M1
+2026-03-05 16:02:18.251 [INF] (13) [EXEC] start hid=2039 action=delete_test from=\\192.168.30.110\vlcode\2101F0FC.MXF to=null
+2026-03-05 16:02:18.251 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:02:18.253 [WRN] (13) [] start hid=2039
+2026-03-05 16:02:18.255 [WRN] (13) [TAPE_CHECK] hid=2039 status=1 setTape=false node='7F-M1'
+2026-03-05 16:02:18.258 [INF] (13) [JOB_REPORT] hid=2039 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:02:18.259 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:02:18.261 [WRN] (13) [] start hid=2039
+2026-03-05 16:02:18.264 [WRN] (13) [TAPE_CHECK] hid=2039 status=910 setTape=false node='7F-M1'
+2026-03-05 16:02:18.279 [INF] (13) [JOB_REPORT] hid=2039 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:02:18.291 [INF] (13) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:02:18.292 [INF] (13) [EXEC] done hid=2039 ok=false status=910
+2026-03-05 16:02:28.276 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2040 node=7F-M1
+2026-03-05 16:02:28.277 [INF] (9) [EXEC] start hid=2040 action=delete_test from=\\192.168.30.110\vlcode\2101F22B.MXF to=null
+2026-03-05 16:02:28.277 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:02:28.279 [WRN] (19) [] start hid=2040
+2026-03-05 16:02:28.281 [WRN] (19) [TAPE_CHECK] hid=2040 status=1 setTape=false node='7F-M1'
+2026-03-05 16:02:28.285 [INF] (19) [JOB_REPORT] hid=2040 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:02:28.286 [INF] (19) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:02:28.287 [WRN] (19) [] start hid=2040
+2026-03-05 16:02:28.306 [WRN] (19) [TAPE_CHECK] hid=2040 status=910 setTape=false node='7F-M1'
+2026-03-05 16:02:28.318 [INF] (19) [JOB_REPORT] hid=2040 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:02:28.320 [INF] (19) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:02:28.321 [INF] (19) [EXEC] done hid=2040 ok=false status=910
+2026-03-05 16:02:38.299 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2041 node=7F-M1
+2026-03-05 16:02:38.300 [INF] (6) [EXEC] start hid=2041 action=delete_test from=\\192.168.30.110\vlcode\2101F50C.MXF to=null
+2026-03-05 16:02:38.300 [INF] (13) Pushed 1 tasks to 7F-M1
+2026-03-05 16:02:38.302 [WRN] (6) [] start hid=2041
+2026-03-05 16:02:38.304 [WRN] (6) [TAPE_CHECK] hid=2041 status=1 setTape=false node='7F-M1'
+2026-03-05 16:02:38.307 [INF] (6) [JOB_REPORT] hid=2041 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:02:38.308 [INF] (6) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:02:38.309 [WRN] (6) [] start hid=2041
+2026-03-05 16:02:38.312 [WRN] (6) [TAPE_CHECK] hid=2041 status=910 setTape=false node='7F-M1'
+2026-03-05 16:02:38.340 [INF] (6) [JOB_REPORT] hid=2041 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:02:38.342 [INF] (6) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:02:38.343 [INF] (6) [EXEC] done hid=2041 ok=false status=910
+2026-03-05 16:02:48.379 [INF] (19) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2042 node=7F-M1
+2026-03-05 16:02:48.381 [INF] (6) [EXEC] start hid=2042 action=delete_test from=null to=null
+2026-03-05 16:02:48.381 [INF] (19) Pushed 1 tasks to 7F-M1
+2026-03-05 16:02:48.383 [WRN] (6) [] start hid=2042
+2026-03-05 16:02:48.386 [WRN] (6) [TAPE_CHECK] hid=2042 status=1 setTape=false node='7F-M1'
+2026-03-05 16:02:48.392 [INF] (6) [JOB_REPORT] hid=2042 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:02:48.419 [INF] (6) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:02:48.421 [WRN] (6) [] start hid=2042
+2026-03-05 16:02:48.423 [WRN] (6) [TAPE_CHECK] hid=2042 status=910 setTape=false node='7F-M1'
+2026-03-05 16:02:48.428 [INF] (6) [JOB_REPORT] hid=2042 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:02:48.457 [INF] (6) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:02:48.458 [INF] (6) [EXEC] done hid=2042 ok=false status=910
+2026-03-05 16:02:58.433 [INF] (19) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2043 node=7F-M1
+2026-03-05 16:02:58.434 [INF] (13) [EXEC] start hid=2043 action=delete_test from=null to=null
+2026-03-05 16:02:58.434 [INF] (19) Pushed 1 tasks to 7F-M1
+2026-03-05 16:02:58.436 [WRN] (13) [] start hid=2043
+2026-03-05 16:02:58.439 [WRN] (13) [TAPE_CHECK] hid=2043 status=1 setTape=false node='7F-M1'
+2026-03-05 16:02:58.442 [INF] (13) [JOB_REPORT] hid=2043 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:02:58.443 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:02:58.444 [WRN] (13) [] start hid=2043
+2026-03-05 16:02:58.447 [WRN] (13) [TAPE_CHECK] hid=2043 status=910 setTape=false node='7F-M1'
+2026-03-05 16:02:58.453 [INF] (19) [JOB_REPORT] hid=2043 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:02:58.470 [INF] (19) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:02:58.471 [INF] (19) [EXEC] done hid=2043 ok=false status=910
+2026-03-05 16:03:08.469 [INF] (13) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2044 node=7F-M1
+2026-03-05 16:03:08.482 [INF] (19) [EXEC] start hid=2044 action=delete_test from=null to=null
+2026-03-05 16:03:08.482 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:03:08.484 [WRN] (19) [] start hid=2044
+2026-03-05 16:03:08.487 [WRN] (19) [TAPE_CHECK] hid=2044 status=1 setTape=false node='7F-M1'
+2026-03-05 16:03:08.492 [INF] (19) [JOB_REPORT] hid=2044 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:03:08.495 [INF] (19) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:03:08.498 [WRN] (19) [] start hid=2044
+2026-03-05 16:03:08.500 [WRN] (6) [TAPE_CHECK] hid=2044 status=910 setTape=false node='7F-M1'
+2026-03-05 16:03:08.516 [INF] (6) [JOB_REPORT] hid=2044 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:03:08.518 [INF] (6) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:03:08.519 [INF] (6) [EXEC] done hid=2044 ok=false status=910
+2026-03-05 16:03:18.502 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2045 node=7F-M1
+2026-03-05 16:03:18.503 [INF] (19) [EXEC] start hid=2045 action=delete_test from=null to=null
+2026-03-05 16:03:18.503 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:03:18.504 [WRN] (19) [] start hid=2045
+2026-03-05 16:03:18.507 [WRN] (19) [TAPE_CHECK] hid=2045 status=1 setTape=false node='7F-M1'
+2026-03-05 16:03:18.510 [INF] (19) [JOB_REPORT] hid=2045 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:03:18.513 [INF] (19) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:03:18.522 [WRN] (6) [] start hid=2045
+2026-03-05 16:03:18.526 [WRN] (19) [TAPE_CHECK] hid=2045 status=910 setTape=false node='7F-M1'
+2026-03-05 16:03:18.540 [INF] (19) [JOB_REPORT] hid=2045 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:03:18.541 [INF] (19) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:03:18.542 [INF] (19) [EXEC] done hid=2045 ok=false status=910
+2026-03-05 16:03:28.524 [INF] (19) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2046 node=7F-M1
+2026-03-05 16:03:28.525 [INF] (19) [EXEC] start hid=2046 action=delete_test from=null to=null
+2026-03-05 16:03:28.525 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:03:28.527 [WRN] (13) [] start hid=2046
+2026-03-05 16:03:28.529 [WRN] (13) [TAPE_CHECK] hid=2046 status=1 setTape=false node='7F-M1'
+2026-03-05 16:03:28.532 [INF] (13) [JOB_REPORT] hid=2046 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:03:28.533 [INF] (13) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:03:28.534 [WRN] (6) [] start hid=2046
+2026-03-05 16:03:28.537 [WRN] (6) [TAPE_CHECK] hid=2046 status=910 setTape=false node='7F-M1'
+2026-03-05 16:03:28.550 [INF] (6) [JOB_REPORT] hid=2046 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:03:28.562 [INF] (6) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:03:28.563 [INF] (6) [EXEC] done hid=2046 ok=false status=910
+2026-03-05 16:03:38.544 [INF] (6) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2047 node=7F-M1
+2026-03-05 16:03:38.545 [INF] (18) [EXEC] start hid=2047 action=delete_test from=null to=null
+2026-03-05 16:03:38.545 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:03:38.546 [WRN] (13) [] start hid=2047
+2026-03-05 16:03:38.549 [WRN] (19) [TAPE_CHECK] hid=2047 status=1 setTape=false node='7F-M1'
+2026-03-05 16:03:38.552 [INF] (19) [JOB_REPORT] hid=2047 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:03:38.553 [INF] (19) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:03:38.555 [WRN] (19) [] start hid=2047
+2026-03-05 16:03:38.557 [WRN] (19) [TAPE_CHECK] hid=2047 status=910 setTape=false node='7F-M1'
+2026-03-05 16:03:38.582 [INF] (19) [JOB_REPORT] hid=2047 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:03:38.585 [INF] (19) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:03:38.587 [INF] (6) [EXEC] done hid=2047 ok=false status=910
+2026-03-05 16:03:48.576 [INF] (17) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2048 node=7F-M1
+2026-03-05 16:03:48.577 [INF] (17) [EXEC] start hid=2048 action=delete_test from=null to=null
+2026-03-05 16:03:48.577 [INF] (18) Pushed 1 tasks to 7F-M1
+2026-03-05 16:03:48.579 [WRN] (19) [] start hid=2048
+2026-03-05 16:03:48.582 [WRN] (19) [TAPE_CHECK] hid=2048 status=1 setTape=false node='7F-M1'
+2026-03-05 16:03:48.585 [INF] (19) [JOB_REPORT] hid=2048 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:03:48.586 [INF] (19) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:03:48.588 [WRN] (18) [] start hid=2048
+2026-03-05 16:03:48.592 [WRN] (18) [TAPE_CHECK] hid=2048 status=910 setTape=false node='7F-M1'
+2026-03-05 16:03:48.597 [INF] (19) [JOB_REPORT] hid=2048 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:03:48.608 [INF] (19) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:03:48.612 [INF] (19) [EXEC] done hid=2048 ok=false status=910
+2026-03-05 16:03:58.605 [INF] (19) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2049 node=7F-M1
+2026-03-05 16:03:58.606 [INF] (18) [EXEC] start hid=2049 action=delete_test from=null to=null
+2026-03-05 16:03:58.606 [INF] (19) Pushed 1 tasks to 7F-M1
+2026-03-05 16:03:58.607 [WRN] (18) [] start hid=2049
+2026-03-05 16:03:58.610 [WRN] (18) [TAPE_CHECK] hid=2049 status=1 setTape=false node='7F-M1'
+2026-03-05 16:03:58.613 [INF] (18) [JOB_REPORT] hid=2049 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:03:58.617 [INF] (18) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:03:58.619 [WRN] (18) [] start hid=2049
+2026-03-05 16:03:58.622 [WRN] (19) [TAPE_CHECK] hid=2049 status=910 setTape=false node='7F-M1'
+2026-03-05 16:03:58.633 [INF] (19) [JOB_REPORT] hid=2049 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:03:58.640 [INF] (19) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:03:58.641 [INF] (19) [EXEC] done hid=2049 ok=false status=910
+2026-03-05 16:04:08.632 [INF] (19) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2050 node=7F-M1
+2026-03-05 16:04:08.634 [INF] (19) [EXEC] start hid=2050 action=delete_test from=null to=null
+2026-03-05 16:04:08.634 [INF] (6) Pushed 1 tasks to 7F-M1
+2026-03-05 16:04:08.635 [WRN] (19) [] start hid=2050
+2026-03-05 16:04:08.638 [WRN] (19) [TAPE_CHECK] hid=2050 status=1 setTape=false node='7F-M1'
+2026-03-05 16:04:08.641 [INF] (19) [JOB_REPORT] hid=2050 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:04:08.654 [INF] (19) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:04:08.660 [WRN] (19) [] start hid=2050
+2026-03-05 16:04:08.670 [WRN] (6) [TAPE_CHECK] hid=2050 status=910 setTape=false node='7F-M1'
+2026-03-05 16:04:08.673 [INF] (19) [JOB_REPORT] hid=2050 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:04:08.675 [INF] (19) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:04:08.676 [INF] (19) [EXEC] done hid=2050 ok=false status=910
+2026-03-05 16:04:18.662 [INF] (19) [PUSH] POST http://192.168.30.218:5089/api/executor/receive hid=2051 node=7F-M1
+2026-03-05 16:04:18.664 [INF] (16) [EXEC] start hid=2051 action=delete_test from=null to=null
+2026-03-05 16:04:18.664 [INF] (19) Pushed 1 tasks to 7F-M1
+2026-03-05 16:04:18.665 [WRN] (16) [] start hid=2051
+2026-03-05 16:04:18.668 [WRN] (16) [TAPE_CHECK] hid=2051 status=1 setTape=false node='7F-M1'
+2026-03-05 16:04:18.670 [INF] (16) [JOB_REPORT] hid=2051 node=7F-M1 status=1 err=null updated=1
+2026-03-05 16:04:18.672 [INF] (16) [SLOT] consume node=7F-M1 ok=true
+2026-03-05 16:04:18.673 [WRN] (16) [] start hid=2051
+2026-03-05 16:04:18.675 [WRN] (16) [TAPE_CHECK] hid=2051 status=910 setTape=false node='7F-M1'
+2026-03-05 16:04:18.703 [INF] (16) [JOB_REPORT] hid=2051 node=7F-M1 status=910 err=Unknown action: delete_test updated=1
+2026-03-05 16:04:18.704 [INF] (16) [SLOT] release(+1) node=7F-M1
+2026-03-05 16:04:18.705 [INF] (19) [EXEC] done hid=2051 ok=false status=910
+2026-03-05 16:15:21.232 [INF] (37) Application is shutting down...
+2026-03-05 16:15:24.853 [INF] (35) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 16:15:29.913 [INF] (35) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 16:15:34.956 [INF] (36) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 16:15:39.995 [INF] (36) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 16:15:45.039 [INF] (36) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 16:15:50.091 [INF] (36) [HB] master offline: http://127.0.0.1:5089
+2026-03-05 16:42:02.699 [INF] (2) ===== FileMover 背景服務啟動中 =====
+2026-03-05 16:42:02.997 [INF] (2) Web API 已啟動於背景執行。
+2026-03-05 16:42:03.018 [INF] (9) Master dispatch loop started.
+2026-03-05 16:42:03.018 [INF] (10) DeleteScheduleService started (MASTER)
+2026-03-05 16:42:03.027 [INF] (10) DeleteSchedule run time set to 16:00, MaxPerStorage=3000, Recursive=false
+2026-03-05 16:42:03.052 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-05 16:42:03.063 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-05 16:42:03.063 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-05 16:42:03.063 [INF] (2) Hosting environment: Development
+2026-03-05 16:42:03.063 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-05 16:42:32.067 [INF] (6) 使用者終止程式
+2026-03-05 16:47:38.510 [INF] (2) ===== FileMover 背景服務啟動中 =====
+2026-03-05 16:47:38.837 [INF] (2) Web API 已啟動於背景執行。
+2026-03-05 16:47:38.867 [INF] (10) DeleteScheduleService started (MASTER)
+2026-03-05 16:47:38.867 [INF] (9) Master dispatch loop started.
+2026-03-05 16:47:38.874 [INF] (10) DeleteSchedule run time set to 16:00, MaxPerStorage=3000, Recursive=false
+2026-03-05 16:47:38.889 [WRN] (2) Overriding address(es) 'http://localhost:5255'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-05 16:47:38.901 [INF] (2) Now listening on: http://0.0.0.0:5089
+2026-03-05 16:47:38.901 [INF] (2) Application started. Press Ctrl+C to shut down.
+2026-03-05 16:47:38.901 [INF] (2) Hosting environment: Development
+2026-03-05 16:47:38.901 [INF] (2) Content root path: C:\Users\coco\projects\FileMoverWeb
+2026-03-05 16:48:07.195 [INF] (6) 使用者終止程式

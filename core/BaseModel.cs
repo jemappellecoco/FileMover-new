@@ -12,17 +12,17 @@ namespace FileMoverWeb.Core
     public sealed class BaseModel
     {
         private readonly IDbConnection _conn;
-
-        public BaseModel(IDbConnection conn)
+        private readonly IDbTransaction? _trans;
+        public BaseModel(IDbConnection conn, IDbTransaction? trans = null)
         {
             _conn = conn;
+            _trans = trans;
         }
 
         public Task<int> DeleteAsync(string table, string pkName, int id, CancellationToken ct = default)
         {
             var sql = $"DELETE FROM {table} WHERE {pkName} = @id";
-            return _conn.ExecuteAsync(new CommandDefinition(sql, new { id }, cancellationToken: ct));
-        }
+            return _conn.ExecuteAsync(new CommandDefinition(sql, new { id }, transaction: _trans, cancellationToken: ct));        }
 
         // ✅ Patch：data 有哪些欄位就更新哪些欄位
         // ⚠️ columnsWhitelist 必須由後端指定，避免把欄位名交給前端
@@ -54,8 +54,7 @@ namespace FileMoverWeb.Core
             p.Add("id", id);
             if (extraWhereParams != null) p.AddDynamicParams(extraWhereParams);
 
-            return _conn.ExecuteAsync(new CommandDefinition(sql, p, cancellationToken: ct));
-        }
+            return _conn.ExecuteAsync(new CommandDefinition(sql, p, transaction: _trans, cancellationToken: ct));        }
         public async Task<int> CreateAsync(
             string table,
             Dictionary<string, object?> data,
@@ -85,8 +84,9 @@ namespace FileMoverWeb.Core
         SELECT CAST(SCOPE_IDENTITY() AS INT);
         ";
 
+            // ✅ 傳入 _trans
             var newId = await _conn.ExecuteScalarAsync<int>(
-                new CommandDefinition(sql, clean, cancellationToken: ct));
+                new CommandDefinition(sql, clean, transaction: _trans, cancellationToken: ct));
 
             return newId;
         }
@@ -143,46 +143,45 @@ namespace FileMoverWeb.Core
             if (extraWhereParams != null) p.AddDynamicParams(extraWhereParams);
 
             // 5. 執行
-            return await _conn.ExecuteAsync(new CommandDefinition(sql, p, cancellationToken: ct));
-        }
+        return await _conn.ExecuteAsync(new CommandDefinition(sql, p, transaction: _trans, cancellationToken: ct));        }
     
-public Task<IEnumerable<T>> QueryAsync<T>(string sql, object? parameters, CancellationToken ct = default)
-{
-    return _conn.QueryAsync<T>(new CommandDefinition(sql, parameters, cancellationToken: ct));
-}
-public Task<T?> FindAsync<T>(string table, string pkName, int id, CancellationToken ct = default)
-{
-    var sql = $"SELECT * FROM {table} WHERE {pkName} = @id";
-    return _conn.QueryFirstOrDefaultAsync<T>(new CommandDefinition(sql, new { id }, cancellationToken: ct));
-}
+        public Task<IEnumerable<T>> QueryAsync<T>(string sql, object? parameters, CancellationToken ct = default)
+        {
+            return _conn.QueryAsync<T>(new CommandDefinition(sql, parameters, transaction: _trans,cancellationToken: ct));
+        }
+        public Task<T?> FindAsync<T>(string table, string pkName, int id, CancellationToken ct = default)
+        {
+            var sql = $"SELECT * FROM {table} WHERE {pkName} = @id";
+            return _conn.QueryFirstOrDefaultAsync<T>(new CommandDefinition(sql, new { id },transaction: _trans, cancellationToken: ct));
+        }
 
-public Task<int> CreateManyAsync(
-    string table,
-    IReadOnlyCollection<string> columns,
-    IEnumerable<object> rows,
-    CancellationToken ct = default)
-{
-    if (columns == null || columns.Count == 0) throw new ArgumentException("columns empty");
-    var cols = string.Join(", ", columns);
-    var vals = string.Join(", ", columns.Select(c => "@" + c));
+        public Task<int> CreateManyAsync(
+            string table,
+            IReadOnlyCollection<string> columns,
+            IEnumerable<object> rows,
+            CancellationToken ct = default)
+        {
+            if (columns == null || columns.Count == 0) throw new ArgumentException("columns empty");
+            var cols = string.Join(", ", columns);
+            var vals = string.Join(", ", columns.Select(c => "@" + c));
 
-    var sql = $@"
-INSERT INTO {table} ({cols})
-VALUES ({vals});
-";
-    return _conn.ExecuteAsync(new CommandDefinition(sql, rows, cancellationToken: ct));
-}
+            var sql = $@"
+        INSERT INTO {table} ({cols})
+        VALUES ({vals});
+        ";
+            return _conn.ExecuteAsync(new CommandDefinition(sql, rows,transaction: _trans, cancellationToken: ct));
+        }
 
-public Task<T?> FindWhereAsync<T>(
-    string table,
-    string whereSql,
-    object? parameters,
-    string selectSql = "*",
-    CancellationToken ct = default)
-{
-    var sql = $"SELECT {selectSql} FROM {table} WHERE {whereSql}";
-    return _conn.QueryFirstOrDefaultAsync<T>(
-        new CommandDefinition(sql, parameters, cancellationToken: ct));
-}
+        public Task<T?> FindWhereAsync<T>(
+            string table,
+            string whereSql,
+            object? parameters,
+            string selectSql = "*",
+            CancellationToken ct = default)
+        {
+            var sql = $"SELECT {selectSql} FROM {table} WHERE {whereSql}";
+            return _conn.QueryFirstOrDefaultAsync<T>(
+                new CommandDefinition(sql, parameters, transaction: _trans,cancellationToken: ct));
+        }
     }
 }

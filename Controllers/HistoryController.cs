@@ -81,8 +81,13 @@ namespace FileMoverWeb.Controllers
                 ct: ct);
 
             if (updated == 0)
-                return NotFound(new { ok = false, message = "not found" });
+                {
+                    // 1. 寫 Log 紀錄這次「無效的操作」
+                    _log.LogWarning("[REMOVE_FAIL] 使用者嘗試移除 ID={id}，但資料庫中找不到或不符合條件", id);
 
+                    // 2. 回傳 404，讓前端知道這筆資料已經「過期」
+                    return NotFound(new { ok = false, message = "找不到該紀錄，可能已被移除或存檔。" });
+                }
             return Ok(new { ok = true, historyId = id, message = $"已移除 HistoryId={id}" });
         }
 
@@ -126,7 +131,8 @@ namespace FileMoverWeb.Controllers
             {
                 ["file_status"] = newStatus,
                 ["assigned_node"] = null,
-                ["update_time"] = DateTime.Now
+                ["update_time"] = DateTime.Now,
+                ["note"] = null,
             };
 
             var updated = await baseModel.UpdateAsync(
@@ -134,9 +140,9 @@ namespace FileMoverWeb.Controllers
                 pkName: "id",
                 id: id,
                 data: patch,
-                columnsWhitelist: new[] { "file_status", "assigned_node", "update_time" },
+                columnsWhitelist: new[] { "file_status", "assigned_node", "update_time","note" },
                 // ✅ 關鍵：只允許錯誤狀態才能被 retry
-                extraWhereSql: "file_status IN (91,92,999,901,902,903,911,912,913,914,915,921,922,923)",
+                extraWhereSql: "file_status IN (904,91,92,999,901,902,903,911,912,913,914,915,921,922,923)",
                 ct: ct);
 
             if (updated == 0)

@@ -1,4 +1,22 @@
+# build
 bin/
 obj/
+
+# publish
 publish/
+
+# VS
 .vs/
+
+# user
+*.user
+*.suo
+
+# logs
+*.log
+
+# node
+node_modules/
+
+# temp
+*.tmp
