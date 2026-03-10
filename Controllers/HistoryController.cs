@@ -98,7 +98,11 @@ namespace FileMoverWeb.Controllers
         {
             if (id <= 0) return BadRequest(new { ok = false, message = "id invalid" });
             if (req == null) return BadRequest(new { ok = false, message = "body required" });
-
+            
+            var connStr = _cfg.GetConnectionString("DefaultConnection")!;
+            await using var conn = new SqlConnection(connStr);
+            var baseModel = new FileMoverWeb.Core.BaseModel(conn);
+           
             // 1) 用前端帶上來的欄位算 newStatus（不查 DB / 不 join）
             int newStatus;
             if (string.Equals(req.fromType, "RESTORE", StringComparison.OrdinalIgnoreCase))
@@ -107,25 +111,119 @@ namespace FileMoverWeb.Controllers
                 else if (string.Equals(req.fromGroup, "7F", StringComparison.OrdinalIgnoreCase)) newStatus = 17;
                 else newStatus = 0;
             }
+            else if (string.Equals(req.toType, "TAPE", StringComparison.OrdinalIgnoreCase))
+            {
+                // ✅ 重試「寫去 TAPE」的任務，重新回到一般待派送
+                newStatus = 0;
+
+                // 先從 History 找 file_id
+                var fileId = await baseModel.FindWhereAsync<int?>(
+                    table: "dbo.FileData_History",
+                    whereSql: "id = @hid",
+                    parameters: new { hid = id },
+                    selectSql: "file_id",
+                    ct: ct);
+
+                if (fileId.HasValue && fileId.Value > 0)
+                {
+                    await baseModel.UpdateAsync(
+                        table: "dbo.FileData",
+                        pkName: "id",
+                        id: fileId.Value,
+                        data: new Dictionary<string, object?>
+                        {
+                            ["tape_id"] = -2
+                        },
+                        columnsWhitelist: new[] { "tape_id" },
+                        ct: ct);
+
+                    _log.LogInformation(
+                        "[TAPE_RETRY] historyId={HistoryId} fileId={FileId} tape_id set to -2",
+                        id, fileId.Value);
+                }
+                else
+                {
+                    _log.LogWarning(
+                        "[TAPE_RETRY_SKIP] historyId={HistoryId} invalid fileId={FileId}",
+                        id, fileId);
+                }
+            }
             else if (string.Equals(req.fromType, "TAPE", StringComparison.OrdinalIgnoreCase))
             {
                 // ✅ NEW：fromType=TAPE retry → 13
                 newStatus = 13;
             }
-            else if (string.Equals(req.action, "delete", StringComparison.OrdinalIgnoreCase))
+               else if (string.Equals(req.action, "delete", StringComparison.OrdinalIgnoreCase))
             {
                 newStatus = -1;
+
+                var h = await baseModel.FindAsync<RetryHistoryRow>(
+                    table: "dbo.FileData_History",
+                    pkName: "id",
+                    id: id,
+                    ct: ct);
+
+                if (h == null)
+                    return NotFound(new { ok = false, message = $"找不到 history id={id}" });
+
+                if (h.file_id <= 0)
+                    return BadRequest(new { ok = false, message = $"history.file_id 無效，hid={id}" });
+
+                if (h.from_storage_id <= 0)
+                    return BadRequest(new { ok = false, message = $"history.from_storage_id 無效，hid={id}" });
+
+                var s = await baseModel.FindAsync<RetryStorageRow>(
+                    table: "dbo.Storage",
+                    pkName: "id",
+                    id: h.from_storage_id,
+                    ct: ct);
+
+                if (s == null)
+                    return BadRequest(new { ok = false, message = $"找不到 storage id={h.from_storage_id}" });
+
+                var grp = (s.set_group ?? "").Trim().ToUpperInvariant();
+                var ft = (h.file_type ?? "").Trim().ToUpperInvariant();
+
+                string? masterTable = ft == "CM" ? "dbo.CMData"
+                                    : ft == "PO" ? "dbo.FileData"
+                                    : null;
+
+                string? flagCol = grp == "4F" ? "is_file_4F"
+                                : grp == "7F" ? "is_file_7F"
+                                : null;
+
+                if (masterTable == null)
+                    return BadRequest(new { ok = false, message = $"未知 file_type={ft}" });
+
+                if (flagCol == null)
+                    return BadRequest(new { ok = false, message = $"未知 storage group={grp}" });
+
+                var flagPatch = new Dictionary<string, object?>
+                {
+                    [flagCol] = "N"
+                };
+
+                var updatedFlag = await baseModel.UpdateAsync(
+                    table: masterTable,
+                    pkName: "id",
+                    id: h.file_id,
+                    data: flagPatch,
+                    columnsWhitelist: new[] { "is_file_4F", "is_file_7F" },
+                    ct: ct);
+
+                _log.LogWarning(
+                    "[RETRY_DELETE_FIX] hid={hid} fid={fid} table={table} col={col} value='N' affected={affected}",
+                    id, h.file_id, masterTable, flagCol, updatedFlag);
             }
             else
             {
                 newStatus = 0;
             }
-            _log.LogInformation("[RETRY] id={id} action='{action}' fromType='{fromType}' fromGroup='{fromGroup}' => newStatus={newStatus}",
-    id, req.action, req.fromType, req.fromGroup, newStatus);
-            // 2) 直接 patch 回 DB（但用 extraWhereSql 做 status gate）
-            var connStr = _cfg.GetConnectionString("DefaultConnection")!;
-            await using var conn = new SqlConnection(connStr);
-            var baseModel = new FileMoverWeb.Core.BaseModel(conn);
+            _log.LogInformation(
+    "[RETRY] id={id} action='{action}' fromType='{fromType}' toType='{toType}' fromGroup='{fromGroup}' => newStatus={newStatus}",
+    id, req.action, req.fromType, req.toType, req.fromGroup, newStatus);
+           
+
 
             var patch = new Dictionary<string, object?>
             {
@@ -156,5 +254,17 @@ namespace FileMoverWeb.Controllers
             public string? action { get; set; }
             public string? fromType { get; set; }
             public string? fromGroup { get; set; }
+             public string? toType { get; set; }
         }
+        private sealed class RetryHistoryRow
+{
+    public int file_id { get; set; }
+    public int from_storage_id { get; set; }
+    public string? file_type { get; set; }
+}
+
+private sealed class RetryStorageRow
+{
+    public string? set_group { get; set; }
+}
     }}

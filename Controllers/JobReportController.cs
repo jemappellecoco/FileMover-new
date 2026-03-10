@@ -164,6 +164,36 @@ namespace FileMoverWeb.Controllers
                 _log.LogWarning(
                     "[TAPE_CHECK] hid={hid} status={st} setTape={setTape} node='{node}'",
                     dto.HistoryId, dto.FileStatus, dto.SetTape, node);
+        if (dto.FileStatus.HasValue
+            && (dto.FileStatus.Value == 91 || dto.FileStatus.Value >= 900 )
+            && string.Equals(dto.ToType, "TAPE", StringComparison.OrdinalIgnoreCase))
+        {
+            var fileId = await baseModel.FindWhereAsync<int?>(
+                table: "dbo.FileData_History",
+                whereSql: "id = @hid",
+                parameters: new { hid = dto.HistoryId },
+                selectSql: "file_id",
+                ct: ct);
+
+            if (fileId.HasValue && fileId.Value > 0)
+            {
+                await baseModel.UpdateAsync(
+                    table: "dbo.FileData",
+                    pkName: "id",
+                    id: fileId.Value,
+                    data: new Dictionary<string, object?>
+                    {
+                        ["tape_id"] = 0
+                    },
+                    columnsWhitelist: FileDataWhitelist,
+                    ct: ct);
+
+                _log.LogWarning(
+                    "[TAPE_UPDATE] hid={hid} fileId={fid} tape_id=0 (to tape failed)",
+                    dto.HistoryId, fileId.Value);
+            }
+        }
+                
         // 2️⃣ 若成功且需要清 tape_id
             if (dto.SetTape == true && dto.FileStatus == Status.CopyDone /* 11 */)
             {
@@ -194,6 +224,7 @@ namespace FileMoverWeb.Controllers
                         dto.HistoryId,
                         fileId.Value);
                 }
+                
             }
             _log.LogWarning(
                 "[REPORT_APPLY] hid={hid} node={node} status={st}",
@@ -207,17 +238,17 @@ namespace FileMoverWeb.Controllers
                 ct: ct);
             await trans.CommitAsync(ct);
             _log.LogWarning(
-    "[REPORT_RESULT] hid={hid} updated={updated} status={st}",
-    dto.HistoryId, updated, dto.FileStatus);
-            return updated;
-        }catch (Exception ex)
-    {
-        // 發生任何意外，全部還原
-        await trans.RollbackAsync(ct);
-        _log.LogError(ex, "[REPORT_ERR] hid={hid} transaction fallback!", dto.HistoryId);
-        throw;
-    }
-}
+                "[REPORT_RESULT] hid={hid} updated={updated} status={st}",
+                dto.HistoryId, updated, dto.FileStatus);
+                        return updated;
+            }catch (Exception ex)
+            {
+                // 發生任何意外，全部還原
+                await trans.RollbackAsync(ct);
+                _log.LogError(ex, "[REPORT_ERR] hid={hid} transaction fallback!", dto.HistoryId);
+                throw;
+            }
+        }
         
             // ✅ 保留原本語意：必須 assigned_node = node 才能改
             // return await baseModel.UpdateAsync(
@@ -248,6 +279,7 @@ namespace FileMoverWeb.Controllers
             // ✅ nullable；null = 不動；true = 釋放；false = consume（搭配 FileStatus==1）
             public bool? AssumeFreedSlot { get; set; }
             public bool? SetTape { get; set; }
+            public string? ToType { get; set; }
         }
 
         // POST /api/jobs/cancel-batch
