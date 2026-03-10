@@ -296,9 +296,26 @@ namespace FileMoverWeb.Controllers
         await using var conn = new SqlConnection(connStr);
         var baseModel = new FileMoverWeb.Core.BaseModel(conn);
         // === 第二階段：狀態查詢 ===
+        // var rows = (await baseModel.QueryAsync<CancelRow>(
+        //     "SELECT id AS HistoryId, file_status AS FileStatus, assigned_node AS AssignedNode FROM dbo.FileData_History WHERE id IN @ids",
+        //     new { ids }, 
+        //     ct)).ToList();
+
+        // 要查 assign node 去打cancel
         var rows = (await baseModel.QueryAsync<CancelRow>(
-            "SELECT id AS HistoryId, file_status AS FileStatus, assigned_node AS AssignedNode FROM dbo.FileData_History WHERE id IN @ids",
-            new { ids }, 
+            @"
+            SELECT
+                h.id AS HistoryId,
+                h.file_id AS FileId,
+                h.file_status AS FileStatus,
+                h.assigned_node AS AssignedNode,
+                sTo.[type] AS ToType
+            FROM dbo.FileData_History h
+            LEFT JOIN dbo.Storage sTo
+                ON sTo.id = h.to_storage_id
+            WHERE h.id IN @ids
+            ",
+            new { ids },
             ct)).ToList();
 
         // 找不到的 id
@@ -329,6 +346,35 @@ namespace FileMoverWeb.Controllers
                 extraWhereSql: "file_status IN (0, -1, 24, 27)", // 二次防護：確保更新當下狀態未變
                 ct: ct
             );
+            var tapeFileIds = rows
+        .Where(r =>
+            pendingIds.Contains(r.HistoryId) &&
+            string.Equals(r.ToType, "TAPE", StringComparison.OrdinalIgnoreCase) &&
+            r.FileId > 0)
+        .Select(r => r.FileId)
+        .Distinct()
+        .ToList();
+
+    if (tapeFileIds.Any())
+    {
+        var tapeUpdated = await baseModel.UpdateBatchAsync(
+            table: "dbo.FileData",
+            pkName: "id",
+            ids: tapeFileIds,
+            data: new Dictionary<string, object?>
+            {
+                ["tape_id"] = 0
+            },
+            columnsWhitelist: FileDataWhitelist,
+            ct: ct
+        );
+
+        _log.LogWarning(
+            "[TAPE_CANCEL_PENDING] fileIds={fileIds} tapeUpdated={tapeUpdated}",
+            string.Join(",", tapeFileIds),
+            tapeUpdated);
+    }
+
         }
     // === 第四階段：處理執行中 (Running) 任務 - HTTP 轉發 ===
         var runningGroups = rows
@@ -402,6 +448,8 @@ namespace FileMoverWeb.Controllers
     {
         public int HistoryId { get; set; }
         public int FileStatus { get; set; }
+        public int FileId { get; set; }
+        public string? ToType { get; set; }
         public string? AssignedNode { get; set; }
     }
         

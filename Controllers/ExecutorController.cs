@@ -150,7 +150,9 @@ namespace FileMoverWeb.Controllers
                     error = result.Error,
                     assumeFreedSlot = true,
                     SetTape = result.SetTape,
-                    toType = task.ToType
+                    toType = task.ToType,
+                    fromType = task.FromType,
+                    fromGroup = task.FromGroup
                 }, CancellationToken.None);
 
                 _log.LogInformation("[EXEC] done hid={hid} ok={ok} status={st}",
@@ -171,7 +173,9 @@ namespace FileMoverWeb.Controllers
                         error = "Canceled by user or system",
                         assumeFreedSlot = true,
                         SetTape = false,
-                        toType = task.ToType
+                        toType = task.ToType,
+                        fromType = task.FromType,
+                        fromGroup = task.FromGroup
                     }, CancellationToken.None);
                 }
                 catch { }
@@ -190,7 +194,10 @@ namespace FileMoverWeb.Controllers
                         fileStatus = 91,
                         error = ex.Message,
                         assumeFreedSlot = true,
-                        SetTape = false
+                        SetTape = false,
+                        toType = task.ToType,
+                        fromType = task.FromType,
+                        fromGroup = task.FromGroup
                     }, ct);
                 }
                 catch { }
