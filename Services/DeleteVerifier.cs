@@ -110,8 +110,8 @@ namespace FileMoverWeb.Services
             // 4) 檢查該 fid 是否還存在於 FileData_Storage（任何一筆都算存在）
             var stillExists = await baseModel.FindWhereAsync<StorageRow>(
                 table: "dbo.FileData_Storage",
-                whereSql: "file_id = @fid",
-                parameters: new { fid = h.file_id },
+                whereSql: "file_id = @fid AND file_type = @ft",
+                parameters: new { fid = h.file_id ,ft = h.file_type},
                 ct: ct);
 
             if (stillExists == null)
@@ -132,7 +132,7 @@ namespace FileMoverWeb.Services
                     extraWhereSql: "is_file_4F = 'N' AND is_file_7F = 'N'",
                     ct: ct);
 
-                // 你要嚴格：主檔沒更新到就回錯
+                // 主檔更新到就
                 if (affected == 0)
                 {
                     _log.LogError(
@@ -143,9 +143,13 @@ namespace FileMoverWeb.Services
                     return (false, (isCM ? "CMData" : "FileData") +
                                 $" not found or not updated (id={h.file_id})");
                 }
-                _log.LogInformation(
-                    "[DELETE_VERIFY] master updated table={table} id={id}",
+                else
+                {
+                    _log.LogInformation(
+                    "[DELETE_VERIFY] master updated -1 table={table} id={id}",
                     isCM ? "CMData" : "FileData", h.file_id);
+                }
+                
             }
             else
             {
