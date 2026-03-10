@@ -414,7 +414,7 @@ root.querySelector('#btnCancelSelected')?.addEventListener('click', () => {
             // 💡 關鍵：資料一進來就洗乾淨
             allRows = rawData.map(normalizeTask); 
 
-            allRows.sort((a, b) => (b.priority - a.priority) || (a.historyId - b.historyId));
+            // allRows.sort((a, b) => (b.priority - a.priority) || (a.historyId - b.historyId));
             //更新欄位
             const signature = allRows.map(r => 
                 `${r.historyId}-${r.status}-${r.priority}-${r.assignedNode}`
