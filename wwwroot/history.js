@@ -176,21 +176,32 @@ function makeSig(rows) {
     return isErrorStatus(code); // 你現在規則就是錯誤/取消都可重試
   }
 
-  function statusLabel(code) {
+  function statusLabel(code,action) {
     const n = Number(code);
+    const act = String(action || '').toLowerCase();
     if (n === 11) return '搬移成功';
     if (n === 12) return '刪除成功';
     if (n === 13) return '等待歸檔';
     if (n === 14 || n === 17) return '等待回遷';
 
-    if (String(n).startsWith('91')) return '搬移失敗';
-    if (String(n).startsWith('92')) return '刪除失敗';
-
+    // if (String(n).startsWith('91')) return '搬移失敗';
+    // if (String(n).startsWith('92')) return '刪除失敗';
+     if (String(n).startsWith('91')) {
+    if (act === 'delete') return '刪除失敗';
+    else if (act === 'move' || act === 'copy') return '搬移失敗';
+    
+  }
+  if (n === 922) return '其他線程占用';
     if (n === 999) return '使用者取消';
     if (n === 901) return '資料庫錯誤 [From]';
     if (n === 902) return '資料庫錯誤 [To]';
     if (n === 903) return '未設定restore錯誤';
-    if (n === 904) return '排程刪除失敗';
+    // if (n === 904) return '排程刪除失敗';
+    if (n === 904) {
+  if (act === 'delete') return '刪除驗證失敗';
+  else if (act === 'move' || act === 'copy') return '搬移驗證失敗';
+ 
+}
     if (n === 915) return '檔案大小不同';
 
     return String(code ?? '');
@@ -354,7 +365,7 @@ function makeSig(rows) {
     const frag = document.createDocumentFragment();
 
     rows.forEach((r, i) => {
-      const label   = statusLabel(r.status);
+      const label   = statusLabel(r.status,r.action);
       const detail  = r.statusText || label;
       const tooltip = `${r.status} - ${detail}`;
       const canRetry = isRetryable(r.status);

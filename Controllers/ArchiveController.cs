@@ -41,7 +41,7 @@ namespace FileMoverWeb.Controllers
                 updated = res.updated,           // 13->213
                 created = res.created,           // 新增 move 任務
                 newHistoryIds = res.newHistoryIds,
-                message = $"已歸檔：更新 {res.updated} 筆（13→213），新增 move 任務 {res.created} 筆"
+                message = $"已歸檔：更新 {res.updated} 筆，新增 move 任務 {res.created} 筆"
             });
         }
     }

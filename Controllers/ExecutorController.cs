@@ -134,7 +134,8 @@ namespace FileMoverWeb.Controllers
                     fileStatus = 1,
                     error = (string?)null,
                     assumeFreedSlot = false,
-                    SetTape = false
+                    SetTape = false,
+                    toType = task.ToType
                 }, ct);
 
                 // 2️⃣ 執行實際檔案動作（用 ct：只有服務關閉才會中止）
@@ -148,7 +149,8 @@ namespace FileMoverWeb.Controllers
                     fileStatus = result.FileStatus,
                     error = result.Error,
                     assumeFreedSlot = true,
-                    SetTape = result.SetTape
+                    SetTape = result.SetTape,
+                    toType = task.ToType
                 }, CancellationToken.None);
 
                 _log.LogInformation("[EXEC] done hid={hid} ok={ok} status={st}",
@@ -168,7 +170,8 @@ namespace FileMoverWeb.Controllers
                         fileStatus = 999, // 使用者取消狀態碼
                         error = "Canceled by user or system",
                         assumeFreedSlot = true,
-                        SetTape = false
+                        SetTape = false,
+                        toType = task.ToType
                     }, CancellationToken.None);
                 }
                 catch { }

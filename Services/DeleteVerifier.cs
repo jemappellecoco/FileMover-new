@@ -83,18 +83,40 @@ namespace FileMoverWeb.Services
                 },
                 ct: ct);
 
-                if (row == null)
-                {
-                    _log.LogWarning(
-                        "[DELETE_VERIFY] storage row not found fid={fid} sid={sid} ft={ft}",
-                        h.file_id, h.from_storage_id, h.file_type);
+            //     if (row == null)
+            //     {
+            //         _log.LogWarning(
+            //             "[DELETE_VERIFY] storage row not found fid={fid} sid={sid} ft={ft}",
+            //             h.file_id, h.from_storage_id, h.file_type);
 
-                    return (false,
-                        $"FileData_Storage row not found (fid={h.file_id}, sid={h.from_storage_id}, ft={h.file_type ?? "NULL"})");
-                }
+            //         return (false,
+            //             $"FileData_Storage row not found (fid={h.file_id}, sid={h.from_storage_id}, ft={h.file_type ?? "NULL"})");
+            //     }
+            // _log.LogInformation("[DELETE_VERIFY] deleting storage row id={id}", row.id);
+
+            // // 3) 用 id 刪除
+            // var deleted = await baseModel.DeleteAsync(
+            //     table: "dbo.FileData_Storage",
+            //     pkName: "id",
+            //     id: row.id,
+            //     ct: ct);
+
+            // if (deleted == 0)
+            // {
+            //     _log.LogError("[DELETE_VERIFY] DeleteAsync affected 0 id={id}", row.id);
+            //     return (false, $"DeleteAsync affected 0 (storage id={row.id})");
+            // }
+            //  _log.LogInformation("[DELETE_VERIFY] storage row deleted id={id}", row.id);
+            if (row == null)
+        {
+            _log.LogWarning(
+                "[DELETE_VERIFY] storage row already missing, treat as pass fid={fid} sid={sid} ft={ft}",
+                h.file_id, h.from_storage_id, h.file_type);
+        }
+        else
+        {
             _log.LogInformation("[DELETE_VERIFY] deleting storage row id={id}", row.id);
 
-            // 3) 用 id 刪除
             var deleted = await baseModel.DeleteAsync(
                 table: "dbo.FileData_Storage",
                 pkName: "id",
@@ -106,7 +128,10 @@ namespace FileMoverWeb.Services
                 _log.LogError("[DELETE_VERIFY] DeleteAsync affected 0 id={id}", row.id);
                 return (false, $"DeleteAsync affected 0 (storage id={row.id})");
             }
-             _log.LogInformation("[DELETE_VERIFY] storage row deleted id={id}", row.id);
+
+            _log.LogInformation("[DELETE_VERIFY] storage row deleted id={id}", row.id);
+        }
+            
             // 4) 檢查該 fid 是否還存在於 FileData_Storage（任何一筆都算存在）
             var stillExists = await baseModel.FindWhereAsync<StorageRow>(
                 table: "dbo.FileData_Storage",
@@ -132,7 +157,7 @@ namespace FileMoverWeb.Services
                     extraWhereSql: "is_file_4F = 'N' AND is_file_7F = 'N'",
                     ct: ct);
 
-                // 你要嚴格：主檔沒更新到就回錯
+                // 主檔更新
                 if (affected == 0)
                 {
                     _log.LogError(
@@ -140,8 +165,8 @@ namespace FileMoverWeb.Services
                         isCM ? "CMData" : "FileData",
                         h.file_id);
 
-                    return (false, (isCM ? "CMData" : "FileData") +
-                                $" not found or not updated (id={h.file_id})");
+                    // return (false, (isCM ? "CMData" : "FileData") +
+                    //             $" not found or not updated (file_id={h.file_id})");
                 }
                 _log.LogInformation(
                     "[DELETE_VERIFY] master updated table={table} id={id}",

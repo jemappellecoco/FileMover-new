@@ -27,11 +27,12 @@ function normalizeTask(r) {
         action:        (r.action ?? r.Action ?? "").toLowerCase().trim(),
         status:        Number(r.historyStatus ?? r.HistoryStatus ?? 0), // 注意後端是 HistoryStatus
         priority:      Number(r.priority ?? r.Priority ?? 0),
-        assignedNode:  r.assignedNode ?? r.AssignedNode ?? "-",
+        // assignedNode:  r.assignedNode ?? r.AssignedNode ?? "-",
+        assignedNode:  String(r.assignedNode ?? r.AssignedNode ?? "").trim(),
         
         // 時間處理
         createTime:    r.createTime ?? r.CreateTime ?? "",
-        fileType:      r.filetype ?? r.filetype ?? "PO" // 辨識 PO 或 CM
+        fileType:      r.filetype ?? r.Filetype ?? "PO" // 辨識 PO 或 CM
     };
 }
 
@@ -121,7 +122,7 @@ export function initPending(root, statusLine) {
     </div>`;
     const timer = setInterval(() => {
         loadPending(true); // 每 5 秒從 API 抓一次最新列表
-    }, 5000);
+    }, 3000);
     // === 全域狀態 ===
     let allRows = []; 
     const rowMap = new Map();
@@ -238,7 +239,38 @@ startProgressSse();
           const sp = fmtSpeed(st.speedBps);
           speedEl.textContent = sp || '';
         }
+       // ✅ 只要有進度就先鎖 UI
+   const tr = wrap.closest('tr');
+  if (!tr) return;
 
+  // 先更新狀態文字
+  if (percent > 0) {
+    const statusTd = tr.querySelector('td:nth-child(9)');
+    if (statusTd) statusTd.innerHTML = '執行中';
+  }
+
+  // ✅ 依照同一套規則判斷是否要鎖 cancel
+  const rowId = Number(tr.querySelector('.btn-cancel')?.dataset.id || 0);
+  const row = allRows.find(x => x.historyId === rowId);
+
+  const shouldLockCancel =
+    row &&
+    (row.action === 'delete' || row.action === 'move' || row.status === 24 || row.status === 27);
+
+  if (percent > 0 && shouldLockCancel) {
+    const priSelect = tr.querySelector('.pri-select');
+    if (priSelect) priSelect.disabled = true;
+
+    const cancelBtn = tr.querySelector('.btn-cancel');
+    if (cancelBtn) {
+      cancelBtn.disabled = true;
+      cancelBtn.textContent = '不可取消';
+      cancelBtn.style.background = '#666';
+    }
+
+    const chk = tr.querySelector('.chk-pending');
+    if (chk) chk.disabled = true;
+  }
         // --- 新增：即時同步狀態文字 ---
     if (percent > 0 && percent < 100) {
         const tr = wrap.closest('tr');
@@ -284,14 +316,14 @@ startProgressSse();
         const pst = progressState.get(key);
         const percent = Number(pst?.percent ?? 0);
         const startedByStatus = (r.status === 1);
-        
+        const isAssigned = !!r.assignedNode;
         const isActive = startedByStatus || (percent > 0 && percent < 100);
         let statusText = isActive ? '執行中' : '排隊中';
         
         // 取消邏輯 (歸檔與回遷開始後不可取消)
-        const started = (r.status === 1) || (percent > 0);
-        const cannotCancel = (r.action === 'move' || r.status === 24 || r.status === 27) && started;
-
+        // const started = (r.status === 1) || (percent > 0);
+        // const cannotCancel = (r.action === 'move' || r.status === 24 || r.status === 27) && started;
+        const cannotCancel = (r.action === 'delete'||r.action === 'move' || r.status === 24 || r.status === 27) && isAssigned;
         let tr = existing || document.createElement('tr');
         if (!existing) {
             rowMap.set(id, tr);
@@ -434,6 +466,9 @@ function normalizeRecent(r){
     historyId:    r.historyId ?? r.HistoryId ?? 0,
     programName:  r.programName ?? "",
     userBit:      r.fileName  ??"",
+    fromType:     r.fromType ?? r.FromType ?? "",
+    fromGroup:    r.fromGroup ?? r.FromGroup ?? "",
+    toType:       r.toType ?? r.ToType ?? r.destType ?? r.DestType ?? "",
     sourceStorage:r.sourceStorage ?? r.SourceStorage ?? r.fromStorage ?? "",
     destStorage:  r.destStorage ?? r.DestStorage ?? r.toStorage ?? "",
     assignedNode: r.assignedNode ?? r.AssignedNode ?? "-",
@@ -521,26 +556,33 @@ function renderPendHistTable(){
     if ($pendCount) $pendCount.textContent = `0 筆`;
     return;
   }
-function isErrorStatus(code) {
-  const n = Number(code);
-  return [
-    91, 92, 901, 902, 903, 904,
-    911, 912, 913, 914, 915,
-    921, 922, 923, 999
-  ].includes(n) || (n >= 900 && n <= 999);
-}
+// function isErrorStatus(code) {
+//   const n = Number(code);
+//   return [
+//     91, 92, 901, 902, 903, 904,
+//     911, 912, 913, 914, 915,
+//     921, 922, 923, 999
+//   ].includes(n) || (n >= 900 && n <= 999);
+// }
 function isRetryable(code) {
   return isErrorStatus(code); // 你現在規則：錯誤/取消都可重試
 }
 
-function statusLabel(code) {
+function statusLabel(code,action) {
   const n = Number(code);
+  const act = String(action || '').toLowerCase();
   if (n === 11) return '搬移成功';
   if (n === 12) return '刪除成功';
   if (n === 13) return '等待歸檔';
   if (n === 14 || n === 17) return '等待回遷';
-  if (String(n).startsWith('91')) return '搬移失敗';
-  if (String(n).startsWith('92')) return '刪除失敗';
+  // if (String(n).startsWith('91')) return '搬移失敗';
+  // if (String(n).startsWith('92')) return '刪除失敗';
+  if (String(n).startsWith('91')) {
+    if (act === 'delete') return '刪除失敗';
+    else if (act === 'move' || act === 'copy') return '搬移失敗';
+   
+  }
+  if (n === 922) return '其他線程占用';
   if (n === 999) return '使用者取消';
   if (n === 915) return '檔案大小不同';
   return String(code ?? '');
@@ -556,7 +598,7 @@ function pill(label, tooltip, status) {
   return `<span class="${cls}" title="${safeTip}">${label}</span>`;
 }
 $histTbody.innerHTML = histView.map((r,i)=> {
-  const label = statusLabel(r.status);
+  const label = statusLabel(r.status, r.action);
   const tooltip = `${r.status} - ${label}`;
   const canRetry = isRetryable(r.status);
 return `
@@ -577,6 +619,7 @@ return `
               data-action="${escapeHtml(String(r.action || '').toLowerCase())}"
               data-fromtype="${escapeHtml(String(r.fromType || ''))}"
               data-fromgroup="${escapeHtml(String(r.fromGroup || ''))}"
+              data-totype="${escapeHtml(String(r.toType || r.destType || ''))}"
               style="margin-left:6px;padding:2px 8px;font-size:12px;">重試</button>
 
             <button class="btn-remove"
@@ -618,28 +661,6 @@ async function loadPendHistoryRecent({ silent=false } = {}){
     }
   }
 }
-root.addEventListener('click', async (e) => {
-  // === 1. 單筆取消邏輯 ===
-  const cancelBtn = e.target.closest('.btn-cancel');
-    if (cancelBtn) {
-        const id = Number(cancelBtn.dataset.id);
-        if (!id) return;
-
-        // 判斷是否正在執行中 (可以看文字或狀態)
-        const isRunning = cancelBtn.innerText.includes('中斷') || 
-                          cancelBtn.closest('tr').innerText.includes('執行中');
-
-        const msg = isRunning 
-            ? ` 任務 #${id} 執行中` 
-            : `確定要取消任務 #${id} 嗎？`;
-
-        if (confirm(msg)) {
-            await requestCancel([id]); // 雖然只有一筆，也包成陣列 [id]
-        }
-        return;
-    }
-
-    // ✅ Priority change -> update DB
 root.addEventListener('change', async (e) => {
   const sel = e.target.closest('.pri-select');
   if (!sel) return;
@@ -677,6 +698,35 @@ root.addEventListener('change', async (e) => {
     loadPending(false); // 拉回 DB 正確值
   }
 });
+$chkAll?.addEventListener('change', (e) => {
+    const isChecked = e.target.checked;
+    root.querySelectorAll('.chk-pending:not(:disabled)').forEach(chk => {
+        chk.checked = isChecked;
+    });
+});
+root.addEventListener('click', async (e) => {
+  // === 1. 單筆取消邏輯 ===
+  const cancelBtn = e.target.closest('.btn-cancel');
+    if (cancelBtn) {
+        const id = Number(cancelBtn.dataset.id);
+        if (!id) return;
+
+        // 判斷是否正在執行中 (可以看文字或狀態)
+        const isRunning = cancelBtn.innerText.includes('中斷') || 
+                          cancelBtn.closest('tr').innerText.includes('執行中');
+
+        const msg = isRunning 
+            ? ` 任務 #${id} 執行中` 
+            : `確定要取消任務 #${id} 嗎？`;
+
+        if (confirm(msg)) {
+            await requestCancel([id]); // 雖然只有一筆，也包成陣列 [id]
+        }
+        return;
+    }
+
+    // ✅ Priority change -> update DB
+
     // === 2. 原本的 Retry 邏輯 (你提供的代碼) ===
   const retryBtn = e.target.closest('.btn-retry');
   if (retryBtn) {
@@ -688,11 +738,12 @@ root.addEventListener('change', async (e) => {
       const action    = retryBtn.dataset.action || '';
       const fromType  = retryBtn.dataset.fromtype || '';
       const fromGroup = retryBtn.dataset.fromgroup || '';
-
+      const toType    = retryBtn.dataset.totype || '';
+      console.log('[RETRY_PAYLOAD]', { historyId, action, fromType, fromGroup, toType });
       const resp = await fetch(`/history/${historyId}/retry`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action, fromType, fromGroup })
+        body: JSON.stringify({ action, fromType, fromGroup, toType })
       });
 
       if (!resp.ok) {
@@ -714,15 +765,7 @@ root.addEventListener('change', async (e) => {
     }
     return;
   }
-  // 在 initPending 結尾處加入
-$chkAll?.addEventListener('change', (e) => {
-    const isChecked = e.target.checked;
-    root.querySelectorAll('.chk-pending:not(:disabled)').forEach(chk => {
-        chk.checked = isChecked;
-    });
-});
-
-  const rmBtn = e.target.closest('.btn-remove');
+   const rmBtn = e.target.closest('.btn-remove');
   if (rmBtn) {
     const historyId = Number(rmBtn.dataset.id);
     if (!historyId) return;
@@ -748,8 +791,13 @@ $chkAll?.addEventListener('change', (e) => {
     } catch (err) {
       alert(`移除失敗（HistoryId=${historyId}）：${err.message || err}`);
     }
+    return;
   }
 });
+  // 在 initPending 結尾處加入
+
+
+ 
 // ---- events ----
 $pendBtnReload?.addEventListener('click', () => loadPendHistoryRecent({ silent:false }));
 $pendBtnSearch?.addEventListener('click', applyPendHistFilters);
