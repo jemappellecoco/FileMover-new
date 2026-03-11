@@ -107,13 +107,13 @@ namespace FileMoverWeb.Services
                 return (false, $"DeleteAsync affected 0 (storage id={row.id})");
             }
              _log.LogInformation("[DELETE_VERIFY] storage row deleted id={id}", row.id);
-            // 4) 檢查該 fid 是否還存在於 FileData_Storage（任何一筆都算存在）
+            // 4) 檢查該 fid && file_type 是否還存在於 FileData_Storage（任何一筆都算存在）
             var stillExists = await baseModel.FindWhereAsync<StorageRow>(
                 table: "dbo.FileData_Storage",
                 whereSql: "file_id = @fid AND file_type = @ft",
                 parameters: new { fid = h.file_id ,ft = h.file_type},
                 ct: ct);
-
+            // 都不存在 而且 "is_file_4F = 'N' AND is_file_7F = 'N'" 才更新
             if (stillExists == null)
             {
                   _log.LogInformation("[DELETE_VERIFY] no more storage rows, updating master file");
@@ -132,7 +132,7 @@ namespace FileMoverWeb.Services
                     extraWhereSql: "is_file_4F = 'N' AND is_file_7F = 'N'",
                     ct: ct);
 
-                // 主檔更新到就
+                // 主檔沒更新 
                 if (affected == 0)
                 {
                     _log.LogError(

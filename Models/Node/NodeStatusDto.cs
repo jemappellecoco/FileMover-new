@@ -9,7 +9,7 @@ namespace FileMoverWeb.Models.Node
 
         public int MaxConcurrency { get; set; } = 1;
         public int CurrentRunning { get; set; } = 0;
-
+        public int FreeSlots { get; set; }
         public string? LastHeartbeat { get; set; }
         public string? HostName { get; set; }
         public string? IpAddress { get; set; }

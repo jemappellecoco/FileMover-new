@@ -99,12 +99,12 @@ namespace FileMoverWeb.Services
 
             // ✅ 只掃 delete_date > 0 且 location 有值的 storage
             var storages = await baseModel.QueryAsync<StorageRow>(@"
-SELECT id, storage_name, location, priority, delete_date
-FROM dbo.Storage
-WHERE delete_date IS NOT NULL
-  AND delete_date > 0
-  AND location IS NOT NULL AND LTRIM(RTRIM(location)) <> ''
-", new { }, ct);
+                SELECT id, storage_name, location, priority, delete_date
+                FROM dbo.Storage
+                WHERE delete_date IS NOT NULL
+                AND delete_date > 0
+                AND location IS NOT NULL AND LTRIM(RTRIM(location)) <> ''
+                ", new { }, ct);
             _log.LogInformation("DeleteScheduler found {count} storages", storages.Count());
             foreach (var s in storages)
             {

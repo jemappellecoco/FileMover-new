@@ -181,6 +181,7 @@ namespace FileMoverWeb.Services
                     Group = s.Group,
                     Status = online ? "Online" : "Offline",
                     MaxConcurrency = max,
+                    FreeSlots = free,
                     CurrentRunning = running,
                     LastHeartbeat = last.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss"),
                     HostName = s.HostName,

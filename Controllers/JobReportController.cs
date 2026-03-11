@@ -107,12 +107,12 @@ namespace FileMoverWeb.Controllers
             return Ok(new { ok = true, updated = 0, message = "no rows updated " });
 
         // ---- SLOT LOGIC ----
-        // Consume：當 worker 回報「開始跑」(file_status==1) 且 assumeFreedSlot==false
-        if (dto.FileStatus == 1 && dto.AssumeFreedSlot == false)
-        {
-            var ok = _registry.TryConsume(dto.Node.Trim(), 1);
-            _log.LogInformation("[SLOT] consume node={node} ok={ok}", dto.Node, ok);
-        }
+        // // Consume：當 worker 回報「開始跑」(file_status==1) 且 assumeFreedSlot==false
+        // if (dto.FileStatus == 1 && dto.AssumeFreedSlot == false)
+        // {
+        //     var ok = _registry.TryConsume(dto.Node.Trim(), 1);
+        //     _log.LogInformation("[SLOT] consume node={node} ok={ok}", dto.Node, ok);
+        // }
 
         // Release：只有明確傳 true 才釋放（null=不動）
         if (dto.AssumeFreedSlot == true)
@@ -336,7 +336,7 @@ namespace FileMoverWeb.Controllers
                 ["note"] = "canceled_in_batch"
             };
 
-            // ✨ 參數化形式呼叫，100 筆更新也只需幾毫秒
+            // ✨ 參數化形式呼叫
             canceledInQueue = await baseModel.UpdateBatchAsync(
                 table: "dbo.FileData_History",
                 pkName: "id",

@@ -63,7 +63,9 @@ namespace FileMoverWeb.Services
                             continue;
 
                         // 你目前用 CurrentRunning 推算 free；先沿用（之後可改成 FreeSlots）
-                        var free = node.MaxConcurrency - node.CurrentRunning;
+                        // var free = node.MaxConcurrency - node.CurrentRunning;
+                        // ✅ 建議改法：直接取用 Registry 算好的剩餘空位
+                        var free = node.FreeSlots;
                         if (free <= 0)
                             continue;
                         var myGroup = _cfg.GetValue<string>("Cluster:Group") ?? "";
@@ -112,7 +114,19 @@ namespace FileMoverWeb.Services
                                     var body = await resp.Content.ReadAsStringAsync(stoppingToken);
                                     throw new Exception($"push failed {(int)resp.StatusCode} body={body}");
                                 }
+                                // ✅ 1. 成功送出後立刻預扣
+                                var consumed = _registry.TryConsume(node.NodeName, 1);
 
+                                // ✅ 2. 留下關鍵 Log，包含 hid 與 node 關係
+                                _log.LogInformation("[SLOT] dispatch consume node={node} hid={hid} ok={ok}", 
+                                    node.NodeName, t.HistoryId, consumed);
+
+                                // ✅ 3. 如果預扣失敗（防禦性檢查），雖然已經送出，但要記錄警告
+                                if (!consumed)
+                                {
+                                    _log.LogWarning("[SLOT_OVERFLOW] node {node} has no slots but task {hid} was sent!", 
+                                        node.NodeName, t.HistoryId);
+                                }
                                 pushed++;
                                
                             }

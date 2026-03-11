@@ -191,7 +191,7 @@ namespace FileMoverWeb.Services
                 var toType = (t.ToType ?? "").Trim().ToUpper();
                 var src = t.FromFullPath;
                 var dstFinal = t.ToFullPath;
-                // ✅ 判斷是否為 IC 儲存類型
+                // ✅ 判斷ToType 是否為 IC 
                 if (toType == "IC")
                 {
                     await CopyToIcAsync(t, ct).ConfigureAwait(false);
@@ -437,13 +437,7 @@ namespace FileMoverWeb.Services
         };
     }
 
-    // public sealed class FileActionResult
-    // {
-    //     public int HistoryId { get; set; }
-    //     public bool Success { get; set; }
-    //     public int FileStatus { get; set; }     // ✅ 成功=你們的完成狀態；失敗=Err code
-    //     public string? Error { get; set; }
-    // }
+    
     internal sealed class FileSizeMismatchException : Exception
         {
             public FileSizeMismatchException(string msg) : base(msg) { }
@@ -452,7 +446,7 @@ namespace FileMoverWeb.Services
         {
             public WaitFileFreeTimeoutException(string msg) : base(msg) { }
         }
-    // ✅ 成功狀態集中（你之後要改一個地方就好）
+    // ✅ 成功狀態集中
     internal static class Status
     {
         public const int CopyDone   = 11;
@@ -503,7 +497,7 @@ namespace FileMoverWeb.Services
             return Path.Combine(dir, "temp", file);
         }
 
-        // ✅ 覆蓋式搬移（final 已存在就刪）
+        //  覆蓋式搬移（搬移到 final 已存在就刪）不能用 replaceup 因為 destination 檔案必須已經存在
         public static void MoveReplace(string src, string dst)
         {
             var dir = Path.GetDirectoryName(dst);
