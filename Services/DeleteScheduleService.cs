@@ -184,7 +184,7 @@ namespace FileMoverWeb.Services
                     {
                         file_id = fileId,
                         user_id = 1,
-                        action = "delete_test",
+                        action = "delete",
                         from_storage_id = s.id,
                         to_storage_id = 0,
                         priority = s.priority ?? 0,
@@ -268,7 +268,7 @@ ORDER BY fd.id DESC;
             const string sqlExisting = @"
 SELECT file_id AS file_id, note AS note
 FROM dbo.FileData_History
-WHERE action = 'delete_test'
+WHERE action = 'delete'
   AND file_status = -1
   AND from_storage_id = @sid
   AND (
@@ -350,7 +350,7 @@ WHERE action = 'delete_test'
         {
             public int file_id { get; set; }
             public int user_id { get; set; }
-            public string action { get; set; } = "delete_test";
+            public string action { get; set; } = "delete";
             public int from_storage_id { get; set; }
             public int to_storage_id { get; set; } = 0;
             public int priority { get; set; }

@@ -64,11 +64,36 @@ namespace FileMoverWeb.Controllers
 
             var baseModel = new FileMoverWeb.Core.BaseModel(conn);
 
+            // 1️⃣ 先查原本 status
+            var oldStatus = await baseModel.FindWhereAsync<int?>(
+                table: "dbo.FileData_History",
+                whereSql: "id = @id",
+                parameters: new { id },
+                selectSql: "file_status",
+                ct: ct);
+
+            // 1️⃣ 先查原本 note
+            var oldnote = await baseModel.FindWhereAsync<string?>(
+                table: "dbo.FileData_History",
+                whereSql: "id = @id",
+                parameters: new { id },
+                selectSql: "note",
+                ct: ct);
+
+            if (oldStatus == null)
+            {
+                _log.LogWarning("[REMOVE_FAIL] 找不到 HistoryId={id}", id);
+                return NotFound(new { ok = false, message = "找不到該紀錄，可能已被移除或存檔。" });
+            }
+
+            var note = $"removed by UI \n oldStatus={oldStatus} \n oldNote={oldnote}";
+
+            // 2️⃣ 更新
             var patch = new Dictionary<string, object?>
             {
                 ["file_status"] = 111,
                 ["assigned_node"] = null,
-                ["note"] = "removed by UI",
+                ["note"] = note,
                 ["update_time"] = DateTime.Now
             };
 
@@ -80,16 +105,9 @@ namespace FileMoverWeb.Controllers
                 columnsWhitelist: new[] { "file_status", "assigned_node", "note", "update_time" },
                 ct: ct);
 
-            if (updated == 0)
-                {
-                    // 1. 寫 Log 紀錄這次「無效的操作」
-                    _log.LogWarning("[REMOVE_FAIL] 使用者嘗試移除 ID={id}，但資料庫中找不到或不符合條件", id);
-
-                    // 2. 回傳 404，讓前端知道這筆資料已經「過期」
-                    return NotFound(new { ok = false, message = "找不到該紀錄，可能已被移除或存檔。" });
-                }
             return Ok(new { ok = true, historyId = id, message = $"已移除 HistoryId={id}" });
         }
+    
 
         
          // ✅ NEW: POST /history/{id}/retry
